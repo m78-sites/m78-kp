@@ -1,0 +1,1256 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#1d1f23">
+<title>М78 · Предложение для клиники Sano</title>
+<meta name="description" content="ИИ-администратор, Битрикс24, связка с Renovatio, админка сайта, автоответы и рилсы для клиники Sano">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..500&family=Amiri&display=swap" rel="stylesheet">
+<script>document.documentElement.className+=' js';</script>
+<style>
+:root{
+  --page:#0d0e10;
+  --d-top:#2a2d32; --d-bot:#16171a; --d-text:#eceef1; --d-muted:#a4a9b0; --d-soft:#c3c7cc;
+  --d-line:rgba(255,255,255,.12); --d-tile:#2c2f34; --d-tile-b:rgba(255,255,255,.13); --d-card:rgba(255,255,255,.035);
+  --l-top:#e9ebee; --l-bot:#cdd0d5; --l-text:#1a1c1f; --l-muted:#5f646c; --l-soft:#41454c;
+  --l-line:#bcc0c6; --l-card:#e7e9ec; --l-card-b:#cbcfd4; --l-tile:#f4f5f7; --l-tile-b:#cdd1d6;
+  --ok:#3f7d5c; --ok-d:#7fc3a0; --warn:#9a6a1f; --warn-d:#e0b46a;
+  --r-card:22px; --r-tile:15px;
+  --f:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:64px}
+body{background:var(--page);font-family:var(--f);font-weight:300;font-optical-sizing:auto;color:var(--l-text);
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.5;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+svg{display:block}
+.ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  height:56px;padding:0 16px;background:rgba(20,21,24,.82);backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.08);color:var(--d-text);max-width:640px;margin:0 auto}
+.topbar .brand{display:flex;align-items:center;gap:12px;min-width:0}
+.topbar .brand svg{height:17px;width:auto;fill:#e7e9ec}
+.topbar .brand span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--d-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .tb-btns{display:flex;gap:8px;flex-shrink:0}
+.tb-btn{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.2);
+  font:400 12.5px/1 var(--f);letter-spacing:.08em;color:var(--d-text);background:transparent;cursor:pointer}
+.tb-btn.solid{background:#eceef1;color:#16171a;border-color:#eceef1}
+.tb-btn .ico{width:16px;height:16px}
+
+/* ---------- menu ---------- */
+.menu{position:fixed;inset:0;z-index:60;background:rgba(8,9,10,.6);opacity:0;pointer-events:none;transition:opacity .25s}
+.menu.open{opacity:1;pointer-events:auto}
+.menu-panel{position:absolute;left:0;right:0;top:0;max-width:640px;margin:0 auto;background:linear-gradient(180deg,var(--d-top),var(--d-bot));
+  color:var(--d-text);padding:18px 20px 26px;border-radius:0 0 26px 26px;transform:translateY(-16px);transition:transform .3s cubic-bezier(.2,.8,.2,1);
+  max-height:92vh;overflow:auto}
+.menu.open .menu-panel{transform:none}
+.menu-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.menu-head span{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--d-muted)}
+.menu a{display:flex;align-items:baseline;gap:14px;padding:13px 2px;border-top:1px solid var(--d-line);font-size:17px;font-weight:300}
+.menu a b{font-weight:400;font-size:12px;letter-spacing:.2em;color:var(--d-muted);min-width:26px}
+
+/* ---------- pages ---------- */
+.doc{max-width:640px;margin:0 auto}
+.pg{position:relative;padding:60px 24px 26px;overflow:hidden}
+.pg.dark{background:linear-gradient(180deg,var(--d-top) 0%,#1d1f23 55%,var(--d-bot) 100%);color:var(--d-text)}
+.pg.light{background:linear-gradient(180deg,var(--l-top) 0%,#dcdfe3 55%,var(--l-bot) 100%);color:var(--l-text)}
+@media (min-width:660px){
+  .doc{padding:18px 0 40px}
+  .pg{padding:72px 48px 30px;border-radius:30px;margin-bottom:18px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+}
+
+.eyebrow{display:flex;align-items:center;gap:14px;font-size:12px;font-weight:400;letter-spacing:.32em;text-transform:uppercase;margin-bottom:16px}
+.eyebrow::before{content:"";width:30px;height:1px;background:currentColor;opacity:.6}
+.dark .eyebrow{color:var(--d-muted)} .light .eyebrow{color:var(--l-muted)}
+.eyebrow.plain::before{display:none}
+
+h1,h2{font-weight:300;text-transform:uppercase;letter-spacing:-.012em;line-height:1.04}
+h1{font-size:clamp(33px,9.2vw,52px)}
+h2{font-size:clamp(29px,8.2vw,46px)}
+h3{font-weight:400;font-size:20px;line-height:1.25;letter-spacing:-.005em}
+.lead{font-size:17.5px;line-height:1.58;margin-top:16px}
+.dark .lead{color:var(--d-soft)} .light .lead{color:var(--l-soft)}
+p.txt{font-size:16px;line-height:1.6;margin-top:12px}
+.dark p.txt{color:var(--d-soft)} .light p.txt{color:var(--l-soft)}
+.muted{opacity:.75}
+.label{font-size:12px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;margin:38px 0 14px}
+.dark .label{color:var(--d-muted)} .light .label{color:var(--l-muted)}
+
+/* cover */
+.cover{padding-top:46px}
+.cover .mark{width:min(78%,430px);height:auto;fill:#e8eaed;margin:30px 0 26px}
+.cover .rule{width:110px;height:1px;background:rgba(255,255,255,.35);margin:0 0 28px}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+.meta div{border-top:1px solid var(--d-line);padding-top:12px}
+.meta small{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--d-muted);margin-bottom:6px}
+.meta b{font-weight:400;font-size:15.5px}
+
+/* pills */
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;font-size:11.5px;font-weight:400;letter-spacing:.17em;text-transform:uppercase;white-space:nowrap}
+.dark .pill{border:1px solid rgba(255,255,255,.22);color:#dfe2e6}
+.light .pill{border:1px solid var(--l-line);color:var(--l-soft)}
+.pill.on{background:#eceef1;color:#16171a;border-color:#eceef1}
+.light .pill.on{background:#1d1f23;color:#eceef1;border-color:#1d1f23}
+
+/* CTA */
+.cta{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:28px;padding:20px 22px;border-radius:24px;
+  background:linear-gradient(180deg,#f3f4f6,#d8dbdf);color:#17181b;font-size:16.5px;font-weight:400;line-height:1.35;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8);transition:transform .2s}
+.cta:active{transform:scale(.985)}
+.cta .ico{flex-shrink:0;width:22px;height:22px}
+.light .cta{background:linear-gradient(180deg,#2b2e33,#17181b);color:#eceef1;box-shadow:none}
+
+/* list rows */
+.list{margin-top:26px;border-bottom:1px solid var(--l-line)}
+.dark .list{border-color:var(--d-line)}
+.row{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:center;padding:15px 0;border-top:1px solid var(--l-line)}
+.dark .row{border-color:var(--d-line)}
+.row.top{align-items:start}
+.tile{width:52px;height:52px;border-radius:var(--r-tile);display:grid;place-items:center;flex-shrink:0}
+.light .tile{background:var(--l-tile);border:1px solid var(--l-tile-b);color:#2a2d31}
+.dark .tile{background:var(--d-tile);border:1px solid var(--d-tile-b);color:#dfe2e6}
+.row b{display:block;font-weight:400;font-size:18px;line-height:1.3}
+.row span{display:block;font-size:15px;line-height:1.45;margin-top:3px}
+.light .row span{color:var(--l-muted)} .dark .row span{color:var(--d-muted)}
+.row.plain{grid-template-columns:1fr}
+.row .num{font-size:30px;font-weight:300;line-height:1;letter-spacing:-.02em}
+
+/* cards */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.cards.one{grid-template-columns:1fr}
+.card{border-radius:var(--r-card);padding:20px 18px}
+.light .card{background:var(--l-card);border:1px solid var(--l-card-b)}
+.dark .card{background:var(--d-card);border:1px solid var(--d-line)}
+.card .ico{margin-bottom:16px}
+.card b{display:block;font-weight:400;font-size:17px;line-height:1.3}
+.card span{display:block;font-size:14.5px;line-height:1.45;margin-top:4px}
+.light .card span{color:var(--l-muted)} .dark .card span{color:var(--d-muted)}
+.card.wide{grid-column:1/-1}
+.card.ink{background:linear-gradient(160deg,#2c2f34,#17181b)!important;border:0!important;color:#eceef1;display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start;padding:22px 20px}
+.card.ink .tile{background:#33363b;border:1px solid rgba(255,255,255,.12);color:#e6e8eb}
+.card.ink .ico{margin:0}
+.card.ink span{color:#b3b7bd}
+.card.ink b{font-size:18px}
+.dark .card.ink{background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.1)!important}
+
+/* status chips */
+.st{display:inline-block;margin-top:10px;font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+.st.ok{color:var(--ok);background:rgba(63,125,92,.12)}
+.dark .st.ok{color:var(--ok-d);background:rgba(127,195,160,.12)}
+.st.draft{color:var(--warn);background:rgba(154,106,31,.12)}
+.dark .st.draft{color:var(--warn-d);background:rgba(224,180,106,.12)}
+.st.opt{color:var(--l-muted);background:rgba(0,0,0,.06)}
+.dark .st.opt{color:var(--d-muted);background:rgba(255,255,255,.07)}
+
+/* flow */
+.flow{margin-top:26px;position:relative}
+.step{position:relative;display:grid;grid-template-columns:44px 1fr;gap:16px;padding-bottom:22px}
+.step:last-child{padding-bottom:0}
+.step::before{content:"";position:absolute;left:21.5px;top:46px;bottom:2px;width:1px}
+.dark .step::before{background:var(--d-line)} .light .step::before{background:var(--l-line)}
+.step:last-child::before{display:none}
+.step i{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:14px;font-weight:400;letter-spacing:.06em}
+.dark .step i{border:1px solid rgba(255,255,255,.25);color:#e6e8eb}
+.light .step i{border:1px solid var(--l-line);background:var(--l-tile);color:#2a2d31}
+.step b{display:block;font-weight:400;font-size:18px;line-height:1.3;padding-top:10px}
+.step span{display:block;font-size:15px;line-height:1.5;margin-top:4px}
+.dark .step span{color:var(--d-muted)} .light .step span{color:var(--l-muted)}
+
+/* chat demo */
+.chat{margin-top:24px;border-radius:24px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.dark .chat{background:rgba(0,0,0,.25);border:1px solid var(--d-line)}
+.light .chat{background:#f1f2f4;border:1px solid var(--l-card-b)}
+.msg{max-width:86%;padding:11px 14px;border-radius:18px;font-size:15px;line-height:1.45;font-weight:300}
+.msg.in{align-self:flex-start;border-bottom-left-radius:6px}
+.dark .msg.in{background:#30333a;color:#e7e9ec} .light .msg.in{background:#fff;color:#1d1f22}
+.msg.out{align-self:flex-end;border-bottom-right-radius:6px}
+.dark .msg.out{background:#e6e8eb;color:#17181b} .light .msg.out{background:#24272c;color:#eceef1}
+.msg small{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:4px}
+.chat-cap{font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-align:center;margin-bottom:2px}
+.dark .chat-cap{color:var(--d-muted)} .light .chat-cap{color:var(--l-muted)}
+.btns{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-end;max-width:86%;justify-content:flex-end}
+.btns span{font-size:13px;padding:8px 12px;border-radius:12px;font-weight:400}
+.dark .btns span{border:1px solid rgba(255,255,255,.25);color:#e6e8eb} .light .btns span{border:1px solid #9da2a9;color:#26292d}
+
+/* accordion */
+.acc{margin-top:22px;border-bottom:1px solid var(--l-line)}
+.dark .acc{border-color:var(--d-line)}
+.acc details{border-top:1px solid var(--l-line)}
+.dark .acc details{border-color:var(--d-line)}
+.acc summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:17px 0;font-size:17.5px;font-weight:400;line-height:1.35}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary .pm{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;transition:transform .25s}
+.light .acc summary .pm{border:1px solid var(--l-line)} .dark .acc summary .pm{border:1px solid rgba(255,255,255,.22)}
+.acc summary .pm::before{content:"+";font-size:17px;line-height:1;font-weight:300}
+.acc details[open] summary .pm{transform:rotate(45deg)}
+.acc .ab{padding:0 0 18px;font-size:15.5px;line-height:1.6}
+.light .acc .ab{color:var(--l-soft)} .dark .acc .ab{color:var(--d-soft)}
+.acc .ab ul{padding-left:0;list-style:none}
+.acc .ab li{position:relative;padding-left:18px;margin:7px 0}
+.acc .ab li::before{content:"";position:absolute;left:2px;top:.72em;width:6px;height:1px;background:currentColor;opacity:.7}
+.acc .ab p+p,.acc .ab p+ul,.acc .ab ul+p{margin-top:10px}
+
+/* bullet list */
+.ul{list-style:none;margin-top:14px}
+.ul li{position:relative;padding:7px 0 7px 22px;font-size:16px;line-height:1.5}
+.ul li::before{content:"";position:absolute;left:2px;top:1.05em;width:9px;height:1px;background:currentColor;opacity:.7}
+.dark .ul li{color:var(--d-soft)} .light .ul li{color:var(--l-soft)}
+
+/* horizontal cards */
+.hs{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:22px -24px 0;padding:0 24px 8px;scrollbar-width:none}
+.hs::-webkit-scrollbar{display:none}
+.hs>.hc{scroll-snap-align:start;flex:0 0 84%;border-radius:var(--r-card);padding:22px 20px;display:flex;flex-direction:column}
+@media (min-width:660px){.hs{margin:22px -48px 0;padding:0 48px 8px}.hs>.hc{flex-basis:70%}}
+.dark .hc{background:rgba(255,255,255,.05);border:1px solid var(--d-line)}
+.light .hc{background:var(--l-card);border:1px solid var(--l-card-b)}
+.hc .n{font-size:12px;letter-spacing:.26em;text-transform:uppercase;opacity:.7}
+.hc h3{margin-top:10px}
+.hc p{font-size:15px;line-height:1.55;margin-top:10px}
+.dark .hc p{color:var(--d-soft)} .light .hc p{color:var(--l-soft)}
+.hc .kv{margin-top:14px;font-size:14px;line-height:1.5}
+.hc .kv div{padding:7px 0;border-top:1px solid rgba(127,127,127,.25)}
+.hc .kv em{font-style:normal;display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.65;margin-bottom:2px}
+.swipe{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.dark .swipe{color:var(--d-muted)} .light .swipe{color:var(--l-muted)}
+.swipe .ico{width:16px;height:16px}
+
+/* quote */
+.quote{margin-top:22px;border-radius:var(--r-card);padding:22px 20px}
+.dark .quote{background:rgba(255,255,255,.05);border:1px solid var(--d-line)}
+.light .quote{background:var(--l-card);border:1px solid var(--l-card-b)}
+.quote .ar{font-family:'Amiri','Noto Naskh Arabic','Times New Roman',serif;direction:rtl;text-align:right;font-size:21px;line-height:1.9;font-weight:400}
+.quote .ru{font-size:15.5px;line-height:1.6;margin-top:10px}
+.quote .src{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:12.5px;letter-spacing:.06em}
+.dark .quote .src,.dark .quote .ru{color:var(--d-soft)} .light .quote .src,.light .quote .ru{color:var(--l-soft)}
+.quote .src a{text-decoration:underline;text-underline-offset:3px}
+
+/* timeline */
+.tl{margin-top:24px}
+.tl-item{display:grid;grid-template-columns:92px 1fr;gap:14px;padding:16px 0;border-top:1px solid var(--d-line)}
+.light .tl-item{border-color:var(--l-line)}
+.tl-item:last-child{border-bottom:1px solid var(--d-line)}
+.light .tl-item:last-child{border-color:var(--l-line)}
+.tl-item .w{font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding-top:4px}
+.dark .tl-item .w{color:var(--d-muted)} .light .tl-item .w{color:var(--l-muted)}
+.tl-item b{display:block;font-weight:400;font-size:17.5px;line-height:1.3}
+.tl-item span{display:block;font-size:14.5px;line-height:1.5;margin-top:4px}
+.dark .tl-item span{color:var(--d-muted)} .light .tl-item span{color:var(--l-muted)}
+
+/* prices */
+.seg{display:flex;padding:4px;border-radius:999px;margin-top:24px;gap:4px}
+.light .seg{background:#d6d9de;border:1px solid var(--l-card-b)}
+.dark .seg{background:rgba(255,255,255,.06);border:1px solid var(--d-line)}
+.seg button{flex:1;height:44px;border:0;border-radius:999px;background:transparent;font:400 14px/1 var(--f);letter-spacing:.06em;cursor:pointer;color:inherit}
+.light .seg button.on{background:#1d1f23;color:#eceef1}
+.dark .seg button.on{background:#eceef1;color:#17181b}
+.pk{display:none} .pk.on{display:block}
+.prow{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:14px 0;border-top:1px solid var(--l-line)}
+.dark .prow{border-color:var(--d-line)}
+.prow b{font-weight:400;font-size:16.5px;line-height:1.35}
+.prow span{display:block;font-size:13.5px;line-height:1.45;margin-top:2px}
+.light .prow span{color:var(--l-muted)} .dark .prow span{color:var(--d-muted)}
+.prow .p{font-size:17px;font-weight:400;white-space:nowrap}
+.prow .p s{opacity:.55;font-weight:300;margin-right:6px}
+.prow.gift .p{font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.ptotal{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:20px 0 4px;border-top:1px solid currentColor}
+.ptotal small{font-size:12px;letter-spacing:.24em;text-transform:uppercase;opacity:.7}
+.ptotal .big{font-size:clamp(30px,8.5vw,42px);font-weight:300;letter-spacing:-.02em;line-height:1;white-space:nowrap}
+.month{margin-top:16px;border-radius:var(--r-card);padding:20px}
+.light .month{background:linear-gradient(160deg,#2c2f34,#17181b);color:#eceef1}
+.dark .month{background:rgba(255,255,255,.06);border:1px solid var(--d-line)}
+.month .row1{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.month .row1 b{font-weight:400;font-size:17px}
+.month .row1 .big{font-size:28px;font-weight:300;white-space:nowrap}
+.month p{font-size:14.5px;line-height:1.5;margin-top:8px;color:#b3b7bd}
+
+/* compare */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.cmp>div{border-radius:20px;padding:18px 16px}
+.light .cmp>div{background:var(--l-card);border:1px solid var(--l-card-b)}
+.dark .cmp>div{background:rgba(255,255,255,.05);border:1px solid var(--d-line)}
+.cmp small{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.7}
+.cmp .big{font-size:26px;font-weight:300;margin-top:8px;letter-spacing:-.01em;line-height:1.1}
+.cmp ul{list-style:none;margin-top:10px;font-size:14px;line-height:1.5}
+.cmp li{padding:3px 0}
+.cmp .hl{background:linear-gradient(160deg,#2c2f34,#17181b)!important;color:#eceef1;border:0!important}
+
+/* note */
+.note{margin-top:20px;font-size:14px;line-height:1.55;padding:14px 16px;border-radius:16px}
+.light .note{background:rgba(255,255,255,.45);border:1px solid var(--l-card-b);color:var(--l-soft)}
+.dark .note{background:rgba(255,255,255,.04);border:1px solid var(--d-line);color:var(--d-soft)}
+
+/* contacts */
+.contact{display:grid;grid-template-columns:52px 1fr 22px;gap:16px;align-items:center;padding:16px 18px;border-radius:24px;margin-top:12px;
+  background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.12);transition:background .2s}
+.contact:hover{background:rgba(255,255,255,.07)}
+.contact small{display:block;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--d-muted)}
+.contact b{display:block;font-weight:300;font-size:19px;margin-top:2px}
+.contact>.ico{color:var(--d-muted);width:20px;height:20px}
+
+/* form */
+.q{margin-top:14px;border-radius:20px;padding:16px}
+.light .q{background:var(--l-card);border:1px solid var(--l-card-b)}
+.q label{display:block;font-size:15.5px;font-weight:400;line-height:1.4}
+.q label i{font-style:normal;display:block;font-size:13.5px;font-weight:300;color:var(--l-muted);margin-top:3px}
+.q textarea{width:100%;margin-top:10px;min-height:76px;resize:vertical;border-radius:14px;border:1px solid var(--l-card-b);background:#f7f8f9;
+  padding:12px 13px;font:300 16px/1.45 var(--f);color:var(--l-text)}
+.q textarea:focus{outline:2px solid #2a2d32;outline-offset:1px}
+.q .ch{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.q .ch input{position:absolute;opacity:0;pointer-events:none}
+.q .ch label{display:inline-block;font-size:14px;font-weight:400;padding:9px 14px;border-radius:999px;border:1px solid #a7acb3;cursor:pointer;margin:0}
+.q .ch input:checked+label{background:#1d1f23;color:#eceef1;border-color:#1d1f23}
+.q .ch input:focus-visible+label{outline:2px solid #2a2d32;outline-offset:2px}
+.form-btns{display:grid;gap:10px;margin-top:20px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;height:56px;border-radius:18px;font:400 16px/1 var(--f);cursor:pointer;border:0}
+.btn.ink{background:linear-gradient(180deg,#2b2e33,#17181b);color:#eceef1}
+.btn.line{background:transparent;border:1px solid #9aa0a7;color:var(--l-text)}
+.btn .ico{width:19px;height:19px}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:#eceef1;color:#16171a;padding:12px 18px;border-radius:14px;
+  font-size:14.5px;font-weight:400;opacity:0;transition:.3s;z-index:80;pointer-events:none;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* footer of a page */
+.pgfoot{display:flex;justify-content:space-between;align-items:center;margin-top:52px;padding-top:18px;border-top:1px solid var(--l-line)}
+.dark .pgfoot{border-color:var(--d-line)}
+.pgfoot svg{height:19px;width:auto}
+.dark .pgfoot svg{fill:#e2e4e8} .light .pgfoot svg{fill:#26292d}
+.pgfoot span{font-size:12.5px;letter-spacing:.32em}
+.dark .pgfoot span{color:var(--d-muted)} .light .pgfoot span{color:var(--l-muted)}
+.endmark{width:min(64%,330px);height:auto;fill:#e2e4e8;margin-top:56px}
+
+/* reveal */
+@media (prefers-reduced-motion:no-preference){
+  .js .rv{opacity:0;transform:translateY(14px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+  .js .rv.in{opacity:1;transform:none}
+}
+@media (max-width:380px){
+  .pg{padding-left:18px;padding-right:18px}
+  .hs{margin-left:-18px;margin-right:-18px;padding-left:18px;padding-right:18px}
+  .cards{grid-template-columns:1fr}
+  .row{grid-template-columns:46px 1fr;gap:14px}.tile{width:46px;height:46px}
+  .topbar .brand span{display:none}
+}
+@media print{
+  .topbar,.menu,.toast{display:none!important}
+  body{background:#fff}
+  .pg{break-inside:avoid;border-radius:0;margin:0}
+  .rv{opacity:1!important;transform:none!important}
+}
+
+/* ---------- service configurator ---------- */
+.svc{margin-top:30px;border-radius:24px;overflow:hidden}
+.light .svc{background:#f2f3f5;border:1px solid var(--l-card-b)}
+.dark .svc{background:rgba(255,255,255,.045);border:1px solid var(--d-line)}
+.svc-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 18px 16px}
+.light .svc-head{background:linear-gradient(160deg,#2c2f34,#17181b);color:#eceef1}
+.dark .svc-head{background:linear-gradient(180deg,#f3f4f6,#d9dce0);color:#17181b}
+.svc-head small{display:block;font-size:11px;font-weight:400;letter-spacing:.24em;text-transform:uppercase;opacity:.7}
+.svc-total{display:block;font-weight:300;font-size:clamp(26px,7.4vw,32px);letter-spacing:-.02em;margin-top:4px;line-height:1.1}
+.svc-total s{font-size:17px;opacity:.55;margin-right:8px}
+.svc-total.bump{animation:bump .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes bump{40%{transform:scale(1.05)}}
+.sw{display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;flex-shrink:0}
+.sw input{position:absolute;opacity:0;pointer-events:none}
+.sw-ui{width:48px;height:28px;border-radius:999px;position:relative;transition:background .2s}
+.light .sw-ui{background:rgba(255,255,255,.22)} .dark .sw-ui{background:rgba(0,0,0,.18)}
+.sw-ui::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.light .sw-ui::after{background:#eceef1} .dark .sw-ui::after{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.sw input:checked+.sw-ui{background:#5fa17d}
+.sw input:checked+.sw-ui::after{transform:translateX(20px)}
+.sw input:focus-visible+.sw-ui{outline:2px solid currentColor;outline-offset:2px}
+.sw em{font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.svc.off .svc-body{opacity:.4}
+.svc.off .svc-total{opacity:.6}
+.svc-body{padding:2px 18px 18px;transition:opacity .25s}
+.svc-sub{font-size:11px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;margin:20px 0 6px}
+.light .svc-sub{color:var(--l-muted)} .dark .svc-sub{color:var(--d-muted)}
+.svc-std{list-style:none}
+.svc-std li{position:relative;padding:6px 0 6px 28px;font-size:15px;line-height:1.45}
+.light .svc-std li{color:var(--l-soft)} .dark .svc-std li{color:var(--d-soft)}
+.svc-std li::before{content:"";position:absolute;left:4px;top:.72em;width:12px;height:6px;border-left:1.7px solid currentColor;border-bottom:1.7px solid currentColor;transform:rotate(-45deg);opacity:.85}
+.svc-std.gift li::before{border-color:#5fa17d;opacity:1}
+.opt{position:relative;display:grid;grid-template-columns:26px 1fr auto;gap:12px;align-items:center;padding:13px 0;cursor:pointer;border-top:1px solid var(--l-line)}
+.dark .opt{border-color:var(--d-line)}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .box{width:24px;height:24px;border-radius:8px;display:grid;place-items:center;transition:background .15s,border-color .15s}
+.light .opt .box{border:1.5px solid #8f959c;background:#fff}
+.dark .opt .box{border:1.5px solid rgba(255,255,255,.4)}
+.opt .box::after{content:"";width:10px;height:5px;border-left:2px solid transparent;border-bottom:2px solid transparent;transform:rotate(-45deg) translate(1px,-1px)}
+.light .opt input:checked+.box{background:#1d1f23;border-color:#1d1f23}
+.light .opt input:checked+.box::after{border-color:#fff}
+.dark .opt input:checked+.box{background:#eceef1;border-color:#eceef1}
+.dark .opt input:checked+.box::after{border-color:#17181b}
+.opt input:focus-visible+.box{outline:2px solid currentColor;outline-offset:2px}
+.opt b{display:block;font-weight:400;font-size:15.5px;line-height:1.3}
+.opt span{display:block;font-size:13px;line-height:1.4;margin-top:2px}
+.light .opt span{color:var(--l-muted)} .dark .opt span{color:var(--d-muted)}
+.opt em{font-style:normal;font-size:14.5px;font-weight:400;white-space:nowrap}
+.opt.qty{grid-template-columns:1fr auto;cursor:default}
+.opt-p{display:block;font-style:normal;font-size:13px;margin-top:4px;opacity:.8}
+.step-ui{display:flex;align-items:center;gap:4px}
+.step-ui button{width:40px;height:40px;border-radius:12px;background:transparent;font:300 20px/1 var(--f);color:inherit;cursor:pointer}
+.light .step-ui button{border:1px solid #a3a8ae} .dark .step-ui button{border:1px solid rgba(255,255,255,.3)}
+.step-ui output{min-width:26px;text-align:center;font-size:17px;font-weight:400}
+.svc-note,.svc-warn,.svc-giftnote{font-size:13.5px;line-height:1.5;margin-top:14px;padding:12px 14px;border-radius:14px}
+.light .svc-note{background:#e3e5e8;color:var(--l-soft)} .dark .svc-note{background:rgba(255,255,255,.05);color:var(--d-soft)}
+.svc-warn{background:rgba(154,106,31,.12);color:var(--warn)} .dark .svc-warn{color:var(--warn-d);background:rgba(224,180,106,.1)}
+.svc-giftnote{background:rgba(63,125,92,.1);color:var(--ok)} .dark .svc-giftnote{color:var(--ok-d);background:rgba(127,195,160,.1)}
+
+/* summary */
+.presets{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:24px}
+.presets span{width:100%;font-size:11.5px;font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:var(--l-muted);margin-bottom:2px}
+button.pill{background:transparent;font-family:var(--f);cursor:pointer}
+.sum-list{margin-top:18px}
+.sum-list a.prow{color:inherit}
+.sum-list .prow.off b,.sum-list .prow.off .p{opacity:.45}
+.sum-list .prow .p small{display:block;text-align:right;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.6}
+.mrow{display:flex;justify-content:space-between;gap:12px;font-size:14px;line-height:1.45;color:#b3b7bd;margin-top:8px}
+.mrow b{font-weight:400;white-space:nowrap;color:#e3e5e8}
+#sum-svc .prow .p{font-size:15px}
+.floatsum{position:fixed;left:50%;bottom:14px;z-index:40;display:flex;align-items:center;gap:10px;padding:11px 14px 11px 18px;border-radius:999px;
+  background:rgba(23,24,27,.93);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#eceef1;box-shadow:0 12px 30px rgba(0,0,0,.35);
+  transform:translate(-50%,160%);transition:transform .35s cubic-bezier(.2,.8,.2,1);max-width:calc(100% - 24px);white-space:nowrap;border:1px solid rgba(255,255,255,.1)}
+.floatsum.show{transform:translate(-50%,0)}
+.floatsum span{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--d-muted)}
+.floatsum b{font-weight:400;font-size:17px}
+.floatsum em{font-style:normal;font-size:13px;color:var(--d-muted)}
+.floatsum .ico{width:18px;height:18px}
+@media print{.floatsum{display:none!important}.svc.off{display:none}}
+
+@media (max-width:400px){.floatsum span{display:none}.floatsum em{font-size:12px}.floatsum{gap:8px;padding:10px 12px 10px 16px}}
+.txt .st{margin:0 4px 6px 0;vertical-align:middle}
+
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="m78" viewBox="40 -700 1708 720"><path transform="translate(0 0)" d="M796 0L796 -26C727 -26 716 -26 716 -71L716 -612C716 -657 727 -657 796 -657L796 -683L669 -683C648 -683 647 -682 641 -667L425 -81L209 -667C203 -682 202 -683 181 -683L53 -683L53 -657C122 -657 133 -657 133 -612L133 -98C133 -73 133 -26 53 -26L53 0C76 -2 118 -2 143 -2C168 -2 210 -2 233 0L233 -26C153 -26 153 -73 153 -98L153 -653L154 -653L389 -16C393 -6 395 0 403 0C411 0 413 -6 417 -16L654 -658L655 -658L655 -71C655 -26 644 -26 575 -26L575 0C602 -2 656 -2 685 -2C714 -2 769 -2 796 0Z"/><path transform="translate(850 0)" d="M451 -623L451 -645L216 -645C99 -645 97 -658 93 -677L75 -677L46 -490L64 -490C67 -509 74 -560 86 -579C92 -587 166 -587 183 -587L403 -587L292 -422C218 -311 167 -161 167 -30C167 -18 167 16 203 16C239 16 239 -18 239 -31L239 -77C239 -241 267 -349 313 -418L451 -623Z"/><path transform="translate(1309 0)" d="M425 -163C425 -254 364 -296 324 -323C310 -333 302 -338 272 -360C335 -392 399 -440 399 -517C399 -608 311 -661 230 -661C139 -661 59 -595 59 -504C59 -479 65 -436 104 -398C114 -388 156 -358 183 -339C138 -316 33 -261 33 -151C33 -48 131 16 228 16C335 16 425 -61 425 -163ZM365 -517C365 -424 261 -371 256 -371C256 -371 254 -371 246 -377L141 -448C133 -453 93 -484 93 -531C93 -592 156 -638 228 -638C307 -638 365 -582 365 -517ZM388 -138C388 -64 314 -8 230 -8C139 -8 70 -73 70 -152C70 -231 131 -297 200 -328L325 -243C340 -232 388 -199 388 -138Z"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h3"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+<symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></symbol>
+<symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4-6"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 21h18M6 17v-4M11 17V8M16 17v-6M21 17V5"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3l-5.6 2.9 1.1-6.2L3 9.6l6.2-.9z"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></symbol>
+<symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+<symbol id="i-wa" viewBox="0 0 24 24"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9.2 8.6c-.1 3.3 2.9 6.3 6.2 6.2l.9-1.4-1.9-1-1 1c-1.2-.5-2.2-1.5-2.7-2.7l1-1-1-1.9z"/></symbol>
+<symbol id="i-tg" viewBox="0 0 24 24"><path d="M21.5 4 2.5 11.3l6.6 2.4L18 7.5l-6.7 7.6 7.4 5.4z"/></symbol>
+<symbol id="i-max" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2-5.7A8.4 8.4 0 1 1 21 11.5z"/><path d="M8.5 14.5v-5l3.5 3.5 3.5-3.5v5"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-filter" viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54z"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></symbol>
+<symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+<symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l4 2"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M11 3l1.8 5.2L18 10l-5.2 1.8L11 17l-1.8-5.2L4 10l5.2-1.8z"/><path d="M19 14l.8 2.2 2.2.8-2.2.8L19 20l-.8-2.2-2.2-.8 2.2-.8z"/></symbol>
+<symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+<symbol id="i-mega" viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h3l5 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M16 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></symbol>
+<symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="8" rx="2"/><rect x="3" y="13" width="18" height="8" rx="2"/><path d="M7 7h.01M7 17h.01M11 7h6M11 17h6"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M4 16V5a2 2 0 0 1 2-2h11"/></symbol>
+<symbol id="i-wallet" viewBox="0 0 24 24"><path d="M20 7H5a2 2 0 0 1 0-4h13v4"/><path d="M3 5v14a2 2 0 0 0 2 2h15V7"/><path d="M16 14h.01"/></symbol>
+<symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+<symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></symbol>
+<symbol id="i-video" viewBox="0 0 24 24"><path d="m16 13 5.2 3.1a.5.5 0 0 0 .8-.4V8.3a.5.5 0 0 0-.8-.4L16 11"/><rect x="2" y="6" width="14" height="12" rx="2"/></symbol>
+<symbol id="i-pulse" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+</defs></svg>
+
+<header class="topbar">
+  <a class="brand" href="#top" aria-label="В начало"><svg class="" viewBox="0 0 1708 720" role="img" aria-label="M78"><use href="#m78"/></svg><span>Предложение для Sano</span></a>
+  <div class="tb-btns">
+    <a class="tb-btn" href="https://wa.me/79289217878" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Написать</a>
+    <button class="tb-btn solid" type="button" data-menu-open aria-label="Содержание"><svg class="ico" aria-hidden="true"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu-panel" aria-label="Содержание">
+    <div class="menu-head"><span>Содержание</span><button class="tb-btn" type="button" data-menu-close aria-label="Закрыть"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+    <a href="#seen"><b>01</b>Что мы увидели</a>
+    <a href="#how"><b>02</b>Как это будет работать</a>
+    <a href="#ai"><b>03</b>ИИ-администратор Sano</a>
+    <a href="#human"><b>04</b>Как живой администратор</a>
+    <a href="#channels"><b>05</b>Где он отвечает</a>
+    <a href="#bitrix"><b>06</b>Контроль через Битрикс24</a>
+    <a href="#integ"><b>07</b>Renovatio, сайт и Битрикс24</a>
+    <a href="#admin"><b>08</b>Админка сайта</a>
+    <a href="#insta"><b>09</b>Автоответы в Instagram</a>
+    <a href="#reels"><b>10</b>Рилсы о носе после травмы</a>
+    <a href="#plan"><b>11</b>План серии</a>
+    <a href="#time"><b>12</b>Сроки</a>
+    <a href="#price"><b>13</b>Стоимость</a>
+    <a href="#pay"><b>14</b>Как устроена оплата ИИ</a>
+    <a href="#terms"><b>15</b>Гарантии и условия</a>
+    <a href="#next"><b>16</b>Следующий шаг и что нужно от вас</a>
+  </nav>
+</div>
+
+<main class="doc" id="top">
+
+<!-- cover -->
+<section class="pg dark cover">
+  <div class="eyebrow plain rv">Коммерческое предложение · ноябрь 2026</div>
+  <svg class="mark rv" viewBox="0 0 1708 720" role="img" aria-label="M78"><use href="#m78"/></svg>
+  <div class="rule rv"></div>
+  <h1 class="rv">ИИ-администратор, Битрикс24 и&nbsp;сайт для&nbsp;клиники Sano</h1>
+  <p class="lead rv">Камиль, здесь всё, о чём мы говорили: что сделаем, как это будет работать именно в Sano, сроки и стоимость. Подробности спрятаны под плюсами. Цена считается прямо в каждой услуге: отмечайте нужное, итог соберётся в конце.</p>
+  <div class="pills rv">
+    <span class="pill">ИИ-администратор</span><span class="pill">Битрикс24</span><span class="pill">Renovatio</span><span class="pill">Админка сайта</span><span class="pill">Instagram</span><span class="pill">Рилсы</span>
+  </div>
+  <div class="meta rv">
+    <div><small>Для</small><b>Камиль Русланович, клиника Sano</b></div>
+    <div><small>От</small><b>Студия М78, Лабазан</b></div>
+  </div>
+  <a class="cta rv" href="#seen">Смотреть, что входит <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>01 / 17</span></div>
+</section>
+
+<!-- seen -->
+<section class="pg light" id="seen">
+  <div class="eyebrow rv">Разбор</div>
+  <h2 class="rv">Что мы увидели</h2>
+  <p class="lead rv">Instagram у Sano сильный. Пациенты теряются на следующем шаге: когда пишут в клинику или ищут её на картах.</p>
+  <div class="cards rv">
+    <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-play"/></svg><b>2,9 млн и 252 тыс.</b><span>просмотров у лучших роликов клиники</span></div>
+    <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><b>4,9 в 2ГИС</b><span>149 оценок. Пациенты вас любят</span></div>
+  </div>
+  <div class="list rv">
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></div><div><b>Отзывы без ответа</b><span>С конца февраля в 2ГИС пришло 32 отзыва, ответ получил 1. Среди них три жалобы, на которые никто не ответил</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg></div><div><b>Ответ зависит от занятости</b><span>Когда администратор на звонке или с пациентом, сообщения в директе и WhatsApp ждут. Кто-то дожидается, а кто-то уходит в другую клинику</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-wallet"/></svg></div><div><b>Цены на картах устарели</b><span>Прайс в 2ГИС обновлялся 29.11.2025, цен на операции нет</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg></div><div><b>Сайт в работе</b><span>Пока новый сайт делается, кнопка «Сайт» в Taplink ведёт на заглушку</span></div></div>
+  </div>
+  <div class="card ink rv" style="margin-top:22px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-spark"/></svg></div><div><b>Главное</b><span>Всё это решает одна система: ИИ-администратор, Битрикс24 и связка с Renovatio. Новый сотрудник для этого не нужен.</span></div></div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>02 / 17</span></div>
+</section>
+
+<!-- how -->
+<section class="pg dark" id="how">
+  <div class="eyebrow rv">Схема</div>
+  <h2 class="rv">Как это будет работать</h2>
+  <p class="lead rv">Путь пациента от первого сообщения до отзыва. Каждый шаг видно в Битрикс24.</p>
+  <div class="flow rv">
+    <div class="step"><i>01</i><div><b>Пациент пишет, куда ему удобно</b><span>Instagram, WhatsApp, Telegram, MAX, чат на сайте, Яндекс</span></div></div>
+    <div class="step"><i>02</i><div><b>ИИ-администратор отвечает за секунды</b><span>Днём и ночью. Знает врачей, услуги, цены и свободное время из Renovatio</span></div></div>
+    <div class="step"><i>03</i><div><b>Записывает и напоминает</b><span>Запись сразу появляется в расписании Renovatio. Накануне и в день приёма приходит напоминание</span></div></div>
+    <div class="step"><i>04</i><div><b>Присылает ссылку на оплату</b><span>Если нужна предоплата операции или анализов. Чек приходит пациенту сам</span></div></div>
+    <div class="step"><i>05</i><div><b>После приёма</b><span>Спрашивает, как всё прошло, просит оставить отзыв и отвечает на отзывы</span></div></div>
+    <div class="step"><i>06</i><div><b>Вы видите всё</b><span>Каждую переписку, запись и отчёт в Битрикс24. В любой диалог можно вмешаться</span></div></div>
+  </div>
+  <div class="card ink rv" style="margin-top:28px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></div><div><b>Вместо найма офисного администратора</b><span>ИИ берёт на себя всю переписку, которую вы хотели отдать новому сотруднику. Ваши администраторы остаются с пациентами в клинике и на звонках.</span></div></div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>03 / 17</span></div>
+</section>
+
+<!-- ai -->
+<section class="pg light" id="ai">
+  <div class="eyebrow rv">Искусственный интеллект</div>
+  <h2 class="rv">ИИ-администратор Sano</h2>
+  <p class="lead rv">Работает только на Sano и знает клинику так же, как ваш лучший администратор.</p>
+  <div class="list rv">
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg></div><div><b>Отвечает за секунды</b><span>Круглосуточно, без выходных и больничных</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg></div><div><b>Знает Sano</b><span>Врачи, услуги, цены, подготовка к анализам и операциям, адрес, как добраться</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg></div><div><b>Записывает в Renovatio</b><span>В свободное окно нужного врача. Переносит и отменяет запись</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg></div><div><b>Напоминает о приёме</b><span>Накануне и за пару часов. Если человек не придёт, освобождает время для другого</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-card"/></svg></div><div><b>Присылает ссылку на оплату</b><span>Предоплата операций, анализы, чек-апы. Чек по закону приходит автоматически</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-refresh"/></svg></div><div><b>Догревает</b><span>Тем, кто спросил цену и пропал, пишет на следующий день с полезным поводом</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></div><div><b>Возвращает пациентов</b><span>Тех, кто давно не был, не дошёл до записи или пропустил контрольный осмотр. Только тем, кто дал согласие на сообщения</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></div><div><b>Работает с отзывами</b><span>Просит отзыв после приёма и отвечает на отзывы на картах</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg></div><div><b>Передаёт человеку</b><span>Жалобы, срочное, вопросы про диагноз и лечение</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></div><div><b>Отчитывается</b><span>Каждый день коротко, раз в неделю подробно</span></div></div>
+  </div>
+  <div class="chat rv">
+    <div class="chat-cap">Пример переписки в WhatsApp</div>
+    <div class="msg in">Здравствуйте, у ребёнка полгода сопли и храпит ночью. К кому идти?</div>
+    <div class="msg out">Здравствуйте! С долгим насморком и храпом лучше показаться детскому ЛОРу, он посмотрит и скажет, в чём причина. Ближайшее время: завтра в 11:30 или в четверг в 16:00. Записать вас?</div>
+    <div class="msg in">Давайте завтра</div>
+    <div class="msg out">Записали вас на завтра, 11:30. Адрес: ул. Ирчи Казака, 53г/4. Вечером пришлю напоминание. Как зовут ребёнка и сколько ему лет?</div>
+  </div>
+  <div class="svc rv" data-svc="ai" data-base="49700" data-name="ИИ-администратор Sano" data-month="29700">
+<div class="svc-head"><div><small>Стоимость услуги</small><b class="svc-total">49 700 ₽</b></div><label class="sw"><input type="checkbox" class="svc-on" checked><span class="sw-ui" aria-hidden="true"></span><em>В расчёте</em></label></div>
+<div class="svc-body">
+<div class="svc-sub">Стандартная комплектация · 49 700 ₽</div>
+<ul class="svc-std"><li>Знания о Sano: врачи, услуги, цены, подготовка, адрес</li><li>Характер и тон под клинику, ответы круглосуточно</li><li>Каналы: WhatsApp Business, Instagram, MAX</li><li>Запись к врачу и напоминания о приёме</li><li>Передача сложного человеку, уведомления</li><li>Ежедневный отчёт и разбор раз в неделю</li><li>14 дней тестового режима</li></ul>
+<div class="svc-sub">Дополнительно, отметьте нужное</div>
+<label class="opt"><input type="checkbox" data-id="ai_tg" data-price="2300" data-name="Telegram"><span class="box" aria-hidden="true"></span><div><b>Telegram</b><span>Аккаунт или бот клиники</span></div><em>+2 300 ₽</em></label>
+<label class="opt"><input type="checkbox" data-id="ai_web" data-price="2600" data-name="Чат на сайте"><span class="box" aria-hidden="true"></span><div><b>Чат на сайте</b><span>Окно чата на новом сайте</span></div><em>+2 600 ₽</em></label>
+<label class="opt"><input type="checkbox" data-id="ai_pay" data-price="5400" data-name="Ссылки на оплату"><span class="box" aria-hidden="true"></span><div><b>Ссылки на оплату</b><span>Предоплата операций и анализов, чек приходит сам</span></div><em>+5 400 ₽</em></label>
+<label class="opt"><input type="checkbox" data-id="ai_warm" data-price="4800" data-name="Догрев"><span class="box" aria-hidden="true"></span><div><b>Догрев</b><span>Пишет тем, кто спросил цену и пропал</span></div><em>+4 800 ₽</em></label>
+<label class="opt"><input type="checkbox" data-id="ai_back" data-price="4900" data-name="Возврат пациентов"><span class="box" aria-hidden="true"></span><div><b>Возврат пациентов</b><span>Тем, кто давно не был или пропустил контрольный осмотр</span></div><em>+4 900 ₽</em></label>
+<label class="opt"><input type="checkbox" data-id="ai_rev" data-price="7300" data-name="Отзывы"><span class="box" aria-hidden="true"></span><div><b>Отзывы</b><span>Просит отзыв после приёма, отвечает в Яндексе и 2ГИС, жалобы присылает вам на одобрение</span></div><em>+7 300 ₽</em></label>
+<label class="opt"><input type="checkbox" data-id="ai_voice" data-price="2700" data-name="Голосовые сообщения"><span class="box" aria-hidden="true"></span><div><b>Голосовые сообщения</b><span>Слушает голосовые и отвечает текстом</span></div><em>+2 700 ₽</em></label>
+<p class="svc-note">Сопровождение после запуска: 29 700 ₽ в месяц. Сервер и работа нейросети (от 1 до 10 тысяч рублей в месяц) уже внутри.</p>
+<p class="svc-warn" data-warn-off="rn" hidden>Без связки с Renovatio ИИ не видит расписание: запись он будет передавать администратору.</p>
+<div class="acc"><details><summary>Почему такая цена<span class="pm"></span></summary><div class="ab"><p>Это не готовый бот из конструктора, а администратор, которого мы собираем и обучаем только под Sano. В цену входит: сбор знаний о клинике (врачи, услуги, цены, правила записи и подготовки), характер и тон, проверка на сотне ситуаций, связь с расписанием Renovatio, подключение каналов и 14 дней тестового режима с ежедневным разбором диалогов. Это 2–3 недели работы разработчика и маркетолога. Для сравнения: агентства берут за такой запуск от 150 тысяч рублей, а офисный администратор обходится клинике в 60–80 тысяч каждый месяц.</p></div></details></div>
+</div></div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>04 / 17</span></div>
+</section>
+
+<!-- human -->
+<section class="pg dark" id="human">
+  <div class="eyebrow rv">Характер</div>
+  <h2 class="rv">Как живой администратор</h2>
+  <p class="lead rv">Это не бот с кнопками и не скрипт с готовыми фразами. Он ведёт разговор как опытный администратор клиники: слышит человека и подстраивается под него.</p>
+  <div class="list rv">
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></div><div><b>Тепло и с уважением</b><span>На «вы», без канцелярита. Понимает, как пишут люди: с ошибками, сокращениями, местными словами</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-play"/></svg></div><div><b>Понимает голосовые</b><span>Многие пишут голосом, ИИ слушает и отвечает текстом</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg></div><div><b>Подход к каждому</b><span>Тревожному спокойно объяснит. Торопливому сразу даст время и адрес. Тому, кто сравнивает цены, расскажет, что входит в стоимость</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></div><div><b>Работает с сомнениями</b><span>«Дорого», «страшно», «я подумаю». Отвечает по делу, без давления</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-history"/></svg></div><div><b>Помнит пациента</b><span>Историю переписки и прошлые визиты</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg></div><div><b>Не выдумывает</b><span>Отвечает только по знаниям Sano. Не ставит диагнозы и не назначает лечение. Если не знает, передаёт человеку</span></div></div>
+  </div>
+  <div class="acc rv">
+    <details><summary>Как мы обучаем его под Sano<span class="pm"></span></summary><div class="ab"><ul><li><b>Собираем знания.</b> Прайс и услуги из Renovatio, врачи и расписание, правила записи и подготовки, частые вопросы, реальные переписки ваших администраторов</li><li><b>Задаём характер.</b> Имя, тон, как обращается, как отвечает на жалобы и капризы. Согласуем с вами</li><li><b>Проверяем на сотне ситуаций.</b> От простого «сколько стоит» до недовольного пациента и сложного случая</li><li><b>Тестовый режим 14 дней.</b> ИИ пишет ответ, администратор одобряет одним нажатием или правит</li><li><b>Самостоятельная работа.</b> ИИ отвечает сам, мы каждый день смотрим диалоги и дообучаем</li></ul></div></details>
+    <details><summary>Где хранятся данные пациентов<span class="pm"></span></summary><div class="ab"><p>Данные о здоровье по закону особо защищаются. Поэтому используем российскую нейросеть (YandexGPT или GigaChat) и сервер в России. Доступ к перепискам по ролям, каждое действие записывается в журнал. Согласие на обработку данных и политику готовим в юридическом пакете.</p></div></details>
+    <details><summary>Что он не делает никогда<span class="pm"></span></summary><div class="ab"><ul><li>Не ставит диагноз и не советует лечение</li><li>Не обещает результат операции</li><li>Не даёт скидки сверх тех, что разрешили вы</li><li>Не спорит с пациентом и не отвечает грубостью на грубость</li></ul></div></details>
+  </div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>05 / 17</span></div>
+</section>
+
+<!-- channels -->
+<section class="pg light" id="channels">
+  <div class="eyebrow rv">Каналы</div>
+  <h2 class="rv">Где он отвечает</h2>
+  <p class="lead rv">Пациенту не нужно искать, куда написать. Где бы он ни написал, ему отвечает один и тот же администратор, который помнит всю историю.</p>
+<p class="txt rv"><span class="st ok">Сам</span> отвечает сам &nbsp; <span class="st draft">Черновик</span> готовит ответ вам на одобрение &nbsp; <span class="st opt">По желанию</span> подключаем позже</p>
+<div class="cards rv">
+  <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-insta"/></svg><b>Instagram</b><span>Директ, комментарии, ответы на сторис</span><span class="st ok">Сам</span></div>
+  <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><b>WhatsApp Business</b><span>Ваш номер 8 928 556-22-20</span><span class="st ok">Сам</span></div>
+  <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-tg"/></svg><b>Telegram</b><span>Аккаунт или бот клиники</span><span class="st ok">Сам</span></div>
+  <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-max"/></svg><b>MAX</b><span>Бот клиники в MAX</span><span class="st ok">Сам</span></div>
+  <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg><b>Чат на сайте</b><span>Окно чата на новом сайте</span><span class="st ok">Сам</span></div>
+  <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-mega"/></svg><b>Яндекс Директ</b><span>Объявления ведут в WhatsApp, Telegram или MAX, там отвечает ИИ</span><span class="st ok">Сам</span></div>
+  <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><b>Отзывы в Яндексе и 2ГИС</b><span>На 4–5 звёзд отвечает сам. На 1–3 звезды готовит ответ и присылает вам на одобрение</span><span class="st draft">Сам + одобрение</span></div>
+  <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-pulse"/></svg><b>ПроДокторов</b><span>Готовит ответ, администратор публикует в кабинете клиники</span><span class="st draft">Черновик</span></div>
+  <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><b>Чат в 2ГИС</b><span>Сообщает о новом сообщении и даёт готовый ответ</span><span class="st draft">Черновик</span></div>
+  <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><b>Звонки</b><span>Следующим этапом: ИИ отвечает на звонки или пишет тем, чей звонок пропустили</span><span class="st opt">По желанию</span></div>
+</div>
+<div class="acc rv">
+  <details><summary>Почему на жалобы ИИ не отвечает сам<span class="pm"></span></summary><div class="ab"><p>Ответ на жалобу видят все, кто выбирает клинику. Поэтому ИИ готовит спокойный ответ по делу, а вы или старший администратор одобряете его одним нажатием. Так ни одна жалоба не останется без ответа, а последнее слово за вами.</p><p>В ответах на отзывы ИИ никогда не раскрывает диагноз и подробности лечения пациента.</p></div></details>
+  <details><summary>Как ИИ отвечает на отзывы на картах<span class="pm"></span></summary><div class="ab"><p>Открытого доступа к отзывам у Яндекса и 2ГИС нет. Поэтому подключаем сервис ответов на отзывы, которому клиника даёт доступ представителя в своих кабинетах. ИИ пишет ответы в стиле Sano, сервис публикует их. Яндекс проверяет ответ перед публикацией, обычно до трёх дней.</p></div></details>
+  <details><summary>Как просим отзывы после приёма<span class="pm"></span></summary><div class="ab"><p>На следующий день после приёма ИИ спрашивает пациента, как всё прошло, и присылает ссылки на Яндекс, 2ГИС и ПроДокторов. Ссылку получают все пациенты, а не только довольные: так требуют правила площадок. Если человек недоволен, ИИ сразу передаёт это вам, чтобы решить вопрос до того, как он напишет отзыв.</p></div></details>
+</div>
+
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>06 / 17</span></div>
+</section>
+
+<!-- bitrix -->
+<section class="pg dark" id="bitrix">
+  <div class="eyebrow rv">Контроль</div>
+  <h2 class="rv">Всё под контролем в Битрикс24</h2>
+  <p class="lead rv">Битрикс24 становится пультом клиники. Вы видите, что делает ИИ-администратор, с компьютера и с телефона.</p>
+  <div class="list rv">
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></div><div><b>Все переписки в одном окне</b><span>Из всех каналов, с историей пациента</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-filter"/></svg></div><div><b>Путь каждого пациента</b><span>Обращение → консультация → запись → пришёл → оплатил → отзыв. Видно, на каком шаге люди теряются</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-edit"/></svg></div><div><b>Вмешаться в любой момент</b><span>Написать пациенту самому или передать диалог администратору</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg></div><div><b>Уведомления</b><span>Старшему администратору и вам: жалоба, срочный вопрос или ИИ не знает ответа</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></div><div><b>Отчёт каждый день</b><span>Сколько обращений и записей, кто не пришёл, жалобы, отзывы</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-file"/></svg></div><div><b>Разбор раз в неделю</b><span>О чём спрашивают чаще всего, где теряем пациентов, что предлагаем улучшить</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></div><div><b>Задачи и права</b><span>Задачи сотрудникам: перезвонить, уточнить анализы. Вы видите всё, администраторы свою работу</span></div></div>
+  </div>
+  <div class="acc rv">
+    <details><summary>Что настраиваем в Битрикс24 с нуля<span class="pm"></span></summary><div class="ab"><ul><li>Карточка пациента: контакты, источник, история обращений и визитов</li><li>Воронка пациента по этапам, свои этапы для операций и для анализов</li><li>Открытые линии: все мессенджеры и чат сайта приходят сюда</li><li>Роботы: напоминания, задачи сотрудникам, повторные касания</li><li>Отчёты для директора: обращения, записи, откуда пришли пациенты</li><li>Мобильное приложение Битрикс24 у вас и у старшего администратора</li><li>Обучение сотрудников: одна встреча и короткие видеоинструкции</li></ul></div></details>
+  </div>
+  <div class="svc rv" data-svc="bx" data-base="34700" data-name="Битрикс24 под клинику">
+<div class="svc-head"><div><small>Стоимость услуги</small><b class="svc-total">34 700 ₽</b></div><label class="sw"><input type="checkbox" class="svc-on" checked><span class="sw-ui" aria-hidden="true"></span><em>В расчёте</em></label></div>
+<div class="svc-body">
+<div class="svc-sub">Стандартная комплектация · 34 700 ₽</div>
+<ul class="svc-std"><li>CRM с нуля: карточка пациента и воронка</li><li>Все переписки в одном окне</li><li>Права доступа: вы видите всё, администраторы свою работу</li><li>Обучение команды: встреча и видеоинструкции</li></ul>
+<div class="svc-sub">Дополнительно, отметьте нужное</div>
+<label class="opt"><input type="checkbox" data-id="bx_rob" data-price="6300" data-name="Роботы"><span class="box" aria-hidden="true"></span><div><b>Роботы</b><span>Задачи сотрудникам, напоминания, повторные касания</span></div><em>+6 300 ₽</em></label>
+<label class="opt"><input type="checkbox" data-id="bx_rep" data-price="5200" data-name="Отчёты директору"><span class="box" aria-hidden="true"></span><div><b>Отчёты директору</b><span>Обращения, записи, откуда пришли пациенты</span></div><em>+5 200 ₽</em></label>
+<label class="opt"><input type="checkbox" data-id="bx_mob" data-price="3600" data-name="Уведомления на телефон"><span class="box" aria-hidden="true"></span><div><b>Уведомления на телефон</b><span>Срочное и жалобы приходят вам и старшему администратору сразу</span></div><em>+3 600 ₽</em></label>
+</div></div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>07 / 17</span></div>
+</section>
+
+<!-- integ -->
+<section class="pg light" id="integ">
+  <div class="eyebrow rv">Интеграция</div>
+  <h2 class="rv">Renovatio, сайт и&nbsp;Битрикс24 заодно</h2>
+  <p class="lead rv">Renovatio остаётся главной системой клиники. Мы связываем её с ИИ-администратором, сайтом и Битрикс24 через официальный доступ Renovatio для внешних программ. Поменяли что-то в одном месте, и это меняется везде.</p>
+<div class="flow rv">
+  <div class="step"><i><svg class="ico" aria-hidden="true"><use href="#i-db"/></svg></i><div><b>Renovatio</b><span>Врачи, услуги и цены, расписание, пациенты, визиты, счета</span></div></div>
+  <div class="step"><i><svg class="ico" aria-hidden="true"><use href="#i-spark"/></svg></i><div><b>ИИ-администратор</b><span>Берёт отсюда цены и свободное время, записывает пациента сразу в расписание с пометкой «записал ИИ»</span></div></div>
+  <div class="step"><i><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg></i><div><b>Сайт</b><span>Врачи, прайс и онлайн-запись подтягиваются из Renovatio. У Renovatio есть готовые блоки для сайтов на Битриксе</span></div></div>
+  <div class="step"><i><svg class="ico" aria-hidden="true"><use href="#i-layers"/></svg></i><div><b>Битрикс24</b><span>Новый визит, пришёл, не пришёл, оплатил: карточка пациента обновляется сама</span></div></div>
+</div>
+<div class="list rv">
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-wallet"/></svg></div><div><b>Цены меняете в одном месте</b><span>Поменяли прайс в Renovatio, и он обновился на сайте и в ответах ИИ</span></div></div>
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg></div><div><b>Без двойной записи</b><span>ИИ и сайт видят те же свободные окна, что и администратор на стойке</span></div></div>
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg></div><div><b>Напоминания</b><span>Renovatio сам напоминает по SMS и WhatsApp. ИИ добавляет MAX и Telegram и подтверждает визит в переписке</span></div></div>
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-card"/></svg></div><div><b>Оплата</b><span>Ссылка на оплату уходит пациенту в чат, после оплаты счёт отмечается в Renovatio</span></div></div>
+</div>
+<div class="acc rv">
+  <details><summary>Как это устроено<span class="pm"></span></summary><div class="ab"><ul><li>У Renovatio есть открытый доступ для внешних программ: врачи, услуги, расписание, запись, отмена и подтверждение, счета и оплаты, уведомления о новых визитах</li><li>Ключ доступа создаётся в самой Renovatio, в разделе «Интеграции → API-ключи». Вы сами выбираете, что нам разрешено</li><li>ИИ-администратор работает на нашем сервере в России и подключается к Битрикс24 как бот: отвечает первым, а сложное передаёт живому сотруднику</li><li>Связку делаем напрямую, без готовых коннекторов с отдельной абонентской платой</li></ul></div></details>
+  <details><summary>Что уточним после доступа<span class="pm"></span></summary><div class="ab"><ul><li>Полный список возможностей доступа в вашей версии Renovatio</li><li>Где сейчас пробиваются чеки: в кассе Renovatio или в онлайн-кассе. Чек должен пробиваться в одном месте</li><li>На чём сделан новый сайт: от этого зависит, как встраиваем запись и прайс</li></ul></div></details>
+</div>
+
+  <div class="svc rv" data-svc="rn" data-base="29600" data-name="Связка с Renovatio и сайтом">
+<div class="svc-head"><div><small>Стоимость услуги</small><b class="svc-total">29 600 ₽</b></div><label class="sw"><input type="checkbox" class="svc-on" checked><span class="sw-ui" aria-hidden="true"></span><em>В расчёте</em></label></div>
+<div class="svc-body">
+<div class="svc-sub">Стандартная комплектация · 29 600 ₽</div>
+<ul class="svc-std"><li>Врачи, услуги и прайс из Renovatio: у ИИ и на сайте</li><li>Расписание: ИИ видит свободные окна и записывает сразу в Renovatio</li></ul>
+<div class="svc-sub">Дополнительно, отметьте нужное</div>
+<label class="opt"><input type="checkbox" data-id="rn_web" data-price="6800" data-name="Онлайн-запись на сайте"><span class="box" aria-hidden="true"></span><div><b>Онлайн-запись на сайте</b><span>Пациент сам выбирает врача и свободное время</span></div><em>+6 800 ₽</em></label>
+<label class="opt"><input type="checkbox" data-id="rn_vis" data-price="8300" data-name="Визиты и оплаты в Битрикс24"><span class="box" aria-hidden="true"></span><div><b>Визиты и оплаты в Битрикс24</b><span>Пришёл, не пришёл, оплатил: видно в карточке пациента</span></div><em>+8 300 ₽</em></label>
+</div></div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>08 / 17</span></div>
+</section>
+
+<!-- admin -->
+<section class="pg dark" id="admin">
+  <div class="eyebrow rv">Сайт</div>
+  <h2 class="rv">Админка сайта</h2>
+  <p class="lead rv">Когда разработчики сдадут сайт, мы берём его на себя и добавляем простую панель управления. Менять сайт вы сможете сами, без программиста.</p>
+  <div class="label rv">Что вы меняете сами</div>
+  <div class="cards rv">
+    <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg><b>Врачи</b><span>Фото, опыт, направления, дни приёма</span></div>
+    <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-wallet"/></svg><b>Услуги и цены</b><span>Сами подтягиваются из Renovatio, можно поправить вручную</span></div>
+    <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-gift"/></svg><b>Акции и баннеры</b><span>С датами начала и конца</span></div>
+    <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><b>Отзывы</b><span>Выбираете, какие показать на сайте</span></div>
+    <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-file"/></svg><b>Статьи и ответы на вопросы</b><span>Полезные материалы для пациентов</span></div>
+    <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><b>Контакты и часы</b><span>Адрес, телефоны, график</span></div>
+    <div class="card wide"><svg class="ico" aria-hidden="true"><use href="#i-spark"/></svg><b>Знания ИИ-администратора</b><span>Появилась акция или поменялось правило записи: правите здесь, и ИИ сразу говорит пациентам по-новому</span></div>
+  </div>
+  <div class="label rv">Правка в два этапа</div>
+  <div class="flow rv">
+    <div class="step"><i>01</i><div><b>Вносите изменения</b><span>И видите черновик, как это будет выглядеть на сайте. Пациенты его пока не видят</span></div></div>
+    <div class="step"><i>02</i><div><b>Нажимаете «Опубликовать»</b><span>Изменения появляются на сайте и у ИИ-администратора. Любую правку можно откатить</span></div></div>
+  </div>
+  <div class="acc rv">
+    <details><summary>Что ещё есть в админке<span class="pm"></span></summary><div class="ab"><ul><li>Заявки с сайта в одном списке, они же уходят в Битрикс24</li><li>Роли: директор публикует, администратор готовит черновики</li><li>История изменений: кто, что и когда поменял</li><li>Вход по паролю и коду, без доступа посторонних</li></ul></div></details>
+    <details><summary>Ответственность за сайт<span class="pm"></span></summary><div class="ab"><p>После передачи сайта мы отвечаем за его работу: хостинг, резервные копии, обновления, безопасность и правки. Точный объём админки скажем, когда увидим готовый сайт: на чём он сделан и что в нём уже есть.</p></div></details>
+  </div>
+  <div class="svc rv" data-svc="adm" data-base="4900" data-name="Админка сайта" data-month="4900">
+<div class="svc-head"><div><small>Стоимость услуги</small><b class="svc-total">4 900 ₽</b></div><label class="sw"><input type="checkbox" class="svc-on" checked><span class="sw-ui" aria-hidden="true"></span><em>В расчёте</em></label></div>
+<div class="svc-body">
+<div class="svc-sub">Стандартная комплектация · 4 900 ₽ <s>14 900 ₽</s></div>
+<ul class="svc-std"><li>Вход по паролю и коду, роли</li><li>Правка в два этапа, история и откат</li><li>Врачи: фото, опыт, дни приёма</li><li>Услуги и цены: из Renovatio и вручную</li><li>Акции и баннеры, контакты и часы работы</li></ul>
+<div class="svc-sub">Дополнительно, отметьте нужное</div>
+<label class="opt"><input type="checkbox" data-id="adm_rev" data-price="4700" data-name="Отзывы"><span class="box" aria-hidden="true"></span><div><b>Отзывы</b><span>Выбираете, какие показать на сайте</span></div><em>+4 700 ₽</em></label>
+<label class="opt"><input type="checkbox" data-id="adm_blog" data-price="4300" data-name="Статьи и ответы на вопросы"><span class="box" aria-hidden="true"></span><div><b>Статьи и ответы на вопросы</b><span>Полезные материалы для пациентов</span></div><em>+4 300 ₽</em></label>
+<label class="opt"><input type="checkbox" data-id="adm_ai" data-price="5600" data-name="Знания ИИ-администратора"><span class="box" aria-hidden="true"></span><div><b>Знания ИИ-администратора</b><span>Правите акции и правила, ИИ сразу отвечает по-новому</span></div><em>+5 600 ₽</em></label>
+<label class="opt"><input type="checkbox" data-id="adm_leads" data-price="5300" data-name="Заявки с сайта"><span class="box" aria-hidden="true"></span><div><b>Заявки с сайта</b><span>Все заявки в одном списке, они же в Битрикс24</span></div><em>+5 300 ₽</em></label>
+<p class="svc-note">Стандартная админка обычно стоит 14 900 ₽, а с сайтами, которые делаем мы, идёт бесплатно. Для Sano: 4 900 ₽. Сопровождение сайта после передачи: 4 900 ₽ в месяц, это хостинг, копии, обновления и правки.</p>
+</div></div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>09 / 17</span></div>
+</section>
+
+<!-- insta -->
+<section class="pg light" id="insta">
+  <div class="eyebrow rv">Instagram</div>
+  <h2 class="rv">Автоответы под&nbsp;роликами</h2>
+  <p class="lead rv">Теперь каждый, кто спрашивает под роликом, сразу попадает в директ, а оттуда на сайт и к записи. На шутки и смайлы бот не отвечает.</p>
+  <div class="chat rv">
+    <div class="chat-cap">Комментарии под роликом</div>
+    <div class="msg in"><small>madina.k</small>А сколько стоит удалить аденоиды ребёнку?</div>
+    <div class="msg out"><small>sano.clinic</small>Ответили вам в директ 📩</div>
+    <div class="chat-cap" style="margin-top:8px">Директ</div>
+    <div class="msg out">Здравствуйте! Подскажем по цене и запишем к ЛОРу. Выберите, что вас интересует:</div>
+    <div class="btns"><span>ЛОР</span><span>Педиатр</span><span>Уролог</span><span>УЗИ и КТ</span><span>Анализы и чек-ап</span><span>Записаться</span></div>
+  </div>
+  <div class="list rv">
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-filter"/></svg></div><div><b>Срабатывает на интерес</b><span>Цена, сколько, где, адрес, запись, приём, операция, анализы, и похожие слова с ошибками</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-layers"/></svg></div><div><b>Кнопки по направлениям</b><span>ЛОР, педиатр, уролог, УЗИ и КТ, анализы и чек-ап, хирургия</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-spark"/></svg></div><div><b>Дальше ведёт ИИ-администратор</b><span>Отвечает на вопросы и записывает прямо в директе</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-link"/></svg></div><div><b>Совместные ролики с врачами</b><span>Бот работает с одного аккаунта, чтобы человеку не пришло два сообщения</span></div></div>
+  </div>
+  <div class="svc rv" data-svc="ig" data-base="4900" data-name="Автоответы в Instagram" data-bonus="1">
+<div class="svc-head"><div><small>Стоимость услуги</small><b class="svc-total">4 900 ₽</b></div><label class="sw"><input type="checkbox" class="svc-on" checked><span class="sw-ui" aria-hidden="true"></span><em>В расчёте</em></label></div>
+<div class="svc-body">
+<div class="svc-sub">Стандартная комплектация · 4 900 ₽</div>
+<ul class="svc-std"><li>Ответ под комментариями: «Ответили вам в директ»</li><li>Ссылка и кнопка «Записаться» в директ</li><li>Кнопки по направлениям: ЛОР, педиатр, уролог, УЗИ и КТ, анализы</li><li>Несколько вариантов ответа, на шутки не реагирует</li></ul>
+<div class="svc-sub">Дополнительно, отметьте нужное</div>
+<label class="opt"><input type="checkbox" data-id="ig_story" data-price="1900" data-name="Ответы на сторис"><span class="box" aria-hidden="true"></span><div><b>Ответы на сторис</b><span>По кодовому слову</span></div><em>+1 900 ₽</em></label>
+<p class="svc-giftnote">Бонус: делаем бесплатно. Цена указана, чтобы было видно, сколько это стоит.</p>
+</div></div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>10 / 17</span></div>
+</section>
+
+<!-- reels -->
+<section class="pg dark" id="reels">
+  <div class="eyebrow rv">Контент</div>
+  <h2 class="rv">Рилсы: нос после травмы и&nbsp;шариат</h2>
+  <p class="lead rv">Многие в Дагестане сомневаются: исправить нос после травмы — это харам? Предлагаем ответить честно, с доводами, серией роликов. Такая тема вызывает спор в комментариях, а значит, охват. И приводит тех, кто давно хотел исправить нос после травмы, но боялся.</p>
+  <div class="label rv">Главный довод</div>
+<div class="quote rv">
+  <div class="ar">أُصِيبَ أَنْفِي يَوْمَ الْكُلاَبِ فِي الْجَاهِلِيَّةِ فَاتَّخَذْتُ أَنْفًا مِنْ وَرِقٍ فَأَنْتَنَ عَلَىَّ فَأَمَرَنِي رَسُولُ اللَّهِ ﷺ أَنْ أَتَّخِذَ أَنْفًا مِنْ ذَهَبٍ</div>
+  <div class="ru">Сподвижник Арфаджа ибн Асъад: «Мне повредили нос в битве аль-Кулаб во времена джахилии. Я сделал нос из серебра, но он начал гнить. Тогда Посланник Аллаха ﷺ велел мне сделать нос из золота».</div>
+  <div class="src"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg><span><a href="https://sunnah.com/abudawud:4232" target="_blank" rel="noopener">Абу Дауд 4232</a>, <a href="https://sunnah.com/tirmidhi:1770" target="_blank" rel="noopener">ат-Тирмизи 1770</a>, <a href="https://sunnah.com/nasai:5161" target="_blank" rel="noopener">ан-Насаи 5161</a>. Хороший хадис (хасан)</span></div>
+</div>
+<div class="cards one rv">
+  <div class="card"><b>Шафииты · имам ан-Навави</b><span>«Запретно сделанное ради красоты. Если же это нужно для лечения или из-за изъяна, в этом нет ничего плохого». Шарх Сахих Муслим, 14/107</span></div>
+  <div class="card"><b>Ханбалиты · шейх Ибн Усаймин</b><span>«Что делается для устранения изъяна — можно, что для добавления красоты — нельзя». Устранять изъян после аварии, по его словам, можно</span></div>
+  <div class="card"><b>Ханбалиты · шейх Ибн Баз</b><span>Об уродстве лица после аварии: «Его можно лечить, и это даже желательно»</span></div>
+</div>
+<div class="acc rv">
+  <details><summary>Все источники со ссылками<span class="pm"></span></summary><div class="ab"><ul>
+    <li>Хадис Арфаджи: <a href="https://sunnah.com/abudawud:4232" target="_blank" rel="noopener">Абу Дауд 4232</a>, <a href="https://sunnah.com/tirmidhi:1770" target="_blank" rel="noopener">ат-Тирмизи 1770</a>, <a href="https://sunnah.com/nasai:5161" target="_blank" rel="noopener">ан-Насаи 5161</a>. Хасан у ат-Тирмизи, ан-Навави, аль-Альбани (<a href="https://dorar.net/hadith-category/cat/65a46f83e2" target="_blank" rel="noopener">dorar.net</a>)</li>
+    <li>Ан-Навави, Шарх Сахих Муслим 14/107 (<a href="https://shamela.ws/book/1711/3141" target="_blank" rel="noopener">shamela.ws</a>)</li>
+    <li>Ибн Хаджар, Фатх аль-Бари 10/372: «Если это нужно для лечения, это дозволено» (<a href="https://shamela.ws/book/1673/6133" target="_blank" rel="noopener">shamela.ws</a>)</li>
+    <li>Ибн Усаймин о пластической операции после аварии, русский перевод (<a href="https://islamqa.info/ru/answers/47694" target="_blank" rel="noopener">islamqa.info</a>)</li>
+    <li>Ибн Усаймин, Нур аля ад-Дарб: убрать плохое можно, если операция безопасна (<a href="https://old.binothaimeen.net/content/6786" target="_blank" rel="noopener">binothaimeen.net</a>)</li>
+    <li>Ибн Баз о лечении лица после аварии (<a href="https://binbaz.org.sa/fatwas/16708/%D8%AD%D9%83%D9%85-%D8%B9%D9%85%D9%84%D9%8A%D8%A9-%D8%A7%D9%84%D8%AA%D8%AC%D9%85%D9%8A%D9%84-%D8%A7%D8%B0%D8%A7-%D9%83%D8%A7%D9%86-%D8%A7%D9%84%D9%88%D8%AC%D9%87-%D9%85%D8%B4%D9%88%D9%87%D8%A7" target="_blank" rel="noopener">binbaz.org.sa</a>) и об изъяне носа (<a href="https://binbaz.org.sa/fatwas/15750/%D8%AD%D9%83%D9%85-%D8%A7%D8%AC%D8%B1%D8%A7%D8%A1-%D8%B9%D9%85%D9%84%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D8%AA%D8%AC%D9%85%D9%8A%D9%84-%D9%84%D9%85%D8%B9%D8%A7%D9%84%D8%AC%D8%A9-%D8%A7%D9%84%D8%AA%D8%B4%D9%88%D9%87%D8%A7%D8%AA" target="_blank" rel="noopener">binbaz.org.sa</a>)</li>
+    <li>Хадис о проклятии изменяющих творение «ради красоты»: <a href="https://sunnah.com/bukhari:5931" target="_blank" rel="noopener">аль-Бухари 5931</a>, <a href="https://sunnah.com/muslim:2125a" target="_blank" rel="noopener">Муслим 2125</a>; у Абу Дауда «без болезни» (<a href="https://sunnah.com/abudawud:4170" target="_blank" rel="noopener">4170</a>)</li>
+  </ul></div></details>
+  <details><summary>Что отвечаем на частые возражения<span class="pm"></span></summary><div class="ab"><ul>
+    <li><b>«Это изменение творения Аллаха».</b> В хадисе проклятие сказано о тех, кто делает это «ради красоты». Ан-Навави и Ибн Хаджар прямо пишут: для лечения можно</li>
+    <li><b>«Терпи, это предопределение».</b> Пророк ﷺ сказал: «Лечитесь: Аллах не создал болезни, не создав для неё лекарства» (<a href="https://sunnah.com/abudawud:3855" target="_blank" rel="noopener">Абу Дауд 3855</a>)</li>
+    <li><b>«У Арфаджи был протез, а не операция».</b> Ибн Усаймин выводит из этого хадиса общее правило: устранять изъян можно</li>
+    <li><b>«Хадис слабый».</b> Его назвали хорошим ат-Тирмизи, ан-Навави и аль-Альбани</li>
+  </ul><p>Отвечает в комментариях только учёный или его слова со ссылкой. Врач и клиника в споры о фикхе не вступают.</p></div></details>
+</div>
+
+  <div class="label rv">Кто в кадре</div>
+  <div class="list rv">
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg></div><div><b>Учёный</b><span>Известный религиозный человек шафиитского или ханбалитского мазхаба, которого уважают в Дагестане. Всё религиозное говорит только он</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg></div><div><b>Казбек</b><span>Только медицина: что ломается при травме, как проходит операция, что можно исправить</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></div><div><b>Пациент после травмы</b><span>Если согласится рассказать свою историю. Только с письменного согласия</span></div></div>
+  </div>
+  <div class="label rv">Воронка</div>
+  <div class="flow rv">
+    <div class="step"><i>01</i><div><b>Ролик и спор в комментариях</b><span>Источники в закреплённом комментарии</span></div></div>
+    <div class="step"><i>02</i><div><b>Человек пишет «НОС»</b><span>Бот отвечает и присылает в директ ссылку на страницу «Нос после травмы»</span></div></div>
+    <div class="step"><i>03</i><div><b>Страница и запись</b><span>Как проходит операция, цены от, как приехать, кнопка «Записаться»</span></div></div>
+    <div class="step"><i>04</i><div><b>Кто не записался сразу</b><span>ИИ-администратор продолжает разговор и отвечает на вопросы: больно ли, сколько лежать, когда на работу</span></div></div>
+  </div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>11 / 17</span></div>
+</section>
+
+<!-- plan -->
+<section class="pg light" id="plan">
+  <div class="eyebrow rv">План</div>
+  <h2 class="rv">Шесть роликов за 18 дней</h2>
+  <p class="lead rv">Новый ролик раз в 3–4 дня. Основные просмотры и споры идут первые 2–3 дня, а вопросы из комментариев становятся темой следующего ролика.</p>
+  <div class="card ink rv" style="margin-top:24px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-refresh"/></svg></div><div><b>Шаг 0, ещё до серии</b><span>Подключаем автоответ к двум роликам, которые уже набрали 163 и 118 тысяч, и закрепляем комментарий «Цена, где принимаю, сломанный нос: напишите НОС». Там до сих пор спрашивают, а это самые тёплые люди.</span></div></div>
+<div class="hs rv" tabindex="0" aria-label="Ролики серии, листайте вбок">
+  <article class="hc"><div class="n">День 1 · Ролик 1</div><h3>«Исправить сломанный нос — харам?»</h3><p>Хадис о золотом носе и вывод учёных: менять творение ради красоты нельзя, устранять последствия травмы можно. Казбек объясняет, что при переломе страдает и форма, и дыхание.</p><div class="kv"><div><em>Кто в кадре</em>Казбек и учёный</div><div><em>Длина</em>40–45 секунд</div><div><em>Цель</em>охват и честный спор</div></div></article>
+  <article class="hc"><div class="n">День 4 · Ролик 2</div><h3>«Нос сломали давно. Исправить ещё можно?»</h3><p>Что ломается при травме, почему хуже дышится, свежий и старый перелом, когда приходить.</p><div class="kv"><div><em>Кто в кадре</em>Казбек</div><div><em>Длина</em>30–40 секунд</div><div><em>Цель</em>перевести спор в медицину</div></div></article>
+  <article class="hc"><div class="n">День 8 · Ролик 3</div><h3>«Где граница»</h3><p>Учёный отвечает на три самых частых вопроса из комментариев к первому ролику. Снимаем его один раз сразу на ролики 1 и 3.</p><div class="kv"><div><em>Кто в кадре</em>учёный, в конце Казбек</div><div><em>Длина</em>40–50 секунд</div><div><em>Цель</em>второй виток обсуждения</div></div></article>
+  <article class="hc"><div class="n">День 11 · Ролик 4</div><h3>«Операция на сломанном носе по шагам»</h3><p>От консультации до снятия лонгеты, без страшного. Это тот же формат с кадрами операции, который уже дал 118 и 163 тысячи.</p><div class="kv"><div><em>Кто в кадре</em>Казбек и операционная</div><div><em>Длина</em>35–45 секунд</div><div><em>Цель</em>снять страх</div></div></article>
+  <article class="hc"><div class="n">День 15 · Ролик 5</div><h3>«Больно? Сколько лежать? Когда на работу?»</h3><p>Казбек отвечает на три главных страха. Если пациент после травмы согласится рассказать свою историю, ставим её.</p><div class="kv"><div><em>Кто в кадре</em>Казбек или пациент</div><div><em>Длина</em>40–60 секунд</div><div><em>Цель</em>доверие</div></div></article>
+  <article class="hc"><div class="n">День 18 · Ролик 6</div><h3>«Из другого города на операцию»</h3><p>Цена «от» и что в неё входит, сколько дней пробыть в Махачкале, где принимают, как записаться.</p><div class="kv"><div><em>Кто в кадре</em>Казбек или администратор</div><div><em>Длина</em>25–35 секунд</div><div><em>Цель</em>запись</div></div></article>
+</div>
+<div class="swipe rv">Листайте вбок <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></div>
+
+<div class="acc rv">
+  <details><summary>Почему шесть роликов, а не три или десять<span class="pm"></span></summary><div class="ab"><p>Под роликами люди спрашивают четыре вещи: харам ли это, можно ли исправить кривой и сломанный нос, сколько стоит, где. И есть две причины, почему человек не записывается: страх операции и сомнение «а кому помогло». На каждый вопрос свой ролик, получается шесть. Если роликов меньше, человек уйдёт с вопросом без ответа. Если больше, начнутся повторы и тема перегорит.</p><p>Религия звучит только в роликах 1 и 3. Дальше медицина, операция и цена.</p></div></details>
+  <details><summary>Что идёт между роликами<span class="pm"></span></summary><div class="ab"><ul><li>Сторис 3–4 раза в неделю: опрос «Знали хадис о золотом носе?», вопрос врачу, закулисье операционной без лица пациента</li><li>Раз в неделю ответ роликом на самый частый комментарий</li><li>Закреп в профиле: ролики 1, 2 и 6, плюс актуальное «НОС» с ценами и адресом</li><li>Тот же ролик в Telegram с кнопкой на страницу и в Shorts с призывом «запись по ссылке в профиле»</li><li>Каждый ролик начинается с 2 секунд из операционной: именно такие кадры дали охват</li></ul></div></details>
+  <details><summary>Как догреваем тех, кто написал «НОС»<span class="pm"></span></summary><div class="ab"><ul><li>В первом сообщении кнопки: «Свежий перелом», «Старый, нос кривой», «Не дышит», «Цена». Человек нажимает, и разговор начат</li><li>Сразу две кнопки: «Записаться» и «Подробнее»</li><li>Тем, кто ответил, но не записался, на следующий день пишет администратор: «Остались вопросы к врачу?»</li><li>После шестого ролика отправляем его всем, с кем идёт переписка</li></ul></div></details>
+  <details><summary>Как ведём комментарии<span class="pm"></span></summary><div class="ab"><ul><li>Первый час после выхода отвечаем живо, и врач, и клиника</li><li>Религиозные вопросы решает только учёный. Врач и клиника в споры о фикхе не вступают</li><li>Критику с доводами не удаляем: это честный спор, он и даёт охват</li><li>Скрываем только оскорбления, нападки на учёных и мат</li><li>На «а у меня так» с фото отвечаем: «По фото не скажем, только на осмотре»</li></ul></div></details>
+  <details><summary>Какие цифры смотрим<span class="pm"></span></summary><div class="ab"><p>Через 24 и 72 часа после каждого ролика. Ориентиры уточним после первых двух роликов.</p><ul><li>Больше половины пролистывают в первые секунды: меняем начало</li><li>Меньше 1 «НОС» на 1 000 просмотров: меняем призыв</li><li>Из директа на страницу переходит меньше половины: меняем сообщение бота</li><li>На «Записаться» нажимают меньше 10%: дорабатываем страницу</li><li>У каждого ролика своя метка в ссылке, чтобы видеть, какой приводит записи</li></ul></div></details>
+  <details><summary>Что решить до запуска<span class="pm"></span></summary><div class="ab"><ul><li>Публикуете совместно или по отдельности. Совместно сильнее: оба вирусных ролика вышли совместными</li><li>С какого аккаунта отвечает бот. На совместном ролике бот должен быть один, иначе человеку придут два сообщения</li><li>Куда ведёт «Записаться» в совместных роликах: в Sano, к Казбеку или с выбором клиники</li><li>Кто снимает и кто монтирует</li></ul></div></details>
+</div>
+<div class="label rv">Что делаем мы</div>
+<div class="list rv">
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-file"/></svg></div><div><b>Стратегия и сценарии</b><span>Все шесть роликов по секундам: хуки, реплики, плашки, обложки, подписи и закреплённые комментарии</span></div></div>
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg></div><div><b>Источники и учёный</b><span>Сверяем хадисы и цитаты по первоисточникам, готовим тезисы для учёного, помогаем найти и проверить человека, которого уважают</span></div></div>
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></div><div><b>Автоответ «НОС» и догрев</b><span>Бот, кнопки, страница «Нос после травмы», готовые ответы на спорные комментарии</span></div></div>
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></div><div><b>Разбор цифр</b><span>После каждого ролика: что сработало, что поменять в следующем</span></div></div>
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-video"/></svg></div><div><b>Монтаж по желанию</b><span>Плотный монтаж с субтитрами, без музыки. Или отдаём сценарии вашему монтажёру</span></div></div>
+</div>
+
+  <div class="svc rv" data-svc="re" data-base="7900" data-name="Серия рилсов «Нос после травмы»">
+<div class="svc-head"><div><small>Стоимость услуги</small><b class="svc-total">7 900 ₽</b></div><label class="sw"><input type="checkbox" class="svc-on" checked><span class="sw-ui" aria-hidden="true"></span><em>В расчёте</em></label></div>
+<div class="svc-body">
+<div class="svc-sub">Стандартная комплектация · 7 900 ₽</div>
+<ul class="svc-std"><li>Стратегия и сценарии шести роликов по секундам</li><li>Подписи, обложки, закреплённые комментарии</li><li>Автоответ «НОС» и страница «Нос после травмы»</li></ul>
+<div class="svc-sub">Дополнительно, отметьте нужное</div>
+<label class="opt"><input type="checkbox" data-id="re_src" data-price="3300" data-name="Учёный и источники"><span class="box" aria-hidden="true"></span><div><b>Учёный и источники</b><span>Тезисы для учёного, сверка хадисов и цитат, помощь в поиске и проверке человека</span></div><em>+3 300 ₽</em></label>
+<label class="opt"><input type="checkbox" data-id="re_com" data-price="2700" data-name="Комментарии и цифры"><span class="box" aria-hidden="true"></span><div><b>Комментарии и цифры</b><span>Готовые ответы на спорные комментарии, разбор цифр после каждого ролика</span></div><em>+2 700 ₽</em></label>
+<label class="opt"><input type="checkbox" data-id="re_joint" data-price="0" data-name="Серия общая с Казбеком" data-mult="0.5"><span class="box" aria-hidden="true"></span><div><b>Серия общая с Казбеком</b><span>Стоимость серии делится пополам между Sano и Казбеком</span></div><em>−50%</em></label>
+<div class="opt qty" data-id="re_mont" data-price="2400" data-max="6" data-name="Монтаж"><div><b>Монтаж</b><span>Плотный монтаж с субтитрами, без музыки</span><i class="opt-p">2 400 ₽ за ролик</i></div><div class="step-ui"><button type="button" class="q-minus" aria-label="Меньше">−</button><output class="q-val">0</output><button type="button" class="q-plus" aria-label="Больше">+</button></div></div>
+</div></div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>12 / 17</span></div>
+</section>
+
+<!-- time -->
+<section class="pg dark" id="time">
+  <div class="eyebrow rv">Сроки</div>
+  <h2 class="rv">Когда всё заработает</h2>
+  <p class="lead rv">Срок считается с предоплаты и получения доступов. Работы идут параллельно, поэтому весь запуск укладывается примерно в пять недель.</p>
+  <div class="tl rv">
+  <div class="tl-item"><div class="w">Неделя 1</div><div><b>Доступы и Битрикс24</b><span>Собираем знания о клинике, ставим Битрикс24 с нуля, подключаем мессенджеры</span></div></div>
+  <div class="tl-item"><div class="w">Неделя 2</div><div><b>Связка с Renovatio</b><span>Врачи, прайс и расписание из Renovatio. Запись, напоминания, ссылки на оплату. Автоответы в Instagram</span></div></div>
+  <div class="tl-item"><div class="w">Неделя 3</div><div><b>Обучение ИИ под Sano</b><span>Характер, сценарии, проверка на сотне ситуаций. Отзывы и отчёты</span></div></div>
+  <div class="tl-item"><div class="w">Неделя 4–5</div><div><b>Тестовый режим 14 дней</b><span>ИИ пишет, администратор одобряет. Каждый день разбираем диалоги и дообучаем</span></div></div>
+  <div class="tl-item"><div class="w">Запуск</div><div><b>ИИ работает сам</b><span>Вы получаете ежедневный отчёт, мы продолжаем следить за качеством</span></div></div>
+</div>
+<div class="label rv">Параллельно</div>
+<div class="tl rv">
+  <div class="tl-item"><div class="w">Сайт</div><div><b>Админка и связка с Renovatio</b><span>10–14 дней после того, как разработчики передадут сайт</span></div></div>
+  <div class="tl-item"><div class="w">Рилсы</div><div><b>Сценарии и воронка</b><span>Сценарии за 5–7 дней, дальше съёмка и выход серии за 18 дней</span></div></div>
+</div>
+
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>13 / 17</span></div>
+</section>
+
+<!-- price -->
+<section class="pg light" id="price">
+  <div class="eyebrow rv">Стоимость</div>
+  <h2 class="rv">Сколько это стоит</h2>
+  <p class="lead rv">Здесь собирается итог по всем услугам, которые вы отметили выше. Можно выбрать готовый набор или вернуться к любой услуге и поменять комплектацию. Скрытых платежей нет.</p>
+  <div class="sumbox" id="sumbox">
+  <div class="presets rv"><span>Быстрый выбор</span><button type="button" class="pill" data-preset="rec">Рекомендуем</button><button type="button" class="pill" data-preset="std">Стандарт</button><button type="button" class="pill" data-preset="max">Всё включено</button><button type="button" class="pill" data-preset="core">Только ИИ + Битрикс24</button></div>
+  <div class="sum-list rv" id="sum-list"></div>
+  <div class="ptotal rv"><small>Итого разово</small><div class="big" id="sum-once">—</div></div>
+  <div class="month rv" id="sum-month-box"><div class="row1"><b>Каждый месяц нам</b><div class="big" id="sum-month">—</div></div><div id="sum-month-list"></div></div>
+  <div class="label rv">Каждый месяц сервисам напрямую</div>
+  <div class="rv" id="sum-svc"></div>
+  <div class="form-btns rv">
+    <button class="btn ink" type="button" id="cfg-send"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Отправить выбор в WhatsApp</button>
+    <button class="btn line" type="button" id="cfg-copy"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg>Скопировать расчёт</button>
+  </div>
+  <script type="application/json" id="cfg-data">{"monthly": [{"label": "Сопровождение ИИ-администратора, Битрикс24 и связок", "price": 29700, "if_any": ["ai"]}, {"label": "Сопровождение Битрикс24 и связок", "price": 9700, "if_any": ["bx", "rn"], "unless_any": ["ai"]}, {"label": "Сопровождение сайта и админки", "price": 4900, "if_any": ["adm"]}], "services": [{"label": "Битрикс24, тариф «Стандартный»", "price": 6990, "if_any": ["bx"], "note": "До 50 сотрудников. При оплате за год 5 590 ₽"}, {"label": "Подписка Маркета Битрикс24", "price": 3000, "if_any": ["ai", "ig"], "note": "Маркет — магазин дополнений Битрикс24. Подписка нужна, чтобы подключить Wazzup. Новым клиентам сейчас скидка 50%"}, {"label": "Wazzup: WhatsApp и Instagram", "price": 6000, "if_any": ["ai", "ig"], "note": "Сервис, через который WhatsApp и Instagram с комментариями приходят в Битрикс24: 4 000 ₽ + 2 000 ₽"}, {"label": "Telegram и MAX", "price": 0, "if_any": ["ai_tg", "ai"], "note": "Подключаются к Битрикс24 бесплатно"}, {"label": "Сервис ответов на отзывы", "price": 1300, "from": true, "if_any": ["ai_rev"], "note": "Публикует ответы ИИ в Яндексе и 2ГИС"}, {"label": "Комиссия банка с онлайн-оплат", "price": 0, "text": "по тарифу банка", "if_any": ["ai_pay"], "note": "ЮKassa или ваш банк"}], "fixed_gifts": [{"name": "Юридический пакет", "value": 0}], "presets": {"rec": {"label": "Рекомендуем", "on": ["ai", "bx", "rn", "adm", "ig", "re"], "opts": ["ai_tg", "ai_web", "ai_pay", "ai_warm", "ai_back", "ai_rev", "ai_voice"]}, "std": {"label": "Стандарт", "on": ["ai", "bx", "rn", "adm", "ig", "re"], "opts": []}, "max": {"label": "Всё включено", "on": ["ai", "bx", "rn", "adm", "ig", "re"], "opts": "all"}, "core": {"label": "Только ИИ + Битрикс24", "on": ["ai", "bx", "rn"], "opts": []}}, "title": "Sano", "def": "rec", "order": ["ai", "bx", "rn", "adm", "ig", "re"]}</script>
+</div>
+<a class="floatsum" id="floatsum" href="#price" aria-label="Перейти к итогу"><span>Итого</span><b id="float-once">—</b><em id="float-month"></em><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  <div class="label rv">Для сравнения</div>
+<div class="cmp rv">
+  <div class="hl"><small>ИИ-администратор</small><div class="big">≈ 30 тыс. ₽</div><ul><li>Круглосуточно</li><li>Во всех каналах сразу</li><li>Отчёт каждый день</li></ul></div>
+  <div><small>Офисный администратор</small><div class="big">60–80 тыс. ₽</div><ul><li>Зарплата с налогами</li><li>По графику</li><li>Один разговор за раз</li></ul></div>
+</div>
+<p class="note rv">Зарплата администратора клиники в Махачкале по вакансиям hh.ru: 40–55 тысяч на руки, с налогами для клиники 60–80 тысяч. ИИ не заменяет администратора на стойке, он забирает переписку, ночь и часы пик.</p>
+
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>14 / 17</span></div>
+</section>
+
+<!-- pay -->
+<section class="pg dark" id="pay">
+  <div class="eyebrow rv">Прозрачно</div>
+  <h2 class="rv">Как устроена оплата ИИ-администратора</h2>
+  <p class="lead rv">Оплата из трёх частей. Каждую цифру вы знаете заранее, неожиданных счетов не будет.</p>
+<div class="flow rv">
+  <div class="step"><i>01</i><div><b>Разработка, один раз</b><span>Создаём ИИ-администратора под Sano: знания, характер, сценарии, каналы, запись в Renovatio, отзывы, отчёты, 14 дней тестового режима. Оплата 50/50: половина на старте, половина после запуска</span></div></div>
+  <div class="step"><i>02</i><div><b>Сопровождение, каждый месяц</b><span>Фиксированная сумма. В неё уже входят сервер и работа нейросети, вам не нужно разбираться с «токенами». Начинается только после запуска</span></div></div>
+  <div class="step"><i>03</i><div><b>Сервисы, напрямую поставщикам</b><span>Битрикс24 и подключение мессенджеров. Аккаунты оформлены на клинику, без нашей наценки</span></div></div>
+</div>
+
+<div class="label rv">Что входит в сопровождение</div>
+<div class="list rv">
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-server"/></svg></div><div><b>Сервер в России и нейросеть</b><span>Оплачиваем мы. Работа нейросети при вашем объёме стоит от 1 до 10 тысяч рублей в месяц, это уже внутри сопровождения</span></div></div>
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-eye"/></svg></div><div><b>Каждый день смотрим диалоги</b><span>Если ИИ ответил неточно, исправляем в тот же день</span></div></div>
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-refresh"/></svg></div><div><b>Дообучаем каждую неделю</b><span>Новые вопросы пациентов, новые врачи, акции, правила</span></div></div>
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-link"/></svg></div><div><b>Следим за связками</b><span>Instagram, WhatsApp, MAX, Renovatio и Битрикс24 обновляются. Чиним сразу, вы этого даже не заметите</span></div></div>
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></div><div><b>Отчёты и рекомендации</b><span>Разбор раз в неделю и итоги месяца: что спрашивают, где теряются пациенты, что улучшить</span></div></div>
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></div><div><b>Безопасность и копии</b><span>Резервные копии, обновления, защита данных пациентов</span></div></div>
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-edit"/></svg></div><div><b>Правки и новые сценарии</b><span>До 5 часов работы в месяц: новая услуга, акция, новый сценарий</span></div></div>
+</div>
+
+<div class="acc rv">
+  <details><summary>Почему сопровождение стоит столько<span class="pm"></span></summary><div class="ab"><p>ИИ-администратор не программа «поставил и забыл». Пациенты каждый день задают новые вопросы, меняются цены и врачи, мессенджеры обновляются. Без ежедневного присмотра качество ответов падает за несколько недель. Сопровождение — это работа разработчика и человека, который читает диалоги, плюс сервер и нейросеть.</p><p>Для сравнения: администратор клиники в Махачкале получает 40–55 тысяч на руки. С налогами клинике это 60–80 тысяч в месяц, а на график 2/2 нужны двое. ИИ-администратор отвечает круглосуточно, во всех каналах сразу, не болеет и не уходит в отпуск.</p></div></details>
+  <details><summary>Где работает ИИ-администратор<span class="pm"></span></summary><div class="ab"><p>Это программа, которая работает круглосуточно: принимает сообщения, смотрит расписание в Renovatio, вовремя отправляет напоминания. Поэтому она живёт на сервере, а не на сайте и не в телефоне.</p><p>Сервер в России: данные о здоровье по закону должны храниться в стране. Бесплатные площадки для этого не подходят: на них можно хранить код или простую страницу, но не запустить программу с данными пациентов. Если у нового сайта будет свой сервер в России, ИИ можно поставить туда же.</p></div></details>
+  <details><summary>Сколько стоит работа нейросети<span class="pm"></span></summary><div class="ab"><p>Нейросеть берёт оплату за объём текста. Один разговор с пациентом стоит от 1 до 30 рублей, в зависимости от модели и длины. При ваших 5–10 обращениях в день и до 50 в пик это от 1 до 10 тысяч рублей в месяц. Эти расходы уже входят в сопровождение.</p></div></details>
+  <details><summary>Что будет, если остановить сопровождение<span class="pm"></span></summary><div class="ab"><p>Предупредите за месяц. ИИ-администратор работает, пока действует сопровождение. Битрикс24, все переписки, база пациентов, автоответы и настройки остаются у вас, а Renovatio работает как прежде.</p></div></details>
+</div>
+
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>15 / 17</span></div>
+</section>
+
+<!-- terms -->
+<section class="pg light" id="terms">
+  <div class="eyebrow rv">Условия</div>
+  <h2 class="rv">Гарантии и условия</h2>
+  <div class="list rv">
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg></div><div><b>Срок фиксируем до старта</b><span>В договоре, по каждому этапу. Считается с предоплаты и получения доступов</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-card"/></svg></div><div><b>Оплата 50/50</b><span>Половина в начале, половина после сдачи</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></div><div><b>Гарантия срока</b><span>Не успели по нашей вине: вторую половину не платите, а работу забираете полностью</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-eye"/></svg></div><div><b>14 дней под присмотром</b><span>ИИ-администратор начинает с тестового режима. Вы видите его работу до того, как он отвечает сам</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg></div><div><b>Всё остаётся у вас</b><span>Битрикс24, мессенджеры и данные оформлены на клинику. Сопровождение можно остановить, предупредив за месяц</span></div></div>
+  </div>
+  <div class="label rv">Бонусы</div>
+  <div class="cards one rv">
+    <div class="card" style="display:grid;grid-template-columns:52px 1fr;gap:16px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-insta"/></svg></div><div><b>Автоответы в Instagram</b><span>Ответ под комментариями и кнопки в директе. Обычно от 4 900 ₽, для вас бесплатно</span></div></div>
+    <div class="card" style="display:grid;grid-template-columns:52px 1fr;gap:16px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></div><div><b>Ответим на старые отзывы</b><span>При запуске ИИ подготовит ответы на все отзывы без ответа в 2ГИС, вы одобрите</span></div></div>
+    <div class="card" style="display:grid;grid-template-columns:52px 1fr;gap:16px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-eye"/></svg></div><div><b>Замер «до и после»</b><span>До запуска и через месяц пишем в клинику как пациент и показываем, насколько быстрее стали отвечать</span></div></div>
+    <div class="card" style="display:grid;grid-template-columns:52px 1fr;gap:16px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></div><div><b>Юридический пакет</b><span>Политика и согласие на обработку данных, в том числе о здоровье</span></div></div>
+    <div class="card" style="display:grid;grid-template-columns:52px 1fr;gap:16px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></div><div><b>Обучение команды</b><span>Встреча и видеоинструкции по Битрикс24 и админке</span></div></div>
+  </div>
+  <p class="note rv">Мы не обещаем конкретное число новых пациентов: оно зависит от многого. Обещаем, что ни одно сообщение не останется без ответа, и вы будете видеть это в отчётах.</p>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>16 / 17</span></div>
+</section>
+
+<!-- next -->
+<section class="pg dark" id="next">
+  <div class="eyebrow rv">Следующий шаг</div>
+  <h2 class="rv">Начнём</h2>
+  <p class="lead rv">Выберите вариант объёма или напишите, что поменять. Договор и счёт пришлю в течение часа. Для старта понадобится:</p>
+  <div class="label rv">Доступы</div>
+  <ul class="ul rv">
+    <li>Ключ доступа Renovatio: создаётся в Renovatio, раздел «Интеграции → API-ключи»</li>
+    <li>Instagram клиники, WhatsApp Business 8 928 556-22-20, Telegram и MAX. Для бота в MAX клиника проходит проверку как организация</li>
+    <li>Кабинеты Яндекс Бизнеса и 2ГИС, по желанию ПроДокторов</li>
+    <li>Контакт разработчиков нового сайта</li>
+  </ul>
+  <div class="label rv">Материалы</div>
+  <ul class="ul rv">
+    <li>Прайс и правила записи, подготовка к анализам и операциям</li>
+    <li>Частые вопросы пациентов и примеры переписок администраторов</li>
+    <li>Акции и что разрешено обещать</li>
+  </ul>
+  <div class="label rv">Люди</div>
+  <ul class="ul rv">
+    <li>Ответственный со стороны клиники, лучше старший администратор: он принимает работу ИИ в тестовом режиме</li>
+  </ul>
+  <div class="label rv">Связаться</div>
+  <a class="contact rv" href="https://t.me/Labazan78" target="_blank" rel="noopener"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-tg"/></svg></div><div><small>Telegram</small><b>@Labazan78</b></div><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  <a class="contact rv" href="https://wa.me/79289217878" target="_blank" rel="noopener"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg></div><div><small>WhatsApp</small><b>+7 928 921 78 78</b></div><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  <a class="contact rv" href="https://instagram.com/labazan.78" target="_blank" rel="noopener"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-insta"/></svg></div><div><small>Instagram</small><b>labazan.78</b></div><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  <a class="contact rv" href="https://t.me/labazan78brend" target="_blank" rel="noopener"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-mega"/></svg></div><div><small>Канал</small><b>t.me/labazan78brend</b></div><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  <svg class="endmark" viewBox="0 0 1708 720" role="img" aria-label="M78"><use href="#m78"/></svg>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>17 / 17</span></div>
+</section>
+
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  var d=document;
+  /* menu */
+  var menu=d.getElementById('menu');
+  function openMenu(){menu.classList.add('open');menu.setAttribute('aria-hidden','false');}
+  function closeMenu(){menu.classList.remove('open');menu.setAttribute('aria-hidden','true');}
+  d.querySelectorAll('[data-menu-open]').forEach(function(b){b.addEventListener('click',openMenu);});
+  d.querySelectorAll('[data-menu-close]').forEach(function(b){b.addEventListener('click',closeMenu);});
+  if(menu){
+    menu.addEventListener('click',function(e){if(e.target===menu)closeMenu();});
+    menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+  }
+  d.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+
+  /* reveal on scroll */
+  var rv=d.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.05});
+    rv.forEach(function(el){io.observe(el);});
+  } else { rv.forEach(function(el){el.classList.add('in');}); }
+
+  /* segmented switchers */
+  d.querySelectorAll('[data-seg]').forEach(function(seg){
+    var grp=seg.getAttribute('data-seg');
+    seg.querySelectorAll('button').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        seg.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b===btn);b.setAttribute('aria-pressed',b===btn);});
+        d.querySelectorAll('[data-pk="'+grp+'"]').forEach(function(p){p.classList.toggle('on',p.getAttribute('data-id')===btn.getAttribute('data-id'));});
+      });
+    });
+  });
+
+  /* toast */
+  var toast=d.getElementById('toast');
+  function say(t){if(!toast)return;toast.textContent=t;toast.classList.add('show');clearTimeout(say._t);say._t=setTimeout(function(){toast.classList.remove('show');},2600);}
+
+  /* questionnaire */
+  var form=d.getElementById('anketa');
+  if(form){
+    var KEY='m78-anketa-'+(form.getAttribute('data-key')||'x');
+    var store={get:function(){try{return JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){return {};}},
+               set:function(v){try{localStorage.setItem(KEY,JSON.stringify(v));}catch(e){}}};
+    var saved=store.get();
+    form.querySelectorAll('textarea').forEach(function(t){if(saved[t.name])t.value=saved[t.name];});
+    form.querySelectorAll('input[type=checkbox],input[type=radio]').forEach(function(i){var v=saved[i.name];if(v&&(''+v).split('|').indexOf(i.value)>-1)i.checked=true;});
+    function collect(){
+      var data={};
+      form.querySelectorAll('textarea').forEach(function(t){data[t.name]=t.value.trim();});
+      form.querySelectorAll('input[type=checkbox],input[type=radio]').forEach(function(i){if(i.checked){data[i.name]=data[i.name]?data[i.name]+'|'+i.value:i.value;}});
+      return data;
+    }
+    form.addEventListener('input',function(){store.set(collect());});
+    form.addEventListener('change',function(){store.set(collect());});
+    function text(){
+      var out=['Ответы на вопросы М78'];
+      form.querySelectorAll('.q').forEach(function(q,i){
+        var title=q.querySelector('label').childNodes[0].textContent.trim(),parts=[],ch=[];
+        q.querySelectorAll('input:checked').forEach(function(x){ch.push(x.value);});
+        if(ch.length)parts.push(ch.join(', '));
+        q.querySelectorAll('textarea').forEach(function(t){if(t.value.trim())parts.push(t.value.trim());});
+        if(parts.length)out.push('\n'+(i+1)+'. '+title+'\n'+parts.join('\n'));
+      });
+      return out.join('\n');
+    }
+    var wa=d.getElementById('send-wa'),cp=d.getElementById('copy-ans');
+    if(wa)wa.addEventListener('click',function(){
+      var t=text(); if(t.split('\n').length<3){say('Заполните хотя бы один ответ');return;}
+      window.open('https://wa.me/79289217878?text='+encodeURIComponent(t),'_blank');
+    });
+    if(cp)cp.addEventListener('click',function(){
+      var t=text();
+      function ok(){say('Ответы скопированы');}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fallback(t);ok();});}
+      else{fallback(t);ok();}
+    });
+    function fallback(t){var a=d.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';d.body.appendChild(a);a.select();try{d.execCommand('copy');}catch(e){}d.body.removeChild(a);}
+  }
+})();
+
+(function(){
+  var d=document, dataEl=d.getElementById('cfg-data');
+  if(!dataEl) return;
+  var CFG=JSON.parse(dataEl.textContent);
+  var svcs=[].slice.call(d.querySelectorAll('.svc'));
+  var byId={}; svcs.forEach(function(s){byId[s.getAttribute('data-svc')]=s;});
+  var KEY='m78-cfg-'+CFG.title;
+  function rub(n){return n.toLocaleString('ru-RU').replace(/ /g,' ')+' ₽';}
+  function isOn(id){var s=byId[id];return !!(s&&s.querySelector('.svc-on').checked);}
+  function optOn(id){var i=d.querySelector('.svc input[data-id="'+id+'"]');if(!i)return false;return i.checked&&isOn(i.closest('.svc').getAttribute('data-svc'));}
+  function anyOn(ids){return (ids||[]).some(function(id){return byId[id]?isOn(id):optOn(id);});}
+
+  function calcSvc(s){
+    var base=+s.getAttribute('data-base'),add=0,mult=1,qty=0,lines=[];
+    s.querySelectorAll('.opt input[type=checkbox]').forEach(function(i){
+      if(!i.checked)return;
+      if(i.hasAttribute('data-mult')){mult*=+i.getAttribute('data-mult');lines.push(i.getAttribute('data-name')+': −50%');}
+      else{add+=+i.getAttribute('data-price');lines.push(i.getAttribute('data-name')+' +'+rub(+i.getAttribute('data-price')));}
+    });
+    s.querySelectorAll('.opt.qty').forEach(function(q){
+      var n=+q.querySelector('.q-val').value||0; if(n>0){var p=n*(+q.getAttribute('data-price'));qty+=p;lines.push(q.getAttribute('data-name')+' × '+n+' +'+rub(p));}
+    });
+    var full=Math.round((base+add)*mult)+qty;
+    var giftIf=s.getAttribute('data-gift-if');
+    var gift=s.hasAttribute('data-bonus')||!!(giftIf&&giftIf.split(',').every(isOn));
+    return {on:s.querySelector('.svc-on').checked,full:full,price:gift?0:full,gift:gift,lines:lines,base:Math.round(base*mult)};
+  }
+
+  var prevTotals={};
+  function render(save){
+    var once=0,saved=0,list=[];
+    svcs.forEach(function(s){
+      var id=s.getAttribute('data-svc'),r=calcSvc(s),t=s.querySelector('.svc-total');
+      s.classList.toggle('off',!r.on);
+      var txt=r.gift?'<s>'+rub(r.full)+'</s>'+(s.hasAttribute('data-bonus')?'Бонус':'Подарок'):rub(r.full);
+      if(t.innerHTML!==txt){t.innerHTML=txt;if(prevTotals[id]!==undefined){t.classList.remove('bump');void t.offsetWidth;t.classList.add('bump');}}
+      prevTotals[id]=txt;
+      var w=s.querySelector('.svc-warn');
+      if(w)w.hidden=!(r.on&&!isOn(w.getAttribute('data-warn-off')));
+      if(r.on){once+=r.price;if(r.gift)saved+=r.full;}
+      list.push({id:id,name:s.getAttribute('data-name'),r:r});
+    });
+    /* summary list */
+    var sl=d.getElementById('sum-list');
+    if(sl){
+      sl.innerHTML=list.map(function(x){
+        var p=!x.r.on?'<span class="p">Не выбрано</span>':x.r.gift?'<span class="p"><s>'+rub(x.r.full)+'</s>Подарок</span>':'<span class="p">'+rub(x.r.price)+'</span>';
+        return '<a class="prow'+(x.r.on?'':' off')+(x.r.gift?' gift':'')+'" href="#'+(byId[x.id].closest('section').id)+'"><div><b>'+x.name+'</b><span>'+(x.r.on?(x.r.lines.length?'Стандарт и '+x.r.lines.length+' доп.':'Стандартная комплектация'):'Включите в разделе услуги')+'</span></div>'+p+'</a>';
+      }).join('')+(CFG.fixed_gifts||[]).map(function(g){return '<div class="prow gift"><div><b>'+g.name+'</b></div><div class="p">Подарок</div></div>';}).join('');
+    }
+    var mo=0,ml=[];
+    (CFG.monthly||[]).forEach(function(m){if(anyOn(m.if_any)&&!anyOn(m.unless_any)){mo+=m.price;ml.push(m);}});
+    var sv=0,svl=[],from=false;
+    (CFG.services||[]).forEach(function(m){if(anyOn(m.if_any)){svl.push(m);if(m.price){sv+=m.price;}if(m.from||m.approx)from=true;}});
+    function setTxt(id,v){var e=d.getElementById(id);if(e)e.innerHTML=v;}
+    setTxt('sum-once',rub(once));
+    var mb=d.getElementById('sum-month-box');
+    if(mb){mb.style.display=(CFG.monthly||[]).length?'':'none';}
+    setTxt('sum-month',mo?rub(mo)+'<small style="font-size:14px"> / мес</small>':'0 ₽');
+    setTxt('sum-month-list',ml.map(function(m){return '<div class="mrow"><span>'+m.label+'</span><b>'+rub(m.price)+'</b></div>';}).join('')+(mo?'<div class="mrow"><span>Начинается после запуска</span></div>':''));
+    setTxt('sum-svc',svl.length?svl.map(function(m){
+      var p=m.text?m.text:m.price===0?'0 ₽':((m.from?'от ':m.approx?'≈ ':'')+rub(m.price));
+      return '<div class="prow"><div><b>'+m.label+'</b>'+(m.note?'<span>'+m.note+'</span>':'')+'</div><div class="p">'+p+'</div></div>';
+    }).join('')+(sv?'<div class="prow"><div><b>Всего сервисам</b><span>Оценка по ценам поставщиков на ноябрь 2026</span></div><div class="p">'+(from?'≈ ':'')+rub(sv)+'</div></div>':''):'<p class="note">Сервисы появятся, когда выберете услуги.</p>');
+    /* floating */
+    setTxt('float-once',rub(once));
+    setTxt('float-month',mo?'+ '+rub(mo)+'/мес':'');
+    /* preset highlight */
+    var cur=JSON.stringify(state());
+    d.querySelectorAll('[data-preset]').forEach(function(b){b.classList.toggle('on',JSON.stringify(presetState(b.getAttribute('data-preset')))===cur);});
+    if(save!==false){try{localStorage.setItem(KEY,cur);}catch(e){}}
+    render.last={once:once,mo:mo,sv:sv,from:from,list:list,ml:ml,svl:svl,saved:saved};
+  }
+
+  function state(){
+    var st={on:{},o:{},q:{}};
+    svcs.forEach(function(s){st.on[s.getAttribute('data-svc')]=s.querySelector('.svc-on').checked;});
+    d.querySelectorAll('.svc .opt input[type=checkbox]').forEach(function(i){st.o[i.closest('.svc').getAttribute('data-svc')+':'+i.getAttribute('data-id')]=i.checked;});
+    d.querySelectorAll('.svc .opt.qty').forEach(function(q){st.q[q.closest('.svc').getAttribute('data-svc')+':'+q.getAttribute('data-id')]=+q.querySelector('.q-val').value||0;});
+    return st;
+  }
+  function apply(st){
+    svcs.forEach(function(s){var id=s.getAttribute('data-svc');if(id in st.on)s.querySelector('.svc-on').checked=st.on[id];});
+    d.querySelectorAll('.svc .opt input[type=checkbox]').forEach(function(i){var k=i.closest('.svc').getAttribute('data-svc')+':'+i.getAttribute('data-id');if(k in st.o)i.checked=st.o[k];});
+    d.querySelectorAll('.svc .opt.qty').forEach(function(q){var k=q.closest('.svc').getAttribute('data-svc')+':'+q.getAttribute('data-id');if(k in st.q)q.querySelector('.q-val').value=st.q[k];});
+  }
+  function presetState(name){
+    var p=CFG.presets[name],st={on:{},o:{},q:{}};
+    svcs.forEach(function(s){st.on[s.getAttribute('data-svc')]=p.on.indexOf(s.getAttribute('data-svc'))>-1;});
+    d.querySelectorAll('.svc .opt input[type=checkbox]').forEach(function(i){
+      var sid=i.closest('.svc').getAttribute('data-svc'),id=i.getAttribute('data-id');
+      st.o[sid+':'+id]=p.opts==='all'?!i.hasAttribute('data-mult'):(p.opts.indexOf(id)>-1&&p.on.indexOf(sid)>-1);
+    });
+    d.querySelectorAll('.svc .opt.qty').forEach(function(q){st.q[q.closest('.svc').getAttribute('data-svc')+':'+q.getAttribute('data-id')]=0;});
+    return st;
+  }
+
+  /* events */
+  d.querySelectorAll('.svc input').forEach(function(i){i.addEventListener('change',function(){render();});});
+  d.querySelectorAll('.svc .opt.qty').forEach(function(q){
+    var v=q.querySelector('.q-val'),max=+q.getAttribute('data-max')||6;
+    q.querySelector('.q-minus').addEventListener('click',function(){v.value=Math.max(0,(+v.value||0)-1);render();});
+    q.querySelector('.q-plus').addEventListener('click',function(){v.value=Math.min(max,(+v.value||0)+1);render();});
+  });
+  d.querySelectorAll('[data-preset]').forEach(function(b){b.addEventListener('click',function(){apply(presetState(b.getAttribute('data-preset')));render();});});
+
+  /* initial */
+  var init=null; try{init=JSON.parse(localStorage.getItem(KEY)||'null');}catch(e){}
+  apply(init||presetState(CFG.def||Object.keys(CFG.presets)[0]));
+  render(false);
+
+  /* floating total */
+  var fl=d.getElementById('floatsum'),priceSec=d.getElementById('price'),cover=d.querySelector('.cover');
+  if(fl&&'IntersectionObserver' in window){
+    var vis={price:false,cover:true};
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){vis[e.target===priceSec?'price':'cover']=e.isIntersecting;});fl.classList.toggle('show',!vis.price&&!vis.cover);},{threshold:0});
+    if(priceSec)io.observe(priceSec); if(cover)io.observe(cover);
+  }
+
+  /* send / copy */
+  function text(){
+    var L=render.last,out=['Расчёт М78 для '+CFG.title,''];
+    L.list.forEach(function(x){
+      if(!x.r.on)return;
+      out.push(x.name+': '+(x.r.gift?'подарок':rub(x.r.price)));
+      out.push('  стандарт '+rub(x.r.base));
+      x.r.lines.forEach(function(l){out.push('  '+l);});
+    });
+    out.push('','Итого разово: '+rub(L.once));
+    if(L.mo)out.push('Каждый месяц нам: '+rub(L.mo));
+    if(L.sv)out.push('Сервисам напрямую: '+(L.from?'≈ ':'')+rub(L.sv)+' в месяц');
+    return out.join('\n');
+  }
+  function toast(t){var e=d.getElementById('toast');if(!e)return;e.textContent=t;e.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(function(){e.classList.remove('show');},2600);}
+  var bs=d.getElementById('cfg-send'),bc=d.getElementById('cfg-copy');
+  if(bs)bs.addEventListener('click',function(){window.open('https://wa.me/79289217878?text='+encodeURIComponent(text()),'_blank');});
+  if(bc)bc.addEventListener('click',function(){
+    var t=text();
+    function fb(){var a=d.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';d.body.appendChild(a);a.select();try{d.execCommand('copy');}catch(e){}d.body.removeChild(a);toast('Расчёт скопирован');}
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(function(){toast('Расчёт скопирован');},fb);else fb();
+  });
+})();
+
+</script>
+</body>
+</html>
