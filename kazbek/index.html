@@ -146,8 +146,8 @@ p.txt{font-size:16px;line-height:1.6;margin-top:12px}
 .dark .st.ok{color:var(--ok-d);background:rgba(127,195,160,.12)}
 .st.draft{color:var(--warn);background:rgba(154,106,31,.12)}
 .dark .st.draft{color:var(--warn-d);background:rgba(224,180,106,.12)}
-.st.opt{color:var(--l-muted);background:rgba(0,0,0,.06)}
-.dark .st.opt{color:var(--d-muted);background:rgba(255,255,255,.07)}
+.st.later{color:var(--l-muted);background:rgba(0,0,0,.06)}
+.dark .st.later{color:var(--d-muted);background:rgba(255,255,255,.07)}
 
 /* flow */
 .flow{margin-top:26px;position:relative}
@@ -427,6 +427,14 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
 @media (max-width:400px){.floatsum span{display:none}.floatsum em{font-size:12px}.floatsum{gap:8px;padding:10px 12px 10px 16px}}
 .txt .st{margin:0 4px 6px 0;vertical-align:middle}
 
+.legend{display:grid;gap:10px;margin-top:20px;font-size:14.5px;line-height:1.4}
+.legend div{display:flex;align-items:center;gap:12px}
+.legend .st{margin:0;min-width:104px;text-align:center;flex-shrink:0}
+.light .legend span:last-child{color:var(--l-soft)} .dark .legend span:last-child{color:var(--d-soft)}
+
+.st{white-space:nowrap}
+.card .st{font-size:10.5px;letter-spacing:.06em}
+
 </style>
 </head>
 <body>
@@ -601,7 +609,7 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
   <div class="cards one rv">
     <div class="card"><b>Вариант 1. Сразу в WhatsApp</b><span>Кнопка открывает ваш WhatsApp с готовым текстом: имя, клиника, операция. Самый простой вариант, запускается за день.</span><span class="st ok">Проще всего</span></div>
     <div class="card"><b>Вариант 2. Заявка с сайта</b><span>Человек заполняет короткую форму. Заявка приходит вам в WhatsApp или MAX и сохраняется в админке, чтобы ничего не потерялось. Можно отдать её администратору клиники.</span><span class="st ok">Рекомендуем</span></div>
-    <div class="card"><b>Вариант 3. Онлайн-запись Sano</b><span>Для приёма в Sano пациент выбирает свободное время в вашем расписании прямо на сайте. Работает, если клиника откроет онлайн-запись из своей медицинской системы. Для центра Аскерханова остаётся вариант 1 или 2.</span><span class="st opt">Если согласует Sano</span></div>
+    <div class="card"><b>Вариант 3. Онлайн-запись Sano</b><span>Для приёма в Sano пациент выбирает свободное время в вашем расписании прямо на сайте. Работает, если клиника откроет онлайн-запись из своей медицинской системы. Для центра Аскерханова остаётся вариант 1 или 2.</span><span class="st later">Если согласует Sano</span></div>
   </div>
   <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>05 / 14</span></div>
 </section>

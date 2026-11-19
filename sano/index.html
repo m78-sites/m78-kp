@@ -146,8 +146,8 @@ p.txt{font-size:16px;line-height:1.6;margin-top:12px}
 .dark .st.ok{color:var(--ok-d);background:rgba(127,195,160,.12)}
 .st.draft{color:var(--warn);background:rgba(154,106,31,.12)}
 .dark .st.draft{color:var(--warn-d);background:rgba(224,180,106,.12)}
-.st.opt{color:var(--l-muted);background:rgba(0,0,0,.06)}
-.dark .st.opt{color:var(--d-muted);background:rgba(255,255,255,.07)}
+.st.later{color:var(--l-muted);background:rgba(0,0,0,.06)}
+.dark .st.later{color:var(--d-muted);background:rgba(255,255,255,.07)}
 
 /* flow */
 .flow{margin-top:26px;position:relative}
@@ -427,6 +427,14 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
 @media (max-width:400px){.floatsum span{display:none}.floatsum em{font-size:12px}.floatsum{gap:8px;padding:10px 12px 10px 16px}}
 .txt .st{margin:0 4px 6px 0;vertical-align:middle}
 
+.legend{display:grid;gap:10px;margin-top:20px;font-size:14.5px;line-height:1.4}
+.legend div{display:flex;align-items:center;gap:12px}
+.legend .st{margin:0;min-width:104px;text-align:center;flex-shrink:0}
+.light .legend span:last-child{color:var(--l-soft)} .dark .legend span:last-child{color:var(--d-soft)}
+
+.st{white-space:nowrap}
+.card .st{font-size:10.5px;letter-spacing:.06em}
+
 </style>
 </head>
 <body>
@@ -636,7 +644,7 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
   <div class="eyebrow rv">Каналы</div>
   <h2 class="rv">Где он отвечает</h2>
   <p class="lead rv">Пациенту не нужно искать, куда написать. Где бы он ни написал, ему отвечает один и тот же администратор, который помнит всю историю.</p>
-<p class="txt rv"><span class="st ok">Сам</span> отвечает сам &nbsp; <span class="st draft">Черновик</span> готовит ответ вам на одобрение &nbsp; <span class="st opt">По желанию</span> подключаем позже</p>
+<div class="legend rv"><div><span class="st ok">Сам</span><span>ИИ отвечает сам</span></div><div><span class="st draft">Черновик</span><span>ИИ готовит ответ, вы одобряете</span></div><div><span class="st later">По желанию</span><span>Подключаем позже, если захотите</span></div></div>
 <div class="cards rv">
   <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-insta"/></svg><b>Instagram</b><span>Директ, комментарии, ответы на сторис</span><span class="st ok">Сам</span></div>
   <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><b>WhatsApp Business</b><span>Ваш номер 8 928 556-22-20</span><span class="st ok">Сам</span></div>
@@ -644,10 +652,10 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
   <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-max"/></svg><b>MAX</b><span>Бот клиники в MAX</span><span class="st ok">Сам</span></div>
   <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg><b>Чат на сайте</b><span>Окно чата на новом сайте</span><span class="st ok">Сам</span></div>
   <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-mega"/></svg><b>Яндекс Директ</b><span>Объявления ведут в WhatsApp, Telegram или MAX, там отвечает ИИ</span><span class="st ok">Сам</span></div>
-  <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><b>Отзывы в Яндексе и 2ГИС</b><span>На 4–5 звёзд отвечает сам. На 1–3 звезды готовит ответ и присылает вам на одобрение</span><span class="st draft">Сам + одобрение</span></div>
+  <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><b>Отзывы в Яндексе и 2ГИС</b><span>На 4–5 звёзд отвечает сам. На 1–3 звезды готовит ответ и присылает вам на одобрение</span><span class="st draft">Сам и черновик</span></div>
   <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-pulse"/></svg><b>ПроДокторов</b><span>Готовит ответ, администратор публикует в кабинете клиники</span><span class="st draft">Черновик</span></div>
   <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><b>Чат в 2ГИС</b><span>Сообщает о новом сообщении и даёт готовый ответ</span><span class="st draft">Черновик</span></div>
-  <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><b>Звонки</b><span>Следующим этапом: ИИ отвечает на звонки или пишет тем, чей звонок пропустили</span><span class="st opt">По желанию</span></div>
+  <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><b>Звонки</b><span>Следующим этапом: ИИ отвечает на звонки или пишет тем, чей звонок пропустили</span><span class="st later">По желанию</span></div>
 </div>
 <div class="acc rv">
   <details><summary>Почему на жалобы ИИ не отвечает сам<span class="pm"></span></summary><div class="ab"><p>Ответ на жалобу видят все, кто выбирает клинику. Поэтому ИИ готовит спокойный ответ по делу, а вы или старший администратор одобряете его одним нажатием. Так ни одна жалоба не останется без ответа, а последнее слово за вами.</p><p>В ответах на отзывы ИИ никогда не раскрывает диагноз и подробности лечения пациента.</p></div></details>
