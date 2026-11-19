@@ -1106,14 +1106,15 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
       sl.innerHTML=list.map(function(x){
         var p=!x.r.on?'<span class="p">Не выбрано</span>':x.r.gift?'<span class="p"><s>'+rub(x.r.full)+'</s>Подарок</span>':'<span class="p">'+rub(x.r.price)+'</span>';
         return '<a class="prow'+(x.r.on?'':' off')+(x.r.gift?' gift':'')+'" href="#'+(byId[x.id].closest('section').id)+'"><div><b>'+x.name+'</b><span>'+(x.r.on?(x.r.lines.length?'Стандарт и '+x.r.lines.length+' доп.':'Стандартная комплектация'):'Включите в разделе услуги')+'</span></div>'+p+'</a>';
-      }).join('')+gifts.map(function(g){return '<div class="prow gift"><div><b>'+g.name+'</b>'+(g.note?'<span>'+g.note+'</span>':'')+'</div><div class="p">'+(g.value?'<s>'+rub(g.value)+'</s>':'')+(g.label||'Подарок')+'</div></div>';}).join('');
+      }).join('')+gifts.map(function(g){return g.plain?'<div class="prow"><div><b>'+g.name+'</b>'+(g.note?'<span>'+g.note+'</span>':'')+'</div><div class="p">'+rub(g.value)+'</div></div>':'<div class="prow gift"><div><b>'+g.name+'</b>'+(g.note?'<span>'+g.note+'</span>':'')+'</div><div class="p">'+(g.value?'<s>'+rub(g.value)+'</s>':'')+(g.label||'Подарок')+'</div></div>';}).join('');
     }
     var mo=0,ml=[];
     (CFG.monthly||[]).forEach(function(m){if(anyOn(m.if_any)&&!anyOn(m.unless_any)){mo+=m.price;ml.push(m);}});
     var sv=0,svl=[],from=false;
     (CFG.services||[]).forEach(function(m){if(anyOn(m.if_any)){svl.push(m);if(m.price){sv+=m.price;}if(m.from||m.approx)from=true;}});
     function setTxt(id,v){var e=d.getElementById(id);if(e)e.innerHTML=v;}
-    setTxt('sum-once',rub(once));
+    var plainVal=gifts.reduce(function(a,g){return a+(g.plain?(g.value||0):0);},0),shown=once+plainVal;
+    setTxt('sum-once',rub(shown));
     var mb=d.getElementById('sum-month-box');
     if(mb){mb.style.display=(CFG.monthly||[]).length?'':'none';}
     setTxt('sum-month',mo?rub(mo)+'<small style="font-size:14px"> / мес</small>':'0 ₽');
@@ -1123,7 +1124,7 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
       return '<div class="prow"><div><b>'+m.label+'</b>'+(m.note?'<span>'+m.note+'</span>':'')+'</div><div class="p">'+p+'</div></div>';
     }).join('')+(sv?'<div class="prow"><div><b>Всего сервисам</b><span>Оценка по ценам поставщиков на ноябрь 2026</span></div><div class="p">'+(from?'≈ ':'')+rub(sv)+'</div></div>':''):'<p class="note">Сервисы появятся, когда выберете услуги.</p>');
     /* floating */
-    setTxt('float-once',rub(once));
+    setTxt('float-once',rub(shown));
     setTxt('float-month',mo?'+ '+rub(mo)+'/мес':'');
     /* preset highlight */
     var cur=JSON.stringify(state());
@@ -1131,10 +1132,9 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
     if(save!==false){try{localStorage.setItem(KEY,cur);}catch(e){}}
     var dl=d.getElementById('sum-deal'),full=once+giftVal,plus=0;
     if(dl&&CFG.deal){plus=full-CFG.deal.discount;
-      dl.innerHTML='<div class="prow"><div><b>Всего по стоимости</b><span>Выбранные услуги и то, что даём бесплатно</span></div><div class="p">'+rub(full)+'</div></div>'+
-        '<div class="prow"><div><b>'+CFG.deal.label+'</b><span>'+CFG.deal.note+'</span></div><div class="p">'+rub(CFG.deal.discount)+'</div></div>'+
+      dl.innerHTML='<div class="prow"><div><b>'+CFG.deal.label+'</b><span>'+CFG.deal.note+'</span></div><div class="p">'+rub(CFG.deal.discount)+'</div></div>'+
         (plus>0?'<div class="deal-plus"><small>Ваш плюс</small><div class="big">+ '+rub(plus)+'</div><p>'+CFG.deal.plus_text+'</p></div>':'');}
-    render.last={once:once,mo:mo,sv:sv,from:from,list:list,ml:ml,svl:svl,saved:saved,gifts:gifts,giftVal:giftVal,full:full,plus:plus};
+    render.last={shown:shown,once:once,mo:mo,sv:sv,from:from,list:list,ml:ml,svl:svl,saved:saved,gifts:gifts,giftVal:giftVal,full:full,plus:plus};
   }
 
   function state(){
@@ -1191,9 +1191,9 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
       out.push('  стандарт '+rub(x.r.base));
       x.r.lines.forEach(function(l){out.push('  '+l);});
     });
-    L.gifts.forEach(function(g){if(g.value)out.push(g.name+': '+rub(g.value)+', бесплатно');});
-    out.push('','Итого разово: '+rub(L.once));
-    if(CFG.deal){out.push('Всего по стоимости: '+rub(L.full));out.push(CFG.deal.label+': скидка '+rub(CFG.deal.discount));if(L.plus>0)out.push('Плюс: '+rub(L.plus));}
+    L.gifts.forEach(function(g){if(g.value)out.push(g.name+': '+rub(g.value)+(g.plain?'':', бесплатно'));});
+    out.push('','Итого: '+rub(L.shown));
+    if(CFG.deal){out.push(CFG.deal.label+': скидка '+rub(CFG.deal.discount));if(L.plus>0)out.push('Плюс: '+rub(L.plus));}
     if(L.mo)out.push('Каждый месяц нам: '+rub(L.mo));
     if(L.sv)out.push('Сервисам напрямую: '+(L.from?'≈ ':'')+rub(L.sv)+' в месяц');
     return out.join('\n');

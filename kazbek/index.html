@@ -603,7 +603,7 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
 <label class="opt"><input type="checkbox" data-id="s_how" data-price="2300" data-name="Как проходит операция и «из другого города»"><span class="box" aria-hidden="true"></span><div><b>Как проходит операция и «из другого города»</b><span>Этапы, сроки, как добраться, КТ заранее</span></div><em>+2 300 ₽</em></label>
 <label class="opt"><input type="checkbox" data-id="s_rev" data-price="1400" data-name="Отзывы пациентов"><span class="box" aria-hidden="true"></span><div><b>Отзывы пациентов</b><span>Скриншоты и видео с разрешения пациентов</span></div><em>+1 400 ₽</em></label>
 <label class="opt"><input type="checkbox" data-id="s_form" data-price="1500" data-name="Заявка с сайта"><span class="box" aria-hidden="true"></span><div><b>Заявка с сайта</b><span>Форма, заявка вам в WhatsApp или MAX и в админку</span></div><em>+1 500 ₽</em></label>
-<p class="svc-note">Год сопровождения сайта (обычно 29 900 ₽) и админку (обычно 14 900 ₽) даём бесплатно, как договорились. Они видны в итоге.</p>
+<p class="svc-note">Год сопровождения сайта (29 900 ₽) и админка (14 900 ₽) идут в итоге отдельными строками.</p>
 </div></div>
   <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>04 / 14</span></div>
 </section>
@@ -759,11 +759,11 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
   <div class="eyebrow rv">Стоимость</div>
   <h2 class="rv">Сколько это стоит</h2>
   <p class="lead rv">Здесь собирается итог по всем услугам, которые вы отметили выше. Можно выбрать готовый набор или вернуться к любой услуге и поменять комплектацию. Все расходы видны заранее.</p>
-  <p class="note rv">Сопровождение вашего сайта на год по факту стоит 29 900 ₽, админка 14 900 ₽. Для вас они бесплатны, как мы договорились, поэтому в итоге ниже они идут отдельной строкой.</p>
+  <p class="note rv">Год сопровождения вашего сайта стоит 29 900 ₽, админка 14 900 ₽. Они входят в итог вместе с остальными услугами. Всю сумму вы оплачиваете скидкой на септопластику, как мы договорились.</p>
   <div class="sumbox" id="sumbox">
   <div class="presets rv"><span>Быстрый выбор</span><button type="button" class="pill" data-preset="rec">Рекомендуем</button><button type="button" class="pill" data-preset="std">Сайт и автоответы</button><button type="button" class="pill" data-preset="max">Всё включено</button></div>
   <div class="sum-list rv" id="sum-list"></div>
-  <div class="ptotal rv"><small>Стоимость выбранных услуг</small><div class="big" id="sum-once">—</div></div>
+  <div class="ptotal rv"><small>Итого</small><div class="big" id="sum-once">—</div></div>
   <div class="rv" id="sum-deal"></div>
   <div class="month rv" id="sum-month-box"><div class="row1"><b>Каждый месяц нам</b><div class="big" id="sum-month">—</div></div><div id="sum-month-list"></div></div>
   <div class="label rv">Каждый месяц сервисам напрямую</div>
@@ -772,7 +772,7 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
     <button class="btn ink" type="button" id="cfg-send"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Отправить выбор в WhatsApp</button>
     <button class="btn line" type="button" id="cfg-copy"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg>Скопировать расчёт</button>
   </div>
-  <script type="application/json" id="cfg-data">{"monthly": [], "services": [{"label": "Хостинг и домен", "price": 400, "approx": true, "if_any": ["site"]}, {"label": "Сервис автоответов в Instagram", "price": 1599, "from": true, "if_any": ["auto", "re"]}], "fixed_gifts": [{"name": "Год сопровождения сайта", "note": "Правки, хостинг, помощь и обновления", "value": 29900, "label": "Бесплатно", "if_any": ["site"]}, {"name": "Админка", "note": "Сами меняете цены, фото, отзывы и тексты", "value": 14900, "label": "Бесплатно", "if_any": ["site"]}], "deal": {"discount": 40000, "label": "Оплата по договорённости", "note": "Скидка на септопластику: сеанс почти 60 000 ₽, для меня 20 000 ₽", "plus_text": "На столько больше вы получаете, чем отдаёте скидкой"}, "presets": {"rec": {"label": "Рекомендуем", "on": ["site", "auto", "re"], "opts": ["s_how", "s_rev", "s_form"]}, "std": {"label": "Сайт и автоответы", "on": ["site", "auto"], "opts": []}, "max": {"label": "Всё включено", "on": ["site", "auto", "re"], "opts": "all"}}, "title": "Казбек", "def": "rec", "order": ["site", "auto", "re"]}</script>
+  <script type="application/json" id="cfg-data">{"monthly": [], "services": [{"label": "Хостинг и домен", "price": 400, "approx": true, "if_any": ["site"]}, {"label": "Сервис автоответов в Instagram", "price": 1599, "from": true, "if_any": ["auto", "re"]}], "fixed_gifts": [{"name": "Год сопровождения сайта", "note": "Правки, хостинг, помощь и обновления", "value": 29900, "plain": true, "if_any": ["site"]}, {"name": "Админка", "note": "Сами меняете цены, фото, отзывы и тексты", "value": 14900, "plain": true, "if_any": ["site"]}], "deal": {"discount": 40000, "label": "Оплата по договорённости", "note": "Скидка на септопластику: сеанс почти 60 000 ₽, для меня 20 000 ₽", "plus_text": "На столько больше вы получаете, чем отдаёте скидкой"}, "presets": {"rec": {"label": "Рекомендуем", "on": ["site", "auto", "re"], "opts": ["s_how", "s_rev", "s_form"]}, "std": {"label": "Сайт и автоответы", "on": ["site", "auto"], "opts": []}, "max": {"label": "Всё включено", "on": ["site", "auto", "re"], "opts": "all"}}, "title": "Казбек", "def": "rec", "order": ["site", "auto", "re"]}</script>
 </div>
 <a class="floatsum" id="floatsum" href="#price" aria-label="Перейти к итогу"><span>Итого</span><b id="float-once">—</b><em id="float-month"></em><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
   <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>12 / 14</span></div>
@@ -982,14 +982,15 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
       sl.innerHTML=list.map(function(x){
         var p=!x.r.on?'<span class="p">Не выбрано</span>':x.r.gift?'<span class="p"><s>'+rub(x.r.full)+'</s>Подарок</span>':'<span class="p">'+rub(x.r.price)+'</span>';
         return '<a class="prow'+(x.r.on?'':' off')+(x.r.gift?' gift':'')+'" href="#'+(byId[x.id].closest('section').id)+'"><div><b>'+x.name+'</b><span>'+(x.r.on?(x.r.lines.length?'Стандарт и '+x.r.lines.length+' доп.':'Стандартная комплектация'):'Включите в разделе услуги')+'</span></div>'+p+'</a>';
-      }).join('')+gifts.map(function(g){return '<div class="prow gift"><div><b>'+g.name+'</b>'+(g.note?'<span>'+g.note+'</span>':'')+'</div><div class="p">'+(g.value?'<s>'+rub(g.value)+'</s>':'')+(g.label||'Подарок')+'</div></div>';}).join('');
+      }).join('')+gifts.map(function(g){return g.plain?'<div class="prow"><div><b>'+g.name+'</b>'+(g.note?'<span>'+g.note+'</span>':'')+'</div><div class="p">'+rub(g.value)+'</div></div>':'<div class="prow gift"><div><b>'+g.name+'</b>'+(g.note?'<span>'+g.note+'</span>':'')+'</div><div class="p">'+(g.value?'<s>'+rub(g.value)+'</s>':'')+(g.label||'Подарок')+'</div></div>';}).join('');
     }
     var mo=0,ml=[];
     (CFG.monthly||[]).forEach(function(m){if(anyOn(m.if_any)&&!anyOn(m.unless_any)){mo+=m.price;ml.push(m);}});
     var sv=0,svl=[],from=false;
     (CFG.services||[]).forEach(function(m){if(anyOn(m.if_any)){svl.push(m);if(m.price){sv+=m.price;}if(m.from||m.approx)from=true;}});
     function setTxt(id,v){var e=d.getElementById(id);if(e)e.innerHTML=v;}
-    setTxt('sum-once',rub(once));
+    var plainVal=gifts.reduce(function(a,g){return a+(g.plain?(g.value||0):0);},0),shown=once+plainVal;
+    setTxt('sum-once',rub(shown));
     var mb=d.getElementById('sum-month-box');
     if(mb){mb.style.display=(CFG.monthly||[]).length?'':'none';}
     setTxt('sum-month',mo?rub(mo)+'<small style="font-size:14px"> / мес</small>':'0 ₽');
@@ -999,7 +1000,7 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
       return '<div class="prow"><div><b>'+m.label+'</b>'+(m.note?'<span>'+m.note+'</span>':'')+'</div><div class="p">'+p+'</div></div>';
     }).join('')+(sv?'<div class="prow"><div><b>Всего сервисам</b><span>Оценка по ценам поставщиков на ноябрь 2026</span></div><div class="p">'+(from?'≈ ':'')+rub(sv)+'</div></div>':''):'<p class="note">Сервисы появятся, когда выберете услуги.</p>');
     /* floating */
-    setTxt('float-once',rub(once));
+    setTxt('float-once',rub(shown));
     setTxt('float-month',mo?'+ '+rub(mo)+'/мес':'');
     /* preset highlight */
     var cur=JSON.stringify(state());
@@ -1007,10 +1008,9 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
     if(save!==false){try{localStorage.setItem(KEY,cur);}catch(e){}}
     var dl=d.getElementById('sum-deal'),full=once+giftVal,plus=0;
     if(dl&&CFG.deal){plus=full-CFG.deal.discount;
-      dl.innerHTML='<div class="prow"><div><b>Всего по стоимости</b><span>Выбранные услуги и то, что даём бесплатно</span></div><div class="p">'+rub(full)+'</div></div>'+
-        '<div class="prow"><div><b>'+CFG.deal.label+'</b><span>'+CFG.deal.note+'</span></div><div class="p">'+rub(CFG.deal.discount)+'</div></div>'+
+      dl.innerHTML='<div class="prow"><div><b>'+CFG.deal.label+'</b><span>'+CFG.deal.note+'</span></div><div class="p">'+rub(CFG.deal.discount)+'</div></div>'+
         (plus>0?'<div class="deal-plus"><small>Ваш плюс</small><div class="big">+ '+rub(plus)+'</div><p>'+CFG.deal.plus_text+'</p></div>':'');}
-    render.last={once:once,mo:mo,sv:sv,from:from,list:list,ml:ml,svl:svl,saved:saved,gifts:gifts,giftVal:giftVal,full:full,plus:plus};
+    render.last={shown:shown,once:once,mo:mo,sv:sv,from:from,list:list,ml:ml,svl:svl,saved:saved,gifts:gifts,giftVal:giftVal,full:full,plus:plus};
   }
 
   function state(){
@@ -1067,9 +1067,9 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
       out.push('  стандарт '+rub(x.r.base));
       x.r.lines.forEach(function(l){out.push('  '+l);});
     });
-    L.gifts.forEach(function(g){if(g.value)out.push(g.name+': '+rub(g.value)+', бесплатно');});
-    out.push('','Итого разово: '+rub(L.once));
-    if(CFG.deal){out.push('Всего по стоимости: '+rub(L.full));out.push(CFG.deal.label+': скидка '+rub(CFG.deal.discount));if(L.plus>0)out.push('Плюс: '+rub(L.plus));}
+    L.gifts.forEach(function(g){if(g.value)out.push(g.name+': '+rub(g.value)+(g.plain?'':', бесплатно'));});
+    out.push('','Итого: '+rub(L.shown));
+    if(CFG.deal){out.push(CFG.deal.label+': скидка '+rub(CFG.deal.discount));if(L.plus>0)out.push('Плюс: '+rub(L.plus));}
     if(L.mo)out.push('Каждый месяц нам: '+rub(L.mo));
     if(L.sv)out.push('Сервисам напрямую: '+(L.from?'≈ ':'')+rub(L.sv)+' в месяц');
     return out.join('\n');
