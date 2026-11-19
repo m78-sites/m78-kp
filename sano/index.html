@@ -704,12 +704,12 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
 <div class="flow rv">
   <div class="step"><i><svg class="ico" aria-hidden="true"><use href="#i-db"/></svg></i><div><b>Renovatio</b><span>Врачи, услуги и цены, расписание, пациенты, визиты, счета</span></div></div>
   <div class="step"><i><svg class="ico" aria-hidden="true"><use href="#i-spark"/></svg></i><div><b>ИИ-администратор</b><span>Берёт отсюда цены и свободное время, записывает пациента сразу в расписание с пометкой «записал ИИ»</span></div></div>
-  <div class="step"><i><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg></i><div><b>Сайт</b><span>Врачи, прайс и онлайн-запись подтягиваются из Renovatio. У Renovatio есть готовые блоки для сайтов на Битриксе</span></div></div>
+  <div class="step"><i><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg></i><div><b>Сайт</b><span>Онлайн-запись и прайс на сайт ставят готовыми блоками Renovatio. Обычно это делают разработчики сайта, а если не сделают, подключим мы после передачи сайта</span></div></div>
   <div class="step"><i><svg class="ico" aria-hidden="true"><use href="#i-layers"/></svg></i><div><b>Битрикс24</b><span>Новый визит, пришёл, не пришёл, оплатил: карточка пациента обновляется сама</span></div></div>
 </div>
 <div class="list rv">
-  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-wallet"/></svg></div><div><b>Цены меняете в одном месте</b><span>Поменяли прайс в Renovatio, и он обновился на сайте и в ответах ИИ</span></div></div>
-  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg></div><div><b>Без двойной записи</b><span>ИИ и сайт видят те же свободные окна, что и администратор на стойке</span></div></div>
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-wallet"/></svg></div><div><b>Цены меняете в одном месте</b><span>Поменяли прайс в Renovatio, и ИИ сразу называет новые цены. На сайте тоже, если там стоит блок прайса Renovatio</span></div></div>
+  <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg></div><div><b>Без двойной записи</b><span>ИИ видит те же свободные окна, что и администратор на стойке, и записывает сразу в расписание</span></div></div>
   <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg></div><div><b>Напоминания</b><span>Renovatio сам напоминает по SMS и WhatsApp. ИИ добавляет MAX и Telegram и подтверждает визит в переписке</span></div></div>
   <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-card"/></svg></div><div><b>Оплата</b><span>Ссылка на оплату уходит пациенту в чат, после оплаты счёт отмечается в Renovatio</span></div></div>
 </div>
@@ -718,13 +718,13 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
   <details><summary>Что уточним после доступа<span class="pm"></span></summary><div class="ab"><ul><li>Полный список возможностей доступа в вашей версии Renovatio</li><li>Где сейчас пробиваются чеки: в кассе Renovatio или в онлайн-кассе. Чек должен пробиваться в одном месте</li><li>На чём сделан новый сайт: от этого зависит, как встраиваем запись и прайс</li></ul></div></details>
 </div>
 
-  <div class="svc rv" data-svc="rn" data-base="29600" data-name="Связка с Renovatio и сайтом">
+  <div class="svc rv" data-svc="rn" data-base="29600" data-name="Связка с Renovatio">
 <div class="svc-head"><div><small>Стоимость услуги</small><b class="svc-total">29 600 ₽</b></div><label class="sw"><input type="checkbox" class="svc-on" checked><span class="sw-ui" aria-hidden="true"></span><em>В расчёте</em></label></div>
 <div class="svc-body">
 <div class="svc-sub">Стандартная комплектация · 29 600 ₽</div>
-<ul class="svc-std"><li>Врачи, услуги и прайс из Renovatio: у ИИ и на сайте</li><li>Расписание: ИИ видит свободные окна и записывает сразу в Renovatio</li></ul>
+<ul class="svc-std"><li>ИИ видит врачей, услуги и цены в Renovatio</li><li>ИИ видит свободное время и записывает пациента сразу в расписание Renovatio</li><li>Запись помечена «записал ИИ», чтобы вы видели, откуда пришёл пациент</li></ul>
 <div class="svc-sub">Дополнительно, отметьте нужное</div>
-<label class="opt"><input type="checkbox" data-id="rn_web" data-price="6800" data-name="Онлайн-запись на сайте"><span class="box" aria-hidden="true"></span><div><b>Онлайн-запись на сайте</b><span>Пациент сам выбирает врача и свободное время</span></div><em>+6 800 ₽</em></label>
+<label class="opt"><input type="checkbox" data-id="rn_web" data-price="6800" data-name="Онлайн-запись и прайс на сайте"><span class="box" aria-hidden="true"></span><div><b>Онлайн-запись и прайс на сайте</b><span>Только если разработчики сайта не поставят готовый блок Renovatio. Тогда подключим мы после передачи сайта</span></div><em>+6 800 ₽</em></label>
 <label class="opt"><input type="checkbox" data-id="rn_vis" data-price="8300" data-name="Визиты и оплаты в Битрикс24"><span class="box" aria-hidden="true"></span><div><b>Визиты и оплаты в Битрикс24</b><span>Пришёл, не пришёл, оплатил: видно в карточке пациента</span></div><em>+8 300 ₽</em></label>
 </div></div>
   <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>08 / 17</span></div>
