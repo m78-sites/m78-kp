@@ -435,6 +435,11 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
 .st{white-space:nowrap}
 .card .st{font-size:10.5px;letter-spacing:.06em}
 
+.deal-plus{margin-top:16px;border-radius:22px;padding:20px;background:linear-gradient(160deg,#2c2f34,#17181b);color:#eceef1}
+.deal-plus small{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#a4a9b0}
+.deal-plus .big{font-size:clamp(30px,8.5vw,40px);font-weight:300;letter-spacing:-.02em;color:#8fd0ad;margin-top:6px;line-height:1.1}
+.deal-plus p{font-size:14.5px;line-height:1.5;color:#b3b7bd;margin-top:6px}
+
 </style>
 </head>
 <body>
@@ -862,6 +867,7 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
   <div class="presets rv"><span>Быстрый выбор</span><button type="button" class="pill" data-preset="rec">Рекомендуем</button><button type="button" class="pill" data-preset="std">Стандарт</button><button type="button" class="pill" data-preset="max">Всё включено</button><button type="button" class="pill" data-preset="core">Только ИИ + Битрикс24</button></div>
   <div class="sum-list rv" id="sum-list"></div>
   <div class="ptotal rv"><small>Итого разово</small><div class="big" id="sum-once">—</div></div>
+  <div class="rv" id="sum-deal"></div>
   <div class="month rv" id="sum-month-box"><div class="row1"><b>Каждый месяц нам</b><div class="big" id="sum-month">—</div></div><div id="sum-month-list"></div></div>
   <div class="label rv">Каждый месяц сервисам напрямую</div>
   <div class="rv" id="sum-svc"></div>
@@ -869,7 +875,7 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
     <button class="btn ink" type="button" id="cfg-send"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Отправить выбор в WhatsApp</button>
     <button class="btn line" type="button" id="cfg-copy"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg>Скопировать расчёт</button>
   </div>
-  <script type="application/json" id="cfg-data">{"monthly": [{"label": "Сопровождение ИИ-администратора, Битрикс24 и связок", "price": 29700, "if_any": ["ai"]}, {"label": "Сопровождение Битрикс24 и связок", "price": 9700, "if_any": ["bx", "rn"], "unless_any": ["ai"]}, {"label": "Сопровождение сайта и админки", "price": 4900, "if_any": ["adm"]}], "services": [{"label": "Битрикс24, тариф «Стандартный»", "price": 6990, "if_any": ["bx"], "note": "До 50 сотрудников. При оплате за год 5 590 ₽"}, {"label": "Подписка Маркета Битрикс24", "price": 3000, "if_any": ["ai"], "note": "Маркет — магазин дополнений Битрикс24. Подписка нужна, чтобы подключить Wazzup. Новым клиентам сейчас скидка 50%"}, {"label": "Wazzup: WhatsApp и Instagram", "price": 6000, "if_any": ["ai"], "note": "Сервис, через который WhatsApp и Instagram с комментариями приходят в Битрикс24: 4 000 ₽ + 2 000 ₽"}, {"label": "Telegram и MAX", "price": 0, "if_any": ["ai_tg", "ai"], "note": "Подключаются к Битрикс24 бесплатно"}, {"label": "Сервис ответов на отзывы", "price": 1300, "from": true, "if_any": ["ai_rev"], "note": "Публикует ответы ИИ в Яндексе и 2ГИС"}, {"label": "Комиссия банка с онлайн-оплат", "price": 0, "text": "по тарифу банка", "if_any": ["ai_pay"], "note": "ЮKassa или ваш банк"}], "fixed_gifts": [{"name": "Юридический пакет", "value": 0}], "presets": {"rec": {"label": "Рекомендуем", "on": ["ai", "bx", "rn", "adm", "re"], "opts": ["ai_ig", "rn_vis", "ai_tg", "ai_web", "ai_pay", "ai_warm", "ai_back", "ai_rev", "ai_voice"]}, "std": {"label": "Стандарт", "on": ["ai", "bx", "rn", "adm", "re"], "opts": []}, "max": {"label": "Всё включено", "on": ["ai", "bx", "rn", "adm", "re"], "opts": "all"}, "core": {"label": "Только ИИ + Битрикс24", "on": ["ai", "bx", "rn"], "opts": []}}, "title": "Sano", "def": "rec", "order": ["ai", "bx", "rn", "adm", "re"]}</script>
+  <script type="application/json" id="cfg-data">{"monthly": [{"label": "Сопровождение ИИ-администратора, Битрикс24 и связок", "price": 29700, "if_any": ["ai"]}, {"label": "Сопровождение Битрикс24 и связок", "price": 9700, "if_any": ["bx", "rn"], "unless_any": ["ai"]}, {"label": "Сопровождение сайта и админки", "price": 4900, "if_any": ["adm"]}], "services": [{"label": "Битрикс24, тариф «Стандартный»", "price": 6990, "if_any": ["bx"], "note": "До 50 сотрудников. При оплате за год 5 590 ₽"}, {"label": "Подписка Маркета Битрикс24", "price": 3000, "if_any": ["ai"], "note": "Маркет — магазин дополнений Битрикс24. Подписка нужна, чтобы подключить Wazzup. Новым клиентам сейчас скидка 50%"}, {"label": "Wazzup: WhatsApp и Instagram", "price": 6000, "if_any": ["ai"], "note": "Сервис, через который WhatsApp и Instagram с комментариями приходят в Битрикс24: 4 000 ₽ + 2 000 ₽"}, {"label": "Telegram и MAX", "price": 0, "if_any": ["ai_tg", "ai"], "note": "Подключаются к Битрикс24 бесплатно"}, {"label": "Сервис ответов на отзывы", "price": 1300, "from": true, "if_any": ["ai_rev"], "note": "Публикует ответы ИИ в Яндексе и 2ГИС"}, {"label": "Комиссия банка с онлайн-оплат", "price": 0, "text": "по тарифу банка", "if_any": ["ai_pay"], "note": "ЮKassa или ваш банк"}], "fixed_gifts": [{"name": "Юридический пакет", "value": 0}], "deal": null, "presets": {"rec": {"label": "Рекомендуем", "on": ["ai", "bx", "rn", "adm", "re"], "opts": ["ai_ig", "rn_vis", "ai_tg", "ai_web", "ai_pay", "ai_warm", "ai_back", "ai_rev", "ai_voice"]}, "std": {"label": "Стандарт", "on": ["ai", "bx", "rn", "adm", "re"], "opts": []}, "max": {"label": "Всё включено", "on": ["ai", "bx", "rn", "adm", "re"], "opts": "all"}, "core": {"label": "Только ИИ + Битрикс24", "on": ["ai", "bx", "rn"], "opts": []}}, "title": "Sano", "def": "rec", "order": ["ai", "bx", "rn", "adm", "re"]}</script>
 </div>
 <a class="floatsum" id="floatsum" href="#price" aria-label="Перейти к итогу"><span>Итого</span><b id="float-once">—</b><em id="float-month"></em><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
   <div class="label rv">Для сравнения</div>
@@ -1093,12 +1099,14 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
       list.push({id:id,name:s.getAttribute('data-name'),r:r});
     });
     /* summary list */
+    var gifts=(CFG.fixed_gifts||[]).filter(function(g){return !g.if_any||anyOn(g.if_any);});
+    var giftVal=gifts.reduce(function(a,g){return a+(g.value||0);},0);
     var sl=d.getElementById('sum-list');
     if(sl){
       sl.innerHTML=list.map(function(x){
         var p=!x.r.on?'<span class="p">Не выбрано</span>':x.r.gift?'<span class="p"><s>'+rub(x.r.full)+'</s>Подарок</span>':'<span class="p">'+rub(x.r.price)+'</span>';
         return '<a class="prow'+(x.r.on?'':' off')+(x.r.gift?' gift':'')+'" href="#'+(byId[x.id].closest('section').id)+'"><div><b>'+x.name+'</b><span>'+(x.r.on?(x.r.lines.length?'Стандарт и '+x.r.lines.length+' доп.':'Стандартная комплектация'):'Включите в разделе услуги')+'</span></div>'+p+'</a>';
-      }).join('')+(CFG.fixed_gifts||[]).map(function(g){return '<div class="prow gift"><div><b>'+g.name+'</b></div><div class="p">Подарок</div></div>';}).join('');
+      }).join('')+gifts.map(function(g){return '<div class="prow gift"><div><b>'+g.name+'</b>'+(g.note?'<span>'+g.note+'</span>':'')+'</div><div class="p">'+(g.value?'<s>'+rub(g.value)+'</s>':'')+(g.label||'Подарок')+'</div></div>';}).join('');
     }
     var mo=0,ml=[];
     (CFG.monthly||[]).forEach(function(m){if(anyOn(m.if_any)&&!anyOn(m.unless_any)){mo+=m.price;ml.push(m);}});
@@ -1121,7 +1129,12 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
     var cur=JSON.stringify(state());
     d.querySelectorAll('[data-preset]').forEach(function(b){b.classList.toggle('on',JSON.stringify(presetState(b.getAttribute('data-preset')))===cur);});
     if(save!==false){try{localStorage.setItem(KEY,cur);}catch(e){}}
-    render.last={once:once,mo:mo,sv:sv,from:from,list:list,ml:ml,svl:svl,saved:saved};
+    var dl=d.getElementById('sum-deal'),full=once+giftVal,plus=0;
+    if(dl&&CFG.deal){plus=full-CFG.deal.discount;
+      dl.innerHTML='<div class="prow"><div><b>Всего по стоимости</b><span>Выбранные услуги и то, что даём бесплатно</span></div><div class="p">'+rub(full)+'</div></div>'+
+        '<div class="prow"><div><b>'+CFG.deal.label+'</b><span>'+CFG.deal.note+'</span></div><div class="p">'+rub(CFG.deal.discount)+'</div></div>'+
+        (plus>0?'<div class="deal-plus"><small>Ваш плюс</small><div class="big">+ '+rub(plus)+'</div><p>'+CFG.deal.plus_text+'</p></div>':'');}
+    render.last={once:once,mo:mo,sv:sv,from:from,list:list,ml:ml,svl:svl,saved:saved,gifts:gifts,giftVal:giftVal,full:full,plus:plus};
   }
 
   function state(){
@@ -1178,7 +1191,9 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
       out.push('  стандарт '+rub(x.r.base));
       x.r.lines.forEach(function(l){out.push('  '+l);});
     });
+    L.gifts.forEach(function(g){if(g.value)out.push(g.name+': '+rub(g.value)+', бесплатно');});
     out.push('','Итого разово: '+rub(L.once));
+    if(CFG.deal){out.push('Всего по стоимости: '+rub(L.full));out.push(CFG.deal.label+': скидка '+rub(CFG.deal.discount));if(L.plus>0)out.push('Плюс: '+rub(L.plus));}
     if(L.mo)out.push('Каждый месяц нам: '+rub(L.mo));
     if(L.sv)out.push('Сервисам напрямую: '+(L.from?'≈ ':'')+rub(L.sv)+' в месяц');
     return out.join('\n');

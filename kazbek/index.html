@@ -435,6 +435,11 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
 .st{white-space:nowrap}
 .card .st{font-size:10.5px;letter-spacing:.06em}
 
+.deal-plus{margin-top:16px;border-radius:22px;padding:20px;background:linear-gradient(160deg,#2c2f34,#17181b);color:#eceef1}
+.deal-plus small{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#a4a9b0}
+.deal-plus .big{font-size:clamp(30px,8.5vw,40px);font-weight:300;letter-spacing:-.02em;color:#8fd0ad;margin-top:6px;line-height:1.1}
+.deal-plus p{font-size:14.5px;line-height:1.5;color:#b3b7bd;margin-top:6px}
+
 </style>
 </head>
 <body>
@@ -593,11 +598,12 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
 <div class="svc-sub">Стандартная комплектация · 29 700 ₽</div>
 <ul class="svc-std"><li>Структура и тексты, дизайн под вас</li><li>Удобная версия для телефона</li><li>Кто вы, операции, цены «от», где принимаете</li><li>Запись в WhatsApp с выбором клиники</li><li>Домен и хостинг</li></ul>
 <div class="svc-sub">В подарок</div>
-<ul class="svc-std gift"><li>Год сопровождения сайта: правки, хостинг, помощь (обычно 29 900 ₽ в год)</li><li>Админка: сами меняете цены, фото и тексты (обычно 14 900 ₽)</li><li>Юридический пакет для сайта</li></ul>
+<ul class="svc-std gift"><li>Юридический пакет для сайта</li></ul>
 <div class="svc-sub">Дополнительно, отметьте нужное</div>
 <label class="opt"><input type="checkbox" data-id="s_how" data-price="2300" data-name="Как проходит операция и «из другого города»"><span class="box" aria-hidden="true"></span><div><b>Как проходит операция и «из другого города»</b><span>Этапы, сроки, как добраться, КТ заранее</span></div><em>+2 300 ₽</em></label>
 <label class="opt"><input type="checkbox" data-id="s_rev" data-price="1400" data-name="Отзывы пациентов"><span class="box" aria-hidden="true"></span><div><b>Отзывы пациентов</b><span>Скриншоты и видео с разрешения пациентов</span></div><em>+1 400 ₽</em></label>
 <label class="opt"><input type="checkbox" data-id="s_form" data-price="1500" data-name="Заявка с сайта"><span class="box" aria-hidden="true"></span><div><b>Заявка с сайта</b><span>Форма, заявка вам в WhatsApp или MAX и в админку</span></div><em>+1 500 ₽</em></label>
+<p class="svc-note">Год сопровождения сайта (обычно 29 900 ₽) и админку (обычно 14 900 ₽) даём бесплатно, как договорились. Они видны в итоге.</p>
 </div></div>
   <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>04 / 14</span></div>
 </section>
@@ -665,8 +671,6 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
   <div class="eyebrow rv">К сайту</div>
   <h2 class="rv">Бонусы к сайту</h2>
   <div class="cards one rv">
-    <div class="card" style="display:grid;grid-template-columns:52px 1fr;gap:16px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></div><div><b>Год сопровождения сайта</b><span>Правки, хостинг, помощь и обновления целый год. Обычно 29 900 ₽ в год, для вас бесплатно</span></div></div>
-    <div class="card" style="display:grid;grid-template-columns:52px 1fr;gap:16px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-sliders"/></svg></div><div><b>Админка</b><span>Сами меняете цены, фото, отзывы и тексты без программиста. Обычно 14 900 ₽</span></div></div>
     <div class="card" style="display:grid;grid-template-columns:52px 1fr;gap:16px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-edit"/></svg></div><div><b>Оформление шапки Instagram</b><span>Описание, ссылка на сайт, обложки для актуального «Цены», «Отзывы», «Как проходит»</span></div></div>
     <div class="card" style="display:grid;grid-template-columns:52px 1fr;gap:16px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-pulse"/></svg></div><div><b>Порядок на ПроДокторов</b><span>Поможем подтвердить ваш профиль и добавить туда Sano</span></div></div>
     <div class="card" style="display:grid;grid-template-columns:52px 1fr;gap:16px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></div><div><b>Юридический пакет</b><span>Политика конфиденциальности, согласие на обработку данных и другие документы, чтобы не было проблем с Роскомнадзором</span></div></div>
@@ -755,10 +759,12 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
   <div class="eyebrow rv">Стоимость</div>
   <h2 class="rv">Сколько это стоит</h2>
   <p class="lead rv">Здесь собирается итог по всем услугам, которые вы отметили выше. Можно выбрать готовый набор или вернуться к любой услуге и поменять комплектацию. Все расходы видны заранее.</p>
+  <p class="note rv">Сопровождение вашего сайта на год по факту стоит 29 900 ₽, админка 14 900 ₽. Для вас они бесплатны, как мы договорились, поэтому в итоге ниже они идут отдельной строкой.</p>
   <div class="sumbox" id="sumbox">
   <div class="presets rv"><span>Быстрый выбор</span><button type="button" class="pill" data-preset="rec">Рекомендуем</button><button type="button" class="pill" data-preset="std">Сайт и автоответы</button><button type="button" class="pill" data-preset="max">Всё включено</button></div>
   <div class="sum-list rv" id="sum-list"></div>
-  <div class="ptotal rv"><small>Итого разово</small><div class="big" id="sum-once">—</div></div>
+  <div class="ptotal rv"><small>Стоимость выбранных услуг</small><div class="big" id="sum-once">—</div></div>
+  <div class="rv" id="sum-deal"></div>
   <div class="month rv" id="sum-month-box"><div class="row1"><b>Каждый месяц нам</b><div class="big" id="sum-month">—</div></div><div id="sum-month-list"></div></div>
   <div class="label rv">Каждый месяц сервисам напрямую</div>
   <div class="rv" id="sum-svc"></div>
@@ -766,10 +772,9 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
     <button class="btn ink" type="button" id="cfg-send"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Отправить выбор в WhatsApp</button>
     <button class="btn line" type="button" id="cfg-copy"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg>Скопировать расчёт</button>
   </div>
-  <script type="application/json" id="cfg-data">{"monthly": [], "services": [{"label": "Хостинг и домен", "price": 400, "approx": true, "if_any": ["site"]}, {"label": "Сервис автоответов в Instagram", "price": 1599, "from": true, "if_any": ["auto", "re"]}], "fixed_gifts": [], "presets": {"rec": {"label": "Рекомендуем", "on": ["site", "auto", "re"], "opts": ["s_how", "s_rev", "s_form"]}, "std": {"label": "Сайт и автоответы", "on": ["site", "auto"], "opts": []}, "max": {"label": "Всё включено", "on": ["site", "auto", "re"], "opts": "all"}}, "title": "Казбек", "def": "rec", "order": ["site", "auto", "re"]}</script>
+  <script type="application/json" id="cfg-data">{"monthly": [], "services": [{"label": "Хостинг и домен", "price": 400, "approx": true, "if_any": ["site"]}, {"label": "Сервис автоответов в Instagram", "price": 1599, "from": true, "if_any": ["auto", "re"]}], "fixed_gifts": [{"name": "Год сопровождения сайта", "note": "Правки, хостинг, помощь и обновления", "value": 29900, "label": "Бесплатно", "if_any": ["site"]}, {"name": "Админка", "note": "Сами меняете цены, фото, отзывы и тексты", "value": 14900, "label": "Бесплатно", "if_any": ["site"]}], "deal": {"discount": 40000, "label": "Оплата по договорённости", "note": "Скидка на септопластику: сеанс почти 60 000 ₽, для меня 20 000 ₽", "plus_text": "На столько больше вы получаете, чем отдаёте скидкой"}, "presets": {"rec": {"label": "Рекомендуем", "on": ["site", "auto", "re"], "opts": ["s_how", "s_rev", "s_form"]}, "std": {"label": "Сайт и автоответы", "on": ["site", "auto"], "opts": []}, "max": {"label": "Всё включено", "on": ["site", "auto", "re"], "opts": "all"}}, "title": "Казбек", "def": "rec", "order": ["site", "auto", "re"]}</script>
 </div>
 <a class="floatsum" id="floatsum" href="#price" aria-label="Перейти к итогу"><span>Итого</span><b id="float-once">—</b><em id="float-month"></em><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-  <p class="note rv">Год сопровождения сайта в подарок: правки, хостинг и помощь. Обычно это 29 900 ₽ в год.</p>
   <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>12 / 14</span></div>
 </section>
 
@@ -970,12 +975,14 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
       list.push({id:id,name:s.getAttribute('data-name'),r:r});
     });
     /* summary list */
+    var gifts=(CFG.fixed_gifts||[]).filter(function(g){return !g.if_any||anyOn(g.if_any);});
+    var giftVal=gifts.reduce(function(a,g){return a+(g.value||0);},0);
     var sl=d.getElementById('sum-list');
     if(sl){
       sl.innerHTML=list.map(function(x){
         var p=!x.r.on?'<span class="p">Не выбрано</span>':x.r.gift?'<span class="p"><s>'+rub(x.r.full)+'</s>Подарок</span>':'<span class="p">'+rub(x.r.price)+'</span>';
         return '<a class="prow'+(x.r.on?'':' off')+(x.r.gift?' gift':'')+'" href="#'+(byId[x.id].closest('section').id)+'"><div><b>'+x.name+'</b><span>'+(x.r.on?(x.r.lines.length?'Стандарт и '+x.r.lines.length+' доп.':'Стандартная комплектация'):'Включите в разделе услуги')+'</span></div>'+p+'</a>';
-      }).join('')+(CFG.fixed_gifts||[]).map(function(g){return '<div class="prow gift"><div><b>'+g.name+'</b></div><div class="p">Подарок</div></div>';}).join('');
+      }).join('')+gifts.map(function(g){return '<div class="prow gift"><div><b>'+g.name+'</b>'+(g.note?'<span>'+g.note+'</span>':'')+'</div><div class="p">'+(g.value?'<s>'+rub(g.value)+'</s>':'')+(g.label||'Подарок')+'</div></div>';}).join('');
     }
     var mo=0,ml=[];
     (CFG.monthly||[]).forEach(function(m){if(anyOn(m.if_any)&&!anyOn(m.unless_any)){mo+=m.price;ml.push(m);}});
@@ -998,7 +1005,12 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
     var cur=JSON.stringify(state());
     d.querySelectorAll('[data-preset]').forEach(function(b){b.classList.toggle('on',JSON.stringify(presetState(b.getAttribute('data-preset')))===cur);});
     if(save!==false){try{localStorage.setItem(KEY,cur);}catch(e){}}
-    render.last={once:once,mo:mo,sv:sv,from:from,list:list,ml:ml,svl:svl,saved:saved};
+    var dl=d.getElementById('sum-deal'),full=once+giftVal,plus=0;
+    if(dl&&CFG.deal){plus=full-CFG.deal.discount;
+      dl.innerHTML='<div class="prow"><div><b>Всего по стоимости</b><span>Выбранные услуги и то, что даём бесплатно</span></div><div class="p">'+rub(full)+'</div></div>'+
+        '<div class="prow"><div><b>'+CFG.deal.label+'</b><span>'+CFG.deal.note+'</span></div><div class="p">'+rub(CFG.deal.discount)+'</div></div>'+
+        (plus>0?'<div class="deal-plus"><small>Ваш плюс</small><div class="big">+ '+rub(plus)+'</div><p>'+CFG.deal.plus_text+'</p></div>':'');}
+    render.last={once:once,mo:mo,sv:sv,from:from,list:list,ml:ml,svl:svl,saved:saved,gifts:gifts,giftVal:giftVal,full:full,plus:plus};
   }
 
   function state(){
@@ -1055,7 +1067,9 @@ button.pill{background:transparent;font-family:var(--f);cursor:pointer}
       out.push('  стандарт '+rub(x.r.base));
       x.r.lines.forEach(function(l){out.push('  '+l);});
     });
+    L.gifts.forEach(function(g){if(g.value)out.push(g.name+': '+rub(g.value)+', бесплатно');});
     out.push('','Итого разово: '+rub(L.once));
+    if(CFG.deal){out.push('Всего по стоимости: '+rub(L.full));out.push(CFG.deal.label+': скидка '+rub(CFG.deal.discount));if(L.plus>0)out.push('Плюс: '+rub(L.plus));}
     if(L.mo)out.push('Каждый месяц нам: '+rub(L.mo));
     if(L.sv)out.push('Сервисам напрямую: '+(L.from?'≈ ':'')+rub(L.sv)+' в месяц');
     return out.join('\n');
