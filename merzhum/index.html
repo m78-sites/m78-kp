@@ -1,0 +1,1441 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#1d1f23">
+<title>М78 · Предложение для Merzhum</title>
+<meta name="description" content="Разбор запусков, бесплатная польза, запуск под ключ, бот, платформа уроков, ИИ-администратор и упаковка профиля для Merzhum">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..500&display=swap" rel="stylesheet">
+<script>document.documentElement.className+=' js';</script>
+<style>
+:root{
+  --page:#0d0e10;
+  --d-top:#2a2d32; --d-bot:#16171a; --d-text:#eceef1; --d-muted:#a4a9b0; --d-soft:#c3c7cc;
+  --d-line:rgba(255,255,255,.12); --d-tile:#2c2f34; --d-tile-b:rgba(255,255,255,.13); --d-card:rgba(255,255,255,.035);
+  --l-top:#e9ebee; --l-bot:#cdd0d5; --l-text:#1a1c1f; --l-muted:#5f646c; --l-soft:#41454c;
+  --l-line:#bcc0c6; --l-card:#e7e9ec; --l-card-b:#cbcfd4; --l-tile:#f4f5f7; --l-tile-b:#cdd1d6;
+  --ok:#3f7d5c; --ok-d:#7fc3a0; --warn:#9a6a1f; --warn-d:#e0b46a;
+  --r-card:22px; --r-tile:15px;
+  --f:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:64px}
+body{background:var(--page);font-family:var(--f);font-weight:300;font-optical-sizing:auto;color:var(--l-text);
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.5;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+svg{display:block}
+.ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  height:56px;padding:0 16px;background:rgba(20,21,24,.82);backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.08);color:var(--d-text);max-width:640px;margin:0 auto}
+.topbar .brand{display:flex;align-items:center;gap:12px;min-width:0}
+.topbar .brand svg{height:17px;width:auto;fill:#e7e9ec}
+.topbar .brand span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--d-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .tb-btns{display:flex;gap:8px;flex-shrink:0}
+.tb-btn{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.2);
+  font:400 12.5px/1 var(--f);letter-spacing:.08em;color:var(--d-text);background:transparent;cursor:pointer}
+.tb-btn.solid{background:#eceef1;color:#16171a;border-color:#eceef1}
+.tb-btn .ico{width:16px;height:16px}
+
+/* ---------- menu ---------- */
+.menu{position:fixed;inset:0;z-index:60;background:rgba(8,9,10,.6);opacity:0;pointer-events:none;transition:opacity .25s}
+.menu.open{opacity:1;pointer-events:auto}
+.menu-panel{position:absolute;left:0;right:0;top:0;max-width:640px;margin:0 auto;background:linear-gradient(180deg,var(--d-top),var(--d-bot));
+  color:var(--d-text);padding:18px 20px 26px;border-radius:0 0 26px 26px;transform:translateY(-16px);transition:transform .3s cubic-bezier(.2,.8,.2,1);
+  max-height:92vh;overflow:auto}
+.menu.open .menu-panel{transform:none}
+.menu-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.menu-head span{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--d-muted)}
+.menu a{display:flex;align-items:baseline;gap:14px;padding:13px 2px;border-top:1px solid var(--d-line);font-size:17px;font-weight:300}
+.menu a b{font-weight:400;font-size:12px;letter-spacing:.2em;color:var(--d-muted);min-width:26px}
+
+/* ---------- pages ---------- */
+.doc{max-width:640px;margin:0 auto}
+.pg{position:relative;padding:60px 24px 26px;overflow:hidden}
+.pg.dark{background:linear-gradient(180deg,var(--d-top) 0%,#1d1f23 55%,var(--d-bot) 100%);color:var(--d-text)}
+.pg.light{background:linear-gradient(180deg,var(--l-top) 0%,#dcdfe3 55%,var(--l-bot) 100%);color:var(--l-text)}
+@media (min-width:660px){
+  .doc{padding:18px 0 40px}
+  .pg{padding:72px 48px 30px;border-radius:30px;margin-bottom:18px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+}
+
+.eyebrow{display:flex;align-items:center;gap:14px;font-size:12px;font-weight:400;letter-spacing:.32em;text-transform:uppercase;margin-bottom:16px}
+.eyebrow::before{content:"";width:30px;height:1px;background:currentColor;opacity:.6}
+.dark .eyebrow{color:var(--d-muted)} .light .eyebrow{color:var(--l-muted)}
+.eyebrow.plain::before{display:none}
+
+h1,h2{font-weight:300;text-transform:uppercase;letter-spacing:-.012em;line-height:1.04}
+h1{font-size:clamp(33px,9.2vw,52px)}
+h2{font-size:clamp(29px,8.2vw,46px)}
+h3{font-weight:400;font-size:20px;line-height:1.25;letter-spacing:-.005em}
+.lead{font-size:17.5px;line-height:1.58;margin-top:16px}
+.dark .lead{color:var(--d-soft)} .light .lead{color:var(--l-soft)}
+p.txt{font-size:16px;line-height:1.6;margin-top:12px}
+.dark p.txt{color:var(--d-soft)} .light p.txt{color:var(--l-soft)}
+.muted{opacity:.75}
+.label{font-size:12px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;margin:38px 0 14px}
+.dark .label{color:var(--d-muted)} .light .label{color:var(--l-muted)}
+
+/* cover */
+.cover{padding-top:46px}
+.cover .mark{width:min(78%,430px);height:auto;fill:#e8eaed;margin:30px 0 26px}
+.cover .rule{width:110px;height:1px;background:rgba(255,255,255,.35);margin:0 0 28px}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+.meta div{border-top:1px solid var(--d-line);padding-top:12px}
+.meta small{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--d-muted);margin-bottom:6px}
+.meta b{font-weight:400;font-size:15.5px}
+
+/* pills */
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;font-size:11.5px;font-weight:400;letter-spacing:.17em;text-transform:uppercase;white-space:nowrap}
+.dark .pill{border:1px solid rgba(255,255,255,.22);color:#dfe2e6}
+.light .pill{border:1px solid var(--l-line);color:var(--l-soft)}
+.pill.on{background:#eceef1;color:#16171a;border-color:#eceef1}
+.light .pill.on{background:#1d1f23;color:#eceef1;border-color:#1d1f23}
+
+/* CTA */
+.cta{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:28px;padding:20px 22px;border-radius:24px;
+  background:linear-gradient(180deg,#f3f4f6,#d8dbdf);color:#17181b;font-size:16.5px;font-weight:400;line-height:1.35;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8);transition:transform .2s}
+.cta:active{transform:scale(.985)}
+.cta .ico{flex-shrink:0;width:22px;height:22px}
+.light .cta{background:linear-gradient(180deg,#2b2e33,#17181b);color:#eceef1;box-shadow:none}
+
+/* list rows */
+.list{margin-top:26px;border-bottom:1px solid var(--l-line)}
+.dark .list{border-color:var(--d-line)}
+.row{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:center;padding:15px 0;border-top:1px solid var(--l-line)}
+.dark .row{border-color:var(--d-line)}
+.row.top{align-items:start}
+.tile{width:52px;height:52px;border-radius:var(--r-tile);display:grid;place-items:center;flex-shrink:0}
+.light .tile{background:var(--l-tile);border:1px solid var(--l-tile-b);color:#2a2d31}
+.dark .tile{background:var(--d-tile);border:1px solid var(--d-tile-b);color:#dfe2e6}
+.row b{display:block;font-weight:400;font-size:18px;line-height:1.3}
+.row span{display:block;font-size:15px;line-height:1.45;margin-top:3px}
+.light .row span{color:var(--l-muted)} .dark .row span{color:var(--d-muted)}
+.row.plain{grid-template-columns:1fr}
+.row .num{font-size:30px;font-weight:300;line-height:1;letter-spacing:-.02em}
+
+/* cards */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.cards.one{grid-template-columns:1fr}
+.card{border-radius:var(--r-card);padding:20px 18px}
+.light .card{background:var(--l-card);border:1px solid var(--l-card-b)}
+.dark .card{background:var(--d-card);border:1px solid var(--d-line)}
+.card .ico{margin-bottom:16px}
+.card b{display:block;font-weight:400;font-size:17px;line-height:1.3}
+.card span{display:block;font-size:14.5px;line-height:1.45;margin-top:4px}
+.light .card span{color:var(--l-muted)} .dark .card span{color:var(--d-muted)}
+.card.wide{grid-column:1/-1}
+.card.ink{background:linear-gradient(160deg,#2c2f34,#17181b)!important;border:0!important;color:#eceef1;display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start;padding:22px 20px}
+.card.ink .tile{background:#33363b;border:1px solid rgba(255,255,255,.12);color:#e6e8eb}
+.card.ink .ico{margin:0}
+.card.ink span{color:#b3b7bd}
+.card.ink b{font-size:18px}
+.dark .card.ink{background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.1)!important}
+
+/* status chips */
+.st{display:inline-block;margin-top:10px;font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+.st.ok{color:var(--ok);background:rgba(63,125,92,.12)}
+.dark .st.ok{color:var(--ok-d);background:rgba(127,195,160,.12)}
+.st.draft{color:var(--warn);background:rgba(154,106,31,.12)}
+.dark .st.draft{color:var(--warn-d);background:rgba(224,180,106,.12)}
+.st.later{color:var(--l-muted);background:rgba(0,0,0,.06)}
+.dark .st.later{color:var(--d-muted);background:rgba(255,255,255,.07)}
+
+/* flow */
+.flow{margin-top:26px;position:relative}
+.step{position:relative;display:grid;grid-template-columns:44px 1fr;gap:16px;padding-bottom:22px}
+.step:last-child{padding-bottom:0}
+.step::before{content:"";position:absolute;left:21.5px;top:46px;bottom:2px;width:1px}
+.dark .step::before{background:var(--d-line)} .light .step::before{background:var(--l-line)}
+.step:last-child::before{display:none}
+.step i{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:14px;font-weight:400;letter-spacing:.06em}
+.dark .step i{border:1px solid rgba(255,255,255,.25);color:#e6e8eb}
+.light .step i{border:1px solid var(--l-line);background:var(--l-tile);color:#2a2d31}
+.step b{display:block;font-weight:400;font-size:18px;line-height:1.3;padding-top:10px}
+.step span{display:block;font-size:15px;line-height:1.5;margin-top:4px}
+.dark .step span{color:var(--d-muted)} .light .step span{color:var(--l-muted)}
+
+/* chat demo */
+.chat{margin-top:24px;border-radius:24px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.dark .chat{background:rgba(0,0,0,.25);border:1px solid var(--d-line)}
+.light .chat{background:#f1f2f4;border:1px solid var(--l-card-b)}
+.msg{max-width:86%;padding:11px 14px;border-radius:18px;font-size:15px;line-height:1.45;font-weight:300}
+.msg.in{align-self:flex-start;border-bottom-left-radius:6px}
+.dark .msg.in{background:#30333a;color:#e7e9ec} .light .msg.in{background:#fff;color:#1d1f22}
+.msg.out{align-self:flex-end;border-bottom-right-radius:6px}
+.dark .msg.out{background:#e6e8eb;color:#17181b} .light .msg.out{background:#24272c;color:#eceef1}
+.msg small{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:4px}
+.chat-cap{font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-align:center;margin-bottom:2px}
+.dark .chat-cap{color:var(--d-muted)} .light .chat-cap{color:var(--l-muted)}
+.btns{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-end;max-width:86%;justify-content:flex-end}
+.btns span{font-size:13px;padding:8px 12px;border-radius:12px;font-weight:400}
+.dark .btns span{border:1px solid rgba(255,255,255,.25);color:#e6e8eb} .light .btns span{border:1px solid #9da2a9;color:#26292d}
+
+/* accordion */
+.acc{margin-top:22px;border-bottom:1px solid var(--l-line)}
+.dark .acc{border-color:var(--d-line)}
+.acc details{border-top:1px solid var(--l-line)}
+.dark .acc details{border-color:var(--d-line)}
+.acc summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:17px 0;font-size:17.5px;font-weight:400;line-height:1.35}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary .pm{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;transition:transform .25s}
+.light .acc summary .pm{border:1px solid var(--l-line)} .dark .acc summary .pm{border:1px solid rgba(255,255,255,.22)}
+.acc summary .pm::before{content:"+";font-size:17px;line-height:1;font-weight:300}
+.acc details[open] summary .pm{transform:rotate(45deg)}
+.acc .ab{padding:0 0 18px;font-size:15.5px;line-height:1.6}
+.light .acc .ab{color:var(--l-soft)} .dark .acc .ab{color:var(--d-soft)}
+.acc .ab ul{padding-left:0;list-style:none}
+.acc .ab li{position:relative;padding-left:18px;margin:7px 0}
+.acc .ab li::before{content:"";position:absolute;left:2px;top:.72em;width:6px;height:1px;background:currentColor;opacity:.7}
+.acc .ab p+p,.acc .ab p+ul,.acc .ab ul+p{margin-top:10px}
+
+/* bullet list */
+.ul{list-style:none;margin-top:14px}
+.ul li{position:relative;padding:7px 0 7px 22px;font-size:16px;line-height:1.5}
+.ul li::before{content:"";position:absolute;left:2px;top:1.05em;width:9px;height:1px;background:currentColor;opacity:.7}
+.dark .ul li{color:var(--d-soft)} .light .ul li{color:var(--l-soft)}
+
+/* horizontal cards */
+.hs{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:22px -24px 0;padding:0 24px 8px;scrollbar-width:none}
+.hs::-webkit-scrollbar{display:none}
+.hs>.hc{scroll-snap-align:start;flex:0 0 84%;border-radius:var(--r-card);padding:22px 20px;display:flex;flex-direction:column}
+@media (min-width:660px){.hs{margin:22px -48px 0;padding:0 48px 8px}.hs>.hc{flex-basis:70%}}
+.dark .hc{background:rgba(255,255,255,.05);border:1px solid var(--d-line)}
+.light .hc{background:var(--l-card);border:1px solid var(--l-card-b)}
+.hc .n{font-size:12px;letter-spacing:.26em;text-transform:uppercase;opacity:.7}
+.hc h3{margin-top:10px}
+.hc p{font-size:15px;line-height:1.55;margin-top:10px}
+.dark .hc p{color:var(--d-soft)} .light .hc p{color:var(--l-soft)}
+.hc .kv{margin-top:14px;font-size:14px;line-height:1.5}
+.hc .kv div{padding:7px 0;border-top:1px solid rgba(127,127,127,.25)}
+.hc .kv em{font-style:normal;display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.65;margin-bottom:2px}
+.swipe{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.dark .swipe{color:var(--d-muted)} .light .swipe{color:var(--l-muted)}
+.swipe .ico{width:16px;height:16px}
+
+/* quote */
+.quote{margin-top:22px;border-radius:var(--r-card);padding:22px 20px}
+.dark .quote{background:rgba(255,255,255,.05);border:1px solid var(--d-line)}
+.light .quote{background:var(--l-card);border:1px solid var(--l-card-b)}
+.quote .ar{font-family:'Amiri','Noto Naskh Arabic','Times New Roman',serif;direction:rtl;text-align:right;font-size:21px;line-height:1.9;font-weight:400}
+.quote .ru{font-size:15.5px;line-height:1.6;margin-top:10px}
+.quote .src{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:12.5px;letter-spacing:.06em}
+.dark .quote .src,.dark .quote .ru{color:var(--d-soft)} .light .quote .src,.light .quote .ru{color:var(--l-soft)}
+.quote .src a{text-decoration:underline;text-underline-offset:3px}
+
+/* timeline */
+.tl{margin-top:24px}
+.tl-item{display:grid;grid-template-columns:92px 1fr;gap:14px;padding:16px 0;border-top:1px solid var(--d-line)}
+.light .tl-item{border-color:var(--l-line)}
+.tl-item:last-child{border-bottom:1px solid var(--d-line)}
+.light .tl-item:last-child{border-color:var(--l-line)}
+.tl-item .w{font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding-top:4px}
+.dark .tl-item .w{color:var(--d-muted)} .light .tl-item .w{color:var(--l-muted)}
+.tl-item b{display:block;font-weight:400;font-size:17.5px;line-height:1.3}
+.tl-item span{display:block;font-size:14.5px;line-height:1.5;margin-top:4px}
+.dark .tl-item span{color:var(--d-muted)} .light .tl-item span{color:var(--l-muted)}
+
+/* prices */
+.seg{display:flex;padding:4px;border-radius:999px;margin-top:24px;gap:4px}
+.light .seg{background:#d6d9de;border:1px solid var(--l-card-b)}
+.dark .seg{background:rgba(255,255,255,.06);border:1px solid var(--d-line)}
+.seg button{flex:1;height:44px;border:0;border-radius:999px;background:transparent;font:400 14px/1 var(--f);letter-spacing:.06em;cursor:pointer;color:inherit}
+.light .seg button.on{background:#1d1f23;color:#eceef1}
+.dark .seg button.on{background:#eceef1;color:#17181b}
+.pk{display:none} .pk.on{display:block}
+.prow{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:14px 0;border-top:1px solid var(--l-line)}
+.dark .prow{border-color:var(--d-line)}
+.prow b{font-weight:400;font-size:16.5px;line-height:1.35}
+.prow span{display:block;font-size:13.5px;line-height:1.45;margin-top:2px}
+.light .prow span{color:var(--l-muted)} .dark .prow span{color:var(--d-muted)}
+.prow .p{font-size:17px;font-weight:400;white-space:nowrap}
+.prow .p s{opacity:.55;font-weight:300;margin-right:6px}
+.prow.gift .p{font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.ptotal{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:20px 0 4px;border-top:1px solid currentColor}
+.ptotal small{font-size:12px;letter-spacing:.24em;text-transform:uppercase;opacity:.7}
+.ptotal .big{font-size:clamp(30px,8.5vw,42px);font-weight:300;letter-spacing:-.02em;line-height:1;white-space:nowrap}
+.month{margin-top:16px;border-radius:var(--r-card);padding:20px}
+.light .month{background:linear-gradient(160deg,#2c2f34,#17181b);color:#eceef1}
+.dark .month{background:rgba(255,255,255,.06);border:1px solid var(--d-line)}
+.month .row1{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.month .row1 b{font-weight:400;font-size:17px}
+.month .row1 .big{font-size:28px;font-weight:300;white-space:nowrap}
+.month p{font-size:14.5px;line-height:1.5;margin-top:8px;color:#b3b7bd}
+
+/* compare */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.cmp>div{border-radius:20px;padding:18px 16px}
+.light .cmp>div{background:var(--l-card);border:1px solid var(--l-card-b)}
+.dark .cmp>div{background:rgba(255,255,255,.05);border:1px solid var(--d-line)}
+.cmp small{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.7}
+.cmp .big{font-size:26px;font-weight:300;margin-top:8px;letter-spacing:-.01em;line-height:1.1}
+.cmp ul{list-style:none;margin-top:10px;font-size:14px;line-height:1.5}
+.cmp li{padding:3px 0}
+.cmp .hl{background:linear-gradient(160deg,#2c2f34,#17181b)!important;color:#eceef1;border:0!important}
+
+/* note */
+.note{margin-top:20px;font-size:14px;line-height:1.55;padding:14px 16px;border-radius:16px}
+.light .note{background:rgba(255,255,255,.45);border:1px solid var(--l-card-b);color:var(--l-soft)}
+.dark .note{background:rgba(255,255,255,.04);border:1px solid var(--d-line);color:var(--d-soft)}
+
+/* contacts */
+.contact{display:grid;grid-template-columns:52px 1fr 22px;gap:16px;align-items:center;padding:16px 18px;border-radius:24px;margin-top:12px;
+  background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.12);transition:background .2s}
+.contact:hover{background:rgba(255,255,255,.07)}
+.contact small{display:block;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--d-muted)}
+.contact b{display:block;font-weight:300;font-size:19px;margin-top:2px}
+.contact>.ico{color:var(--d-muted);width:20px;height:20px}
+
+/* form */
+.q{margin-top:14px;border-radius:20px;padding:16px}
+.light .q{background:var(--l-card);border:1px solid var(--l-card-b)}
+.q label{display:block;font-size:15.5px;font-weight:400;line-height:1.4}
+.q label i{font-style:normal;display:block;font-size:13.5px;font-weight:300;color:var(--l-muted);margin-top:3px}
+.q textarea{width:100%;margin-top:10px;min-height:76px;resize:vertical;border-radius:14px;border:1px solid var(--l-card-b);background:#f7f8f9;
+  padding:12px 13px;font:300 16px/1.45 var(--f);color:var(--l-text)}
+.q textarea:focus{outline:2px solid #2a2d32;outline-offset:1px}
+.q .ch{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.q .ch input{position:absolute;opacity:0;pointer-events:none}
+.q .ch label{display:inline-block;font-size:14px;font-weight:400;padding:9px 14px;border-radius:999px;border:1px solid #a7acb3;cursor:pointer;margin:0}
+.q .ch input:checked+label{background:#1d1f23;color:#eceef1;border-color:#1d1f23}
+.q .ch input:focus-visible+label{outline:2px solid #2a2d32;outline-offset:2px}
+.form-btns{display:grid;gap:10px;margin-top:20px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;height:56px;border-radius:18px;font:400 16px/1 var(--f);cursor:pointer;border:0}
+.btn.ink{background:linear-gradient(180deg,#2b2e33,#17181b);color:#eceef1}
+.btn.line{background:transparent;border:1px solid #9aa0a7;color:var(--l-text)}
+.btn .ico{width:19px;height:19px}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:#eceef1;color:#16171a;padding:12px 18px;border-radius:14px;
+  font-size:14.5px;font-weight:400;opacity:0;transition:.3s;z-index:80;pointer-events:none;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* footer of a page */
+.pgfoot{display:flex;justify-content:space-between;align-items:center;margin-top:52px;padding-top:18px;border-top:1px solid var(--l-line)}
+.dark .pgfoot{border-color:var(--d-line)}
+.pgfoot svg{height:19px;width:auto}
+.dark .pgfoot svg{fill:#e2e4e8} .light .pgfoot svg{fill:#26292d}
+.pgfoot span{font-size:12.5px;letter-spacing:.32em}
+.dark .pgfoot span{color:var(--d-muted)} .light .pgfoot span{color:var(--l-muted)}
+.endmark{width:min(64%,330px);height:auto;fill:#e2e4e8;margin-top:56px}
+
+/* reveal */
+@media (prefers-reduced-motion:no-preference){
+  .js .rv{opacity:0;transform:translateY(14px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+  .js .rv.in{opacity:1;transform:none}
+}
+@media (max-width:380px){
+  .pg{padding-left:18px;padding-right:18px}
+  .hs{margin-left:-18px;margin-right:-18px;padding-left:18px;padding-right:18px}
+  .cards{grid-template-columns:1fr}
+  .row{grid-template-columns:46px 1fr;gap:14px}.tile{width:46px;height:46px}
+  .topbar .brand span{display:none}
+}
+@media print{
+  .topbar,.menu,.toast{display:none!important}
+  body{background:#fff}
+  .pg{break-inside:avoid;border-radius:0;margin:0}
+  .rv{opacity:1!important;transform:none!important}
+}
+
+/* ---------- service configurator ---------- */
+.svc{margin-top:30px;border-radius:24px;overflow:hidden}
+.light .svc{background:#f2f3f5;border:1px solid var(--l-card-b)}
+.dark .svc{background:rgba(255,255,255,.045);border:1px solid var(--d-line)}
+.svc-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 18px 16px}
+.light .svc-head{background:linear-gradient(160deg,#2c2f34,#17181b);color:#eceef1}
+.dark .svc-head{background:linear-gradient(180deg,#f3f4f6,#d9dce0);color:#17181b}
+.svc-head small{display:block;font-size:11px;font-weight:400;letter-spacing:.24em;text-transform:uppercase;opacity:.7}
+.svc-total{display:block;font-weight:300;font-size:clamp(26px,7.4vw,32px);letter-spacing:-.02em;margin-top:4px;line-height:1.1}
+.svc-total s{font-size:17px;opacity:.55;margin-right:8px}
+.svc-total.bump{animation:bump .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes bump{40%{transform:scale(1.05)}}
+.sw{display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;flex-shrink:0}
+.sw input{position:absolute;opacity:0;pointer-events:none}
+.sw-ui{width:48px;height:28px;border-radius:999px;position:relative;transition:background .2s}
+.light .sw-ui{background:rgba(255,255,255,.22)} .dark .sw-ui{background:rgba(0,0,0,.18)}
+.sw-ui::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.light .sw-ui::after{background:#eceef1} .dark .sw-ui::after{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.sw input:checked+.sw-ui{background:#5fa17d}
+.sw input:checked+.sw-ui::after{transform:translateX(20px)}
+.sw input:focus-visible+.sw-ui{outline:2px solid currentColor;outline-offset:2px}
+.sw em{font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.svc.off .svc-body{opacity:.4}
+.svc.off .svc-total{opacity:.6}
+.svc-body{padding:2px 18px 18px;transition:opacity .25s}
+.svc-sub{font-size:11px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;margin:20px 0 6px}
+.light .svc-sub{color:var(--l-muted)} .dark .svc-sub{color:var(--d-muted)}
+.svc-std{list-style:none}
+.svc-std li{position:relative;padding:6px 0 6px 28px;font-size:15px;line-height:1.45}
+.light .svc-std li{color:var(--l-soft)} .dark .svc-std li{color:var(--d-soft)}
+.svc-std li::before{content:"";position:absolute;left:4px;top:.72em;width:12px;height:6px;border-left:1.7px solid currentColor;border-bottom:1.7px solid currentColor;transform:rotate(-45deg);opacity:.85}
+.svc-std.gift li::before{border-color:#5fa17d;opacity:1}
+.opt{position:relative;display:grid;grid-template-columns:26px 1fr auto;gap:12px;align-items:center;padding:13px 0;cursor:pointer;border-top:1px solid var(--l-line)}
+.dark .opt{border-color:var(--d-line)}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .box{width:24px;height:24px;border-radius:8px;display:grid;place-items:center;transition:background .15s,border-color .15s}
+.light .opt .box{border:1.5px solid #8f959c;background:#fff}
+.dark .opt .box{border:1.5px solid rgba(255,255,255,.4)}
+.opt .box::after{content:"";width:10px;height:5px;border-left:2px solid transparent;border-bottom:2px solid transparent;transform:rotate(-45deg) translate(1px,-1px)}
+.light .opt input:checked+.box{background:#1d1f23;border-color:#1d1f23}
+.light .opt input:checked+.box::after{border-color:#fff}
+.dark .opt input:checked+.box{background:#eceef1;border-color:#eceef1}
+.dark .opt input:checked+.box::after{border-color:#17181b}
+.opt input:focus-visible+.box{outline:2px solid currentColor;outline-offset:2px}
+.opt b{display:block;font-weight:400;font-size:15.5px;line-height:1.3}
+.opt span{display:block;font-size:13px;line-height:1.4;margin-top:2px}
+.light .opt span{color:var(--l-muted)} .dark .opt span{color:var(--d-muted)}
+.opt em{font-style:normal;font-size:14.5px;font-weight:400;white-space:nowrap}
+.opt.qty{grid-template-columns:1fr auto;cursor:default}
+.opt-p{display:block;font-style:normal;font-size:13px;margin-top:4px;opacity:.8}
+.step-ui{display:flex;align-items:center;gap:4px}
+.step-ui button{width:40px;height:40px;border-radius:12px;background:transparent;font:300 20px/1 var(--f);color:inherit;cursor:pointer}
+.light .step-ui button{border:1px solid #a3a8ae} .dark .step-ui button{border:1px solid rgba(255,255,255,.3)}
+.step-ui output{min-width:26px;text-align:center;font-size:17px;font-weight:400}
+.svc-note,.svc-warn,.svc-giftnote{font-size:13.5px;line-height:1.5;margin-top:14px;padding:12px 14px;border-radius:14px}
+.light .svc-note{background:#e3e5e8;color:var(--l-soft)} .dark .svc-note{background:rgba(255,255,255,.05);color:var(--d-soft)}
+.svc-warn{background:rgba(154,106,31,.12);color:var(--warn)} .dark .svc-warn{color:var(--warn-d);background:rgba(224,180,106,.1)}
+.svc-giftnote{background:rgba(63,125,92,.1);color:var(--ok)} .dark .svc-giftnote{color:var(--ok-d);background:rgba(127,195,160,.1)}
+
+/* summary */
+.presets{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:24px}
+.presets span{width:100%;font-size:11.5px;font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:var(--l-muted);margin-bottom:2px}
+button.pill{background:transparent;font-family:var(--f);cursor:pointer}
+.sum-list{margin-top:18px}
+.sum-list a.prow{color:inherit}
+.sum-list .prow.off b,.sum-list .prow.off .p{opacity:.45}
+.sum-list .prow .p small{display:block;text-align:right;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.6}
+.mrow{display:flex;justify-content:space-between;gap:12px;font-size:14px;line-height:1.45;color:#b3b7bd;margin-top:8px}
+.mrow b{font-weight:400;white-space:nowrap;color:#e3e5e8}
+#sum-svc .prow .p{font-size:15px}
+.floatsum{position:fixed;left:50%;bottom:14px;z-index:40;display:flex;align-items:center;gap:10px;padding:11px 14px 11px 18px;border-radius:999px;
+  background:rgba(23,24,27,.93);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#eceef1;box-shadow:0 12px 30px rgba(0,0,0,.35);
+  transform:translate(-50%,160%);transition:transform .35s cubic-bezier(.2,.8,.2,1);max-width:calc(100% - 24px);white-space:nowrap;border:1px solid rgba(255,255,255,.1)}
+.floatsum.show{transform:translate(-50%,0)}
+.floatsum span{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--d-muted)}
+.floatsum b{font-weight:400;font-size:17px}
+.floatsum em{font-style:normal;font-size:13px;color:var(--d-muted)}
+.floatsum .ico{width:18px;height:18px}
+@media print{.floatsum{display:none!important}.svc.off{display:none}}
+
+@media (max-width:400px){.floatsum span{display:none}.floatsum em{font-size:12px}.floatsum{gap:8px;padding:10px 12px 10px 16px}}
+.txt .st{margin:0 4px 6px 0;vertical-align:middle}
+
+.legend{display:grid;gap:10px;margin-top:20px;font-size:14.5px;line-height:1.4}
+.legend div{display:flex;align-items:center;gap:12px}
+.legend .st{margin:0;min-width:104px;text-align:center;flex-shrink:0}
+.light .legend span:last-child{color:var(--l-soft)} .dark .legend span:last-child{color:var(--d-soft)}
+
+.st{white-space:nowrap}
+.card .st{font-size:10.5px;letter-spacing:.06em}
+
+.deal-plus{margin-top:16px;border-radius:22px;padding:20px;background:linear-gradient(160deg,#2c2f34,#17181b);color:#eceef1}
+.deal-plus small{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#a4a9b0}
+.deal-plus .big{font-size:clamp(30px,8.5vw,40px);font-weight:300;letter-spacing:-.02em;color:#8fd0ad;margin-top:6px;line-height:1.1}
+.deal-plus p{font-size:14.5px;line-height:1.5;color:#b3b7bd;margin-top:6px}
+
+/* ---------- ShamEl: copy boxes ---------- */
+.copybox{margin-top:14px;border-radius:20px;padding:16px 16px 14px}
+.dark .copybox{background:rgba(255,255,255,.05);border:1px solid var(--d-line)}
+.light .copybox{background:var(--l-card);border:1px solid var(--l-card-b)}
+.copybox .cb-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.copybox .cb-head b{font-weight:400;font-size:17px;line-height:1.3}
+.copybox .cb-head small{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.65;margin-bottom:3px}
+.copybox .cb-text{white-space:pre-wrap;word-break:break-word;font:300 15px/1.55 var(--f);margin-top:12px;padding:12px 14px;border-radius:14px}
+.dark .copybox .cb-text{background:rgba(0,0,0,.28);color:#e6e8eb}
+.light .copybox .cb-text{background:#f6f7f8;color:#1d1f22}
+.copybox .cb-text.url{font-size:13px;line-height:1.45}
+.copybox .cb-note{font-size:14px;line-height:1.5;margin-top:10px}
+.dark .copybox .cb-note{color:var(--d-muted)} .light .copybox .cb-note{color:var(--l-muted)}
+.copy-btn{display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 14px;border-radius:999px;font:400 13px/1 var(--f);letter-spacing:.04em;cursor:pointer;flex-shrink:0;background:transparent}
+.dark .copy-btn{border:1px solid rgba(255,255,255,.28);color:#e6e8eb}
+.light .copy-btn{border:1px solid #9aa0a7;color:#26292d}
+.copy-btn .ico{width:15px;height:15px}
+.copy-btn.done{background:#5fa17d;border-color:#5fa17d;color:#fff}
+.copybox .cb-or{font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-top:14px;opacity:.6}
+
+/* ---------- ShamEl: loss calculator ---------- */
+.lossbox{margin-top:24px;border-radius:24px;padding:18px;background:#f2f3f5;border:1px solid var(--l-card-b)}
+.loss-row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 0;border-top:1px solid var(--l-line)}
+.loss-row:first-child{border-top:0;padding-top:2px}
+.loss-row b{display:block;font-weight:400;font-size:16px;line-height:1.3}
+.loss-row span{display:block;font-size:13.5px;color:var(--l-muted);margin-top:2px}
+.loss-row .step-ui output{min-width:74px;font-size:16px}
+.loss-out{margin-top:14px;border-radius:20px;padding:18px 20px;background:linear-gradient(160deg,#2c2f34,#17181b);color:#eceef1}
+.loss-out small{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#a4a9b0}
+.loss-out .big{font-size:clamp(32px,9vw,44px);font-weight:300;letter-spacing:-.02em;line-height:1.1;margin-top:6px}
+.loss-out p{font-size:14px;line-height:1.5;color:#b3b7bd;margin-top:6px}
+
+/* ---------- ShamEl: product card mock ---------- */
+.pcard{margin-top:24px;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1fr}
+.dark .pcard{background:#f4f5f7;color:#17181b}
+.light .pcard{background:#fff;border:1px solid var(--l-card-b);color:#17181b}
+.pcard-cap{font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-align:center;margin-top:24px}
+.dark .pcard-cap{color:var(--d-muted)} .light .pcard-cap{color:var(--l-muted)}
+.pcard-cap+.pcard{margin-top:10px}
+.pimg{aspect-ratio:5/4;background:
+  radial-gradient(120% 80% at 50% 105%,rgba(255,255,255,.18),transparent 60%),
+  linear-gradient(160deg,#3a2f35 0%,#1d1a1c 60%,#120f11 100%);
+  position:relative;display:flex;align-items:flex-end;padding:14px}
+.pimg .tag{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#f1e7ec;background:rgba(0,0,0,.35);padding:6px 10px;border-radius:999px}
+.pimg .sil{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:34%;height:86%;
+  background:linear-gradient(180deg,#5a4650,#2b2227);border-radius:46% 46% 8% 8%/22% 22% 6% 6%;opacity:.9}
+.pimg .sil::before{content:"";position:absolute;left:50%;top:-12%;transform:translateX(-50%);width:40%;height:22%;border-radius:50% 50% 44% 44%;background:#4a3a42}
+.pbody{padding:16px 16px 18px}
+.pbody .pn{font-size:16.5px;font-weight:400;line-height:1.3}
+.pbody .pp{font-size:22px;font-weight:400;margin-top:6px}
+.pbody .ps{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6a6f77;margin-top:14px}
+.sizes{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.sizes span{min-width:42px;height:36px;display:grid;place-items:center;border-radius:10px;border:1px solid #c3c7cd;font-size:14px}
+.sizes span.on{background:#17181b;color:#fff;border-color:#17181b}
+.sizes span.no{opacity:.35;text-decoration:line-through}
+.pbtns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.pbtns span{height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:400}
+.pbtns span:first-child{background:#17181b;color:#fff}
+.pbtns span:last-child{border:1px solid #9aa0a7}
+.pbtns .ico{width:17px;height:17px}
+.pmeta{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:13px;color:#5f646c}
+.pmeta span{display:flex;align-items:center;gap:6px}
+.pmeta .ico{width:15px;height:15px}
+
+/* ---------- small helpers ---------- */
+.chat .msg.late{opacity:.9}
+.msg .meta-n{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.55;margin-top:6px}
+.num-row{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;padding:16px 0;border-top:1px solid var(--d-line)}
+.light .num-row{border-color:var(--l-line)}
+.num-row:last-child{border-bottom:1px solid var(--d-line)}
+.light .num-row:last-child{border-color:var(--l-line)}
+.num-row i{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:14px;letter-spacing:.06em}
+.dark .num-row i{border:1px solid rgba(255,255,255,.25);color:#e6e8eb}
+.light .num-row i{border:1px solid var(--l-line);background:var(--l-tile);color:#2a2d31}
+.num-row b{display:block;font-weight:400;font-size:18px;line-height:1.3;padding-top:2px}
+.num-row span{display:block;font-size:15px;line-height:1.55;margin-top:5px}
+.dark .num-row span{color:var(--d-soft)} .light .num-row span{color:var(--l-soft)}
+.num-row em{display:block;font-style:normal;font-size:13px;line-height:1.5;margin-top:8px;padding:9px 12px;border-radius:12px}
+.dark .num-row em{background:rgba(224,180,106,.1);color:var(--warn-d)}
+.light .num-row em{background:rgba(154,106,31,.1);color:var(--warn)}
+
+/* ---------- mobile fixes ---------- */
+h1,h2,h3{overflow-wrap:break-word}
+.cover h1{font-size:clamp(24px,7.5vw,46px)}
+.tl-item{grid-template-columns:104px 1fr;column-gap:14px}
+.tl-item .w{white-space:nowrap}
+.copybox .cb-head{flex-wrap:wrap;row-gap:10px}
+.copy-btn,.pbtns span,.contact b,.month .row1 .big{white-space:nowrap}
+.month .row1{flex-wrap:wrap;row-gap:4px}
+.cmp .big{font-size:22px}
+@media (max-width:360px){
+  .cmp{grid-template-columns:1fr}
+  .contact b{font-size:16.5px}
+  .cover .meta{grid-template-columns:1fr}
+}
+@media (max-width:480px){.cmp{grid-template-columns:1fr}}
+
+.month .mrow.split span{color:#c9ccd1}
+.month .mrow.split b{color:#9fd5b6}
+.month .mrow.split.first{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.14)}
+
+
+/* ---------- merzhum ---------- */
+.pimg.lesson{background:radial-gradient(120% 80% at 50% 105%,rgba(255,255,255,.16),transparent 60%),
+  linear-gradient(160deg,#4a3526 0%,#24190f 60%,#140e09 100%)}
+.pimg .play{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:68px;height:68px;border-radius:50%;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);display:grid;place-items:center}
+.pimg .play .ico{width:30px;height:30px;color:#f3ece6}
+.pcard .sizes span{padding:0 12px}
+.pcard .pp{font-size:17px;color:#5f646c}
+.fn{font-size:12px;line-height:1.55;margin-top:30px}
+.dark .fn{color:var(--d-muted)} .light .fn{color:var(--l-muted)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="m78" viewBox="40 -700 1708 720"><path transform="translate(0 0)" d="M796 0L796 -26C727 -26 716 -26 716 -71L716 -612C716 -657 727 -657 796 -657L796 -683L669 -683C648 -683 647 -682 641 -667L425 -81L209 -667C203 -682 202 -683 181 -683L53 -683L53 -657C122 -657 133 -657 133 -612L133 -98C133 -73 133 -26 53 -26L53 0C76 -2 118 -2 143 -2C168 -2 210 -2 233 0L233 -26C153 -26 153 -73 153 -98L153 -653L154 -653L389 -16C393 -6 395 0 403 0C411 0 413 -6 417 -16L654 -658L655 -658L655 -71C655 -26 644 -26 575 -26L575 0C602 -2 656 -2 685 -2C714 -2 769 -2 796 0Z"/><path transform="translate(850 0)" d="M451 -623L451 -645L216 -645C99 -645 97 -658 93 -677L75 -677L46 -490L64 -490C67 -509 74 -560 86 -579C92 -587 166 -587 183 -587L403 -587L292 -422C218 -311 167 -161 167 -30C167 -18 167 16 203 16C239 16 239 -18 239 -31L239 -77C239 -241 267 -349 313 -418L451 -623Z"/><path transform="translate(1309 0)" d="M425 -163C425 -254 364 -296 324 -323C310 -333 302 -338 272 -360C335 -392 399 -440 399 -517C399 -608 311 -661 230 -661C139 -661 59 -595 59 -504C59 -479 65 -436 104 -398C114 -388 156 -358 183 -339C138 -316 33 -261 33 -151C33 -48 131 16 228 16C335 16 425 -61 425 -163ZM365 -517C365 -424 261 -371 256 -371C256 -371 254 -371 246 -377L141 -448C133 -453 93 -484 93 -531C93 -592 156 -638 228 -638C307 -638 365 -582 365 -517ZM388 -138C388 -64 314 -8 230 -8C139 -8 70 -73 70 -152C70 -231 131 -297 200 -328L325 -243C340 -232 388 -199 388 -138Z"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h3"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+<symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></symbol>
+<symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4-6"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 21h18M6 17v-4M11 17V8M16 17v-6M21 17V5"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3l-5.6 2.9 1.1-6.2L3 9.6l6.2-.9z"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></symbol>
+
+<symbol id="i-wa" viewBox="0 0 24 24"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9.2 8.6c-.1 3.3 2.9 6.3 6.2 6.2l.9-1.4-1.9-1-1 1c-1.2-.5-2.2-1.5-2.7-2.7l1-1-1-1.9z"/></symbol>
+<symbol id="i-tg" viewBox="0 0 24 24"><path d="M21.5 4 2.5 11.3l6.6 2.4L18 7.5l-6.7 7.6 7.4 5.4z"/></symbol>
+<symbol id="i-max" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2-5.7A8.4 8.4 0 1 1 21 11.5z"/><path d="M8.5 14.5v-5l3.5 3.5 3.5-3.5v5"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-filter" viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54z"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></symbol>
+<symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+<symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l4 2"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M11 3l1.8 5.2L18 10l-5.2 1.8L11 17l-1.8-5.2L4 10l5.2-1.8z"/><path d="M19 14l.8 2.2 2.2.8-2.2.8L19 20l-.8-2.2-2.2-.8 2.2-.8z"/></symbol>
+<symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+<symbol id="i-mega" viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h3l5 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M16 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></symbol>
+<symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="8" rx="2"/><rect x="3" y="13" width="18" height="8" rx="2"/><path d="M7 7h.01M7 17h.01M11 7h6M11 17h6"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M4 16V5a2 2 0 0 1 2-2h11"/></symbol>
+<symbol id="i-wallet" viewBox="0 0 24 24"><path d="M20 7H5a2 2 0 0 1 0-4h13v4"/><path d="M3 5v14a2 2 0 0 0 2 2h15V7"/><path d="M16 14h.01"/></symbol>
+<symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+<symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></symbol>
+<symbol id="i-video" viewBox="0 0 24 24"><path d="m16 13 5.2 3.1a.5.5 0 0 0 .8-.4V8.3a.5.5 0 0 0-.8-.4L16 11"/><rect x="2" y="6" width="14" height="12" rx="2"/></symbol>
+<symbol id="i-pulse" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+<symbol id="i-bag" viewBox="0 0 24 24"><path d="M5.5 7.5h13l-1 13.5h-11z"/><path d="M9 7.5a3 3 0 0 1 6 0"/></symbol><symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 6h11.5v10H2.5zM14 9.5h4l3 3.2V16h-7"/><circle cx="6.5" cy="17.5" r="2"/><circle cx="17" cy="17.5" r="2"/></symbol><symbol id="i-ruler" viewBox="0 0 24 24"><rect x="2" y="7.5" width="20" height="9" rx="1.5"/><path d="M6 7.5v4M10 7.5v3M14 7.5v4M18 7.5v3"/></symbol><symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></symbol></defs></svg>
+
+<header class="topbar">
+  <a class="brand" href="#top" aria-label="В начало"><svg class="" viewBox="0 0 1708 720" role="img" aria-label="M78"><use href="#m78"/></svg><span>Предложение для Merzhum</span></a>
+  <div class="tb-btns">
+    <a class="tb-btn" href="https://wa.me/79289217878" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Написать</a>
+    <button class="tb-btn solid" type="button" data-menu-open aria-label="Содержание"><svg class="ico" aria-hidden="true"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu-panel" aria-label="Содержание">
+    <div class="menu-head"><span>Содержание</span><button class="tb-btn" type="button" data-menu-close aria-label="Закрыть"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+    <a href="#seen"><b>01</b>Что мы увидели</a>
+    <a href="#leaks"><b>02</b>8 мест, где теряются ученицы</a>
+    <a href="#loss"><b>03</b>Сколько может приносить запуск</a>
+    <a href="#free"><b>04</b>Бесплатно, уже сегодня</a>
+    <a href="#how"><b>05</b>Как пройдёт запуск и сроки</a>
+    <a href="#launch"><b>06</b>Запуск под ключ</a>
+    <a href="#bot"><b>07</b>Бот: от урока до оплаты</a>
+    <a href="#app"><b>08</b>Своя платформа уроков</a>
+    <a href="#ladder"><b>09</b>Как продавать Базу дальше</a>
+    <a href="#ai"><b>10</b>ИИ-администратор</a>
+    <a href="#auto"><b>11</b>Или автоответы</a>
+    <a href="#insta"><b>12</b>Упаковка профиля</a>
+    <a href="#price"><b>13</b>Стоимость</a>
+    <a href="#pay"><b>14</b>Как устроена оплата</a>
+    <a href="#terms"><b>15</b>Гарантии и условия</a>
+    <a href="#next"><b>16</b>Следующий шаг</a>
+  </nav>
+</div>
+
+<main class="doc" id="top">
+
+<!-- cover -->
+<section class="pg dark cover">
+  <div class="eyebrow plain rv">Коммерческое предложение · ноябрь 2026</div>
+  <svg class="mark rv" viewBox="0 0 1708 720" role="img" aria-label="M78"><use href="#m78"/></svg>
+  <div class="rule rv"></div>
+  <h1 class="rv">Система запусков для&nbsp;обучения Merzhum</h1>
+  <p class="lead rv">Мы разобрали ваш Instagram* за два года: все рилсы, комментарии и прошлые запуски обучения. Здесь честный разбор: где сейчас теряются ученицы, что можно сделать бесплатно уже сегодня и как построить запуски так, чтобы База продавалась и в запуск, и каждый день между ними. Цена считается прямо в каждой услуге: отмечайте нужное, итог соберётся в конце.</p>
+  <div class="pills rv">
+    <span class="pill">Разбор</span><span class="pill">Бесплатно</span><span class="pill">Запуск</span><span class="pill">Бот</span><span class="pill">Платформа уроков</span><span class="pill">ИИ-администратор</span><span class="pill">Профиль</span>
+  </div>
+  <div class="meta rv">
+    <div><small>Для</small><b>Merzhum, кондитерская и онлайн-обучение</b></div>
+    <div><small>От</small><b>Студия М78, Лабазан</b></div>
+  </div>
+  <a class="cta rv" href="#seen">Смотреть разбор <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>01 / 17</span></div>
+</section>
+
+<!-- seen -->
+<section class="pg light" id="seen">
+  <div class="eyebrow rv">Разбор</div>
+  <h2 class="rv">Что мы увидели</h2>
+  <p class="lead rv">Продукт сильный: 10 лет в десертах, свои авторские рецепты, ученицы из разных стран. Ученицы теряются не на шаге «хочу», а на шаге «как вступить и почему сейчас».</p>
+  <div class="cards rv">
+    <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg><b>31,3 тысячи</b><span>подписчиков в Instagram*</span></div>
+    <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-play"/></svg><b>529 тысяч</b><span>просмотров у лучшего ролика, у второго 248 тысяч</span></div>
+    <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg><b>Около 1 250</b><span>комментариев с кодовыми словами в сентябрьском запуске</span></div>
+    <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg><b>7 стран</b><span>ученицы из Франции, Австрии, Австралии, Германии, Туркменистана, Казахстана и России</span></div>
+  </div>
+  <div class="list rv">
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></div><div><b>Спрос есть</b><span>Под каждым продающим роликом сотни комментариев со словом и вопросы «цена?»</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-route"/></svg></div><div><b>Прогрева нет</b><span>Между роликом и оплатой нет ни одного шага, где человек узнаёт вас, видит учениц и перестаёт бояться</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg></div><div><b>Обучение держится на одном телефоне</b><span>Старая база пропала вместе с ним, и ученицы до сих пор спрашивают о ней в комментариях</span></div></div>
+  </div>
+  <div class="card ink rv" style="margin-top:22px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg></div><div><b>Главное</b><span>Учениц не нужно искать, они уже пишут. Нужна система: где их прогреть, как сразу ответить и где хранить уроки так, чтобы их нельзя было потерять. Это и предлагаем сделать.</span></div></div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>02 / 17</span></div>
+</section>
+
+<!-- leaks -->
+<section class="pg dark" id="leaks">
+  <div class="eyebrow rv">Где теряются</div>
+  <h2 class="rv">8 мест, где теряются ученицы</h2>
+  <p class="lead rv">Всё ниже мы проверили сами 24 ноября 2026: профиль, 174 рилса, подписи и комментарии к запускам с 2024 года, свежие сторис.</p>
+  <div class="rv" style="margin-top:22px">
+    <div class="num-row"><i>01</i><div><b>Старая база пропала вместе с телефоном</b><span>15 октября ученица спросила, будет ли пополняться база, которую она покупала. Ответ: старой базы больше нет и доступа тоже, всё стёрлось с телефона. Те, кто платил за бессрочный доступ, остались без уроков.</span><em>«Бессрочно» — главное обещание обучения. Такие вопросы в комментариях читают и новенькие</em></div></div>
+    <div class="num-row"><i>02</i><div><b>Прогрева нет</b><span>Каждый запуск устроен одинаково: ролик, кодовое слово, директ, потом WhatsApp. Канала, где за 2–3 недели человек узнаёт вас, видит учениц и снимает страхи, нет. А страхи у учениц были, хотя обучение стоит всего 20 000 ₽.</span><em>Без прогрева покупают только самые смелые. Остальные откладывают «на потом»</em></div></div>
+    <div class="num-row"><i>03</i><div><b>На «Цена?» не успевают отвечать</b><span>Под роликом 15 октября около 15 вопросов о цене и о том, как вступить. Ответ получили единицы, одной написали «вы не проверяете директ». Под декабрьскими роликами «+» и «Хочу» висят без ответа больше полугода. Под курсом корпусных цена стоит прямо в подписи, а её всё равно спрашивают.</span><em>Вопрос «цена?» задаёт тот, кто уже хочет купить</em></div></div>
+    <div class="num-row"><i>04</i><div><b>Три шага до оплаты</b><span>Комментарий, потом директ, потом WhatsApp, потому что директ виснет. На каждом переходе часть людей просто не доходит.</span></div></div>
+    <div class="num-row"><i>05</i><div><b>Шесть слов и много продуктов за месяц</b><span>В сентябре: НАПОЛЕОН, Рулет, Урок, База, Манго, Школа. Продукты: курс мишек, курс корпусных, рецепты по одному вкусу, набор Наполеонов, База со всем сразу, а потом отдельно курс по Наполеонам и предзапись на корпусные, хотя и то и другое уже есть в Базе.</span><em>Когда непонятно, что брать, человек откладывает</em></div></div>
+    <div class="num-row"><i>06</i><div><b>Результатов учениц не видно</b><span>Ученицы окупали обучение в разы и приходили из других стран, но в профиле нет ни одной их истории с цифрами. Единственный раздел актуального — прайс кондитерской. Контент про ваше обучение в Стамбуле и путь удалён ещё в ноябре 2025.</span></div></div>
+    <div class="num-row"><i>07</i><div><b>Самые большие охваты прошли мимо обучения</b><span>Ролики на 529 тысяч просмотров (март) и на 248 тысяч (май) не зовут ни на урок, ни в канал. Их смотрели кондитеры, то есть ваши будущие ученицы: в комментариях так и пишут, «батл между кондитерами».</span></div></div>
+    <div class="num-row"><i>08</i><div><b>Дедлайн двигается</b><span>15 октября: «решила продлить специальные условия ещё на 24 часа». В сторис 23 ноября: «со дня на день стоимость будет фиксирована», без даты.</span><em>Если дату сдвинули один раз, в следующий раз её будут ждать снова. А последние дни продаж обычно дают большую часть выручки запуска</em></div></div>
+  </div>
+  <div class="chat rv">
+    <div class="chat-cap">Рилс 15 октября, комментарии</div>
+    <div class="msg in">Цена?</div>
+    <div class="msg in">Цена ?</div>
+    <div class="msg in">Можно цену?</div>
+    <div class="msg in">Как вступить в базу?</div>
+    <div class="msg out"><small>merzhum</small>вы не проверяете директ</div>
+    <div class="msg in">Здравствуйте цена ?<span class="meta-n">неделю назад · без ответа</span></div>
+  </div>
+  <div class="chat rv">
+    <div class="chat-cap">Там же, ученица старой базы</div>
+    <div class="msg in">А как же старая база. Вы её уже не будете пополнять. Я когда её покупала, вы тоже говорили, что будете пополнять новыми уроками 😢</div>
+    <div class="msg out"><small>merzhum</small>старой базы у меня больше нет и доступа нет, всё с телефона стёрлось, в связи с чем я завела новую</div>
+  </div>
+  <div class="acc rv">
+    <details><summary>Как мы проверяли<span class="pm"></span></summary><div class="ab"><ul><li>Профиль: шапка, ссылка, раздел актуального</li><li>Все 174 рилса и их просмотры</li><li>Подписи и комментарии к публикациям за последний год и к запускам 2024–2025</li><li>Ответы под роликом 15 октября и свежие сторис</li></ul></div></details>
+  </div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>03 / 17</span></div>
+</section>
+
+<!-- loss -->
+<section class="pg light" id="loss">
+  <div class="eyebrow rv">Посчитаем</div>
+  <h2 class="rv">Сколько может приносить один запуск</h2>
+  <p class="lead rv">Точные цифры знаете только вы. Подставьте свои: сколько человек написали слово под роликами, сколько из них купили и по какой цене.</p>
+  <div class="lossbox rv" id="lossbox">
+    <div class="loss-row"><div><b>Написали кодовое слово</b><span>В сентябре примерно 600 человек</span></div><div class="step-ui"><button type="button" data-loss="n-" aria-label="Меньше">−</button><output id="loss-n">600</output><button type="button" data-loss="n+" aria-label="Больше">+</button></div></div>
+    <div class="loss-row"><div><b>Дошли до оплаты</b><span>Какая часть из них купила</span></div><div class="step-ui"><button type="button" data-loss="p-" aria-label="Меньше">−</button><output id="loss-p">5%</output><button type="button" data-loss="p+" aria-label="Больше">+</button></div></div>
+    <div class="loss-row"><div><b>Цена Базы</b><span>Сейчас 20 000 ₽</span></div><div class="step-ui"><button type="button" data-loss="c-" aria-label="Меньше">−</button><output id="loss-c">20 000 ₽</output><button type="button" data-loss="c+" aria-label="Больше">+</button></div></div>
+    <div class="loss-out"><small>Выручка одного запуска</small><div class="big" id="loss-out">600 000 ₽</div><p>Это <span id="loss-k">30</span> учениц. Каждый процент, который удалось довести до оплаты, даёт ещё <span id="loss-pp">120 000 ₽</span>. Пример расчёта, а не обещание</p></div>
+  </div>
+  <p class="note rv">Прогрев, быстрый ответ на «цена?» и личный дожим тех, кто оставил бронь, работают именно на этот процент. Поднять его с 2 до 5 значит получить в два с половиной раза больше с того же запуска, не набирая новых подписчиков.</p>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>04 / 17</span></div>
+</section>
+
+<!-- free -->
+<section class="pg dark" id="free">
+  <div class="eyebrow rv">Бесплатно</div>
+  <h2 class="rv">Что можно сделать уже сегодня</h2>
+  <p class="lead rv">Это дарим без условий. Даже если дальше работать не будем, это сбережёт уроки и вернёт часть учениц уже на этой неделе. Нажмите «Скопировать» и вставьте куда нужно.</p>
+
+  <div class="copybox rv">
+    <div class="cb-head"><div><small>01 · Канал и сторис</small><b>Пост для учениц старой базы</b></div><button class="copy-btn" type="button" data-copy="cp-old"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg>Скопировать</button></div>
+    <div class="cb-text" id="cp-old">Девочки, кто покупал мою старую базу.
+
+Вы знаете, что тот канал пропал вместе с телефоном. Мне правда очень жаль, что так вышло.
+
+Все, кто покупал старую базу, входят в новую бесплатно. Пришлите мне в WhatsApp скрин оплаты или напишите, когда покупали, и я добавлю вас.
+
+Новую базу я храню так, чтобы такое больше не повторилось.</div>
+    <p class="cb-note">Вы сами закрываете историю, о которой иначе будут спрашивать в комментариях. А довольные старые ученицы — это готовые отзывы к следующему запуску.</p>
+  </div>
+
+  <div class="copybox rv">
+    <div class="cb-head"><div><small>02 · Шапка профиля</small><b>Кто вы и чему учите</b></div><button class="copy-btn" type="button" data-copy="cp-bio"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg>Скопировать</button></div>
+    <div class="cb-text" id="cp-bio">Кондитерская в Грозном · 10 лет в десертах
+Училась в Турции и Франции
+Онлайн-база: 40+ уроков, ученицы в 7 странах
+Бесплатный урок ↓</div>
+    <p class="cb-note">Сейчас слово «обучение» стоит в шапке последним, а единственная ссылка ведёт в WhatsApp кондитерской. Второй ссылкой поставьте бесплатный урок или канал.</p>
+  </div>
+
+  <div class="copybox rv">
+    <div class="cb-head"><div><small>03 · Под роликами</small><b>Ответ на «Цена?»</b></div><button class="copy-btn" type="button" data-copy="cp-price"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg>Скопировать</button></div>
+    <div class="cb-text" id="cp-price">База стоит 20 000 ₽, внутри 40+ уроков, новые выходят раз в две недели. Программу и отзывы учениц отправила вам в директ 🤍</div>
+    <p class="cb-note">Цена, что внутри и куда идти дальше. Отвечать в течение часа, а не «проверьте директ».</p>
+  </div>
+
+  <div class="copybox rv">
+    <div class="cb-head"><div><small>04 · Сторис</small><b>Повышение цены с датой</b></div><button class="copy-btn" type="button" data-copy="cp-date"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg>Скопировать</button></div>
+    <div class="cb-text" id="cp-date">Цена Базы меняется [дата] в 23:59.
+До этого времени вход 20 000 ₽, потом [новая цена].
+Почему: [что добавили, например 5 новых уроков по тартам].
+Как вступить: напишите «База» в директ.</div>
+    <p class="cb-note">Вместо «со дня на день». Дату выбираете один раз и не сдвигаете, тогда ей верят и в следующий раз.</p>
+  </div>
+
+  <div class="label rv">И ещё три шага</div>
+  <div class="list rv">
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-db"/></svg></div><div><b>Сохраните уроки прямо сейчас</b><span>Скачайте все видео Базы на компьютер и в облако. Если канал снова пропадёт, уроки останутся у вас</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></div><div><b>Второй администратор канала</b><span>Добавьте в канал Базы второго администратора с другим номером, например близкого человека</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg></div><div><b>Одно слово на весь запуск</b><span>Выберите одно кодовое слово и один продукт на весь следующий запуск. «База» подойдёт</span></div></div>
+  </div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>05 / 17</span></div>
+</section>
+
+<!-- how -->
+<section class="pg light" id="how">
+  <div class="eyebrow rv">Схема</div>
+  <h2 class="rv">Как пройдёт следующий запуск</h2>
+  <p class="lead rv">Запуск — это не один ролик со словом, а несколько недель по плану. Так продают онлайн-обучение те, кто делает большие запуски даже на небольшую аудиторию. Сроки считаются с предоплаты и получения материалов.</p>
+  <div class="tl rv">
+    <div class="tl-item"><div class="w">Неделя 1–3</div><div><b>Фундамент</b><span>Уроки переезжают на свою платформу, канал оформлен, бот выдаёт бесплатный урок, профиль упакован, истории учениц собраны. Бесплатные шаги делаем в первые же дни</span></div></div>
+    <div class="tl-item"><div class="w">Неделя 3–4</div><div><b>Люди в канал</b><span>Рилсы для кондитеров с одним словом. По слову бот присылает бесплатный урок и зовёт в канал</span></div></div>
+    <div class="tl-item"><div class="w">Неделя 4–5</div><div><b>Прогрев</b><span>В канале каждый день: ваш путь, истории учениц с цифрами, закулисье рецептов, ответы на страхи «я новичок» и «не окупится»</span></div></div>
+    <div class="tl-item"><div class="w">Конец 5-й</div><div><b>Мастер-класс</b><span>Бесплатный урок вживую или в записи. Перед ним брони: «оставь бронь и получи место по первой цене»</span></div></div>
+    <div class="tl-item"><div class="w">Неделя 6</div><div><b>Открытые продажи</b><span>5–7 дней: что внутри, тарифы, ученицы, ответы на вопросы. Лично пишем каждой, кто оставил бронь</span></div></div>
+    <div class="tl-item"><div class="w">48 часов</div><div><b>Закрытие</b><span>Отдельные посты и эфир с ответами. Дата не двигается, после закрытия лист ожидания</span></div></div>
+    <div class="tl-item"><div class="w">Неделя 7</div><div><b>Отчёт и следующий шаг</b><span>Итоги по цифрам. Первые результаты учениц становятся контентом следующего запуска, а между запусками бот продаёт Базу каждый день</span></div></div>
+  </div>
+  <div class="label rv">Параллельно с фундаментом</div>
+  <div class="tl rv">
+    <div class="tl-item"><div class="w">Автоответы</div><div><b>Ответ на «цена?» под рилсами</b><span>Несколько дней, чтобы уже текущие ролики перестали терять людей</span></div></div>
+    <div class="tl-item"><div class="w">ИИ</div><div><b>ИИ-администратор, если выберете</b><span>2–3 недели и 14 дней тестового режима: ИИ пишет, вы одобряете</span></div></div>
+  </div>
+  <div class="card ink rv" style="margin-top:28px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-layers"/></svg></div><div><b>Четыре части любого запуска</b><span>Люди, прогрев, личные ответы тем, кто сомневается, и продажи между запусками. Сейчас у вас работает только первая часть, и то не каждый месяц.</span></div></div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>06 / 17</span></div>
+</section>
+
+<!-- launch -->
+<section class="pg dark" id="launch">
+  <div class="eyebrow rv">Запуск</div>
+  <h2 class="rv">Запуск под ключ</h2>
+  <p class="lead rv">Готовим и ведём с вами следующий запуск Базы от первого ролика до закрытия продаж. Вы снимаете уроки и рилсы, а что выложить и что написать, расписано на каждый день.</p>
+  <div class="list rv">
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg></div><div><b>Стратегия и тарифы</b><span>Бесплатный урок, База, клуб новинок, наставничество. Что за какую цену и в каком порядке предлагать</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-tg"/></svg></div><div><b>Telegram-канал</b><span>Название, описание, закреплённые посты «Кто я», «Ученицы», «Программа», «Как вступить»</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg></div><div><b>План на каждый день</b><span>Что выложить в канал, сторис и рилсы на все недели запуска</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-edit"/></svg></div><div><b>Тексты</b><span>Все посты прогрева, продаж и закрытия пишем мы. Вы правите под свой голос</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-video"/></svg></div><div><b>Рилсы и мастер-класс</b><span>Сценарии рилсов для новых людей и сценарий мастер-класса с предложением в конце</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></div><div><b>Дожим по броням</b><span>Сообщения каждой, кто оставил бронь, и ответы на частые сомнения</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></div><div><b>Цифры</b><span>После запуска отчёт: сколько пришло, сколько купили, где потеряли и что улучшить в следующий раз</span></div></div>
+  </div>
+
+  <div class="svc rv" data-svc="launch" data-base="59700" data-name="Запуск под ключ">
+  <div class="svc-head"><div><small>Стоимость услуги</small><b class="svc-total">59 700 ₽</b></div><label class="sw"><input type="checkbox" class="svc-on" checked><span class="sw-ui" aria-hidden="true"></span><em>В расчёте</em></label></div>
+  <div class="svc-body">
+  <div class="svc-sub">Стандартная комплектация · 59 700 ₽</div>
+  <ul class="svc-std"><li>Стратегия запуска, лестница продуктов и тарифы</li><li>Оформление Telegram-канала и закреплённые посты</li><li>План по дням на все недели запуска: канал, сторис, рилсы</li><li>Тексты постов прогрева, продаж и закрытия</li><li>10 сценариев рилсов для новых людей, без музыки</li><li>Сценарий мастер-класса и продающее предложение в конце</li><li>Сообщения для дожима по броням</li><li>Отчёт по цифрам и разбор после запуска</li></ul>
+  <div class="svc-sub">Дополнительно, отметьте нужное</div>
+  <label class="opt"><input type="checkbox" data-id="launch_reels" data-price="35000" data-name="Монтаж 10 рилсов"><span class="box" aria-hidden="true"></span><div><b>Монтаж 10 рилсов</b><span>По вашим съёмкам: плотный монтаж, крупные субтитры, звуки без музыки</span></div><em>+35 000 ₽</em></label>
+  <label class="opt"><input type="checkbox" data-id="launch_lead" data-price="19700" data-name="Ведение канала в запуск"><span class="box" aria-hidden="true"></span><div><b>Ведение канала в запуск</b><span>Публикуем посты по плану и отвечаем в комментариях канала</span></div><em>+19 700 ₽</em></label>
+  <label class="opt"><input type="checkbox" data-id="launch_ads" data-price="15000" data-name="Реклама в Telegram"><span class="box" aria-hidden="true"></span><div><b>Реклама в Telegram</b><span>Настройка и ведение кампании на кондитеров по России и СНГ. Бюджет рекламы оплачиваете напрямую</span></div><em>+15 000 ₽</em></label>
+  <label class="opt"><input type="checkbox" data-id="launch_club" data-price="7900" data-name="Запуск клуба новинок"><span class="box" aria-hidden="true"></span><div><b>Запуск клуба новинок</b><span>Схема подписки на новые уроки и тексты для действующих учениц</span></div><em>+7 900 ₽</em></label>
+  <p class="svc-note">Цена за один запуск, это примерно пять недель работы. Следующие запуски дешевле: стратегия, канал и тексты уже есть, их только обновляем.</p>
+  <div class="acc"><details><summary>Почему такая цена<span class="pm"></span></summary><div class="ab"><p>Это работа маркетолога и копирайтера на пять недель: стратегия, около сорока текстов, сценарии рилсов и мастер-класса, план на каждый день и дожим. Продюсеры запусков часто берут процент от выручки. Мы берём фиксированную сумму, чтобы вы заранее знали все расходы.</p></div></details>
+  <details><summary>Нужно ли показывать лицо<span class="pm"></span></summary><div class="ab"><p>Нет. Голос и руки в кадре, как в ваших рилсах, работают отлично. Мастер-класс можно провести голосом поверх процесса приготовления.</p></div></details></div>
+  </div></div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>07 / 17</span></div>
+</section>
+
+<!-- bot -->
+<section class="pg light" id="bot">
+  <div class="eyebrow rv">Telegram-бот</div>
+  <h2 class="rv">Бот: от бесплатного урока до&nbsp;оплаты</h2>
+  <p class="lead rv">Один путь вместо «комментарий, директ, WhatsApp». Человек пишет слово под роликом, получает ссылку и через минуту смотрит ваш бесплатный урок, а дальше бот сам ведёт его до оплаты.</p>
+  <div class="chat rv">
+    <div class="chat-cap">Telegram-бот Merzhum</div>
+    <div class="msg out">Здравствуйте! Вот ваш бесплатный урок: корпусный манго без ошибок 🎥</div>
+    <div class="msg out">Чтобы не пропустить разбор ошибок и мастер-класс, подпишитесь на мой канал 👇</div>
+    <div class="btns"><span>Смотреть урок</span><span>Канал</span><span>Задать вопрос</span></div>
+    <div class="chat-cap" style="margin-top:8px">Через два дня</div>
+    <div class="msg out">Получилось приготовить? Пришлите фото, я посмотрю 🤍</div>
+    <div class="chat-cap" style="margin-top:8px">В день открытия продаж</div>
+    <div class="msg out">Вы оставляли бронь. Открыла вход в Базу: 40+ уроков, новые каждые две недели. Цена для броней действует до пятницы, 23:59</div>
+    <div class="btns"><span>Вступить</span><span>Программа</span><span>Вопрос</span></div>
+  </div>
+  <div class="list rv">
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-gift"/></svg></div><div><b>Бесплатный урок по слову</b><span>Одно слово на весь запуск. Урок приходит сразу, днём и ночью</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-tg"/></svg></div><div><b>Подписка на канал</b><span>После урока бот зовёт в канал, где идёт прогрев</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg></div><div><b>Брони и напоминания</b><span>Собирает брони на мастер-класс и напоминает за день и за час</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg></div><div><b>Доступ сразу после оплаты</b><span>Ученица оплатила и тут же получила вход к урокам, без переписки и «скиньте чек»</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-db"/></svg></div><div><b>Список учениц у вас</b><span>Кто взял урок, кто оставил бронь, кто оплатил. Не в памяти телефона, а в таблице</span></div></div>
+  </div>
+
+  <div class="svc rv" data-svc="bot" data-base="39700" data-name="Telegram-бот Merzhum">
+  <div class="svc-head"><div><small>Стоимость услуги</small><b class="svc-total">39 700 ₽</b></div><label class="sw"><input type="checkbox" class="svc-on" checked><span class="sw-ui" aria-hidden="true"></span><em>В расчёте</em></label></div>
+  <div class="svc-body">
+  <div class="svc-sub">Стандартная комплектация · 39 700 ₽</div>
+  <ul class="svc-std"><li>Бесплатный урок по кодовому слову</li><li>Приглашение в канал и проверка подписки</li><li>Брони на мастер-класс и напоминания</li><li>Доступ к урокам сразу после оплаты</li><li>Кнопки «Вступить», «Программа», «Вопрос»</li><li>Список учениц, броней и оплат в таблице</li><li>Бот оформлен на ваш Telegram</li></ul>
+  <div class="svc-sub">Дополнительно, отметьте нужное</div>
+  <label class="opt"><input type="checkbox" data-id="bot_pay" data-price="8000" data-name="Онлайн-оплата в боте"><span class="box" aria-hidden="true"></span><div><b>Онлайн-оплата в боте</b><span>Картой и через СБП, чек ученице приходит сам</span></div><em>+8 000 ₽</em></label>
+  <label class="opt"><input type="checkbox" data-id="bot_bg" data-price="9900" data-name="Продажи каждый день"><span class="box" aria-hidden="true"></span><div><b>Продажи каждый день</b><span>5–7 сообщений после урока: ваш путь, ученицы, ответы на страхи и предложение Базы. Работает и между запусками</span></div><em>+9 900 ₽</em></label>
+  <label class="opt"><input type="checkbox" data-id="bot_push" data-price="4900" data-name="Дожим по броням"><span class="box" aria-hidden="true"></span><div><b>Дожим по броням</b><span>Сообщения в день открытия продаж и за 48 часов до закрытия</span></div><em>+4 900 ₽</em></label>
+  <label class="opt"><input type="checkbox" data-id="bot_seg" data-price="3000" data-name="Разные сообщения новичкам и профи"><span class="box" aria-hidden="true"></span><div><b>Новичкам и профи по-разному</b><span>Бот спрашивает, печёт ли человек на заказ, и пишет каждому своё</span></div><em>+3 000 ₽</em></label>
+  <p class="svc-note">Сопровождение бота после 50 бесплатных дней входит в одну ежемесячную сумму вместе с платформой уроков. Сервер оплачиваем мы.</p>
+  </div></div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>08 / 17</span></div>
+</section>
+
+<!-- app -->
+<section class="pg dark" id="app">
+  <div class="eyebrow rv">Платформа</div>
+  <h2 class="rv">Своя платформа уроков</h2>
+  <p class="lead rv">Уроки больше не живут в одном канале на одном телефоне. Своё приложение внутри Telegram: ученица открывает его одной кнопкой, видит все разделы и смотрит уроки. Видео хранятся с копией, доступ выдаётся сам.</p>
+  <div class="pcard-cap rv">Так будет выглядеть урок</div>
+  <div class="pcard rv" aria-hidden="true">
+    <div class="pimg lesson"><div class="play"><svg class="ico"><use href="#i-play"/></svg></div><span class="tag">Новый урок</span></div>
+    <div class="pbody">
+      <div class="pn">Корпусный манго: мусс, начинка, покрытие</div>
+      <div class="pp">Урок 12 · 24 минуты</div>
+      <div class="ps">Разделы</div>
+      <div class="sizes"><span>Тарты</span><span class="on">Корпусные</span><span>Наполеоны</span><span>Торты</span><span>Мишки</span></div>
+      <div class="pbtns"><span><svg class="ico" aria-hidden="true"><use href="#i-play"/></svg>Смотреть</span><span><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg>Вопрос</span></div>
+      <div class="pmeta"><span><svg class="ico" aria-hidden="true"><use href="#i-file"/></svg>Технология и граммовки</span><span><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg>Доступ навсегда</span></div>
+    </div>
+  </div>
+  <div class="list rv">
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-layers"/></svg></div><div><b>Все уроки по разделам</b><span>Тарты, корпусные, Наполеоны, торты, мишки. Видео, технология, граммовки, файлы</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></div><div><b>Не потеряется</b><span>Видео в облаке с резервной копией. Ученица входит по своему номеру, а не по ссылке на канал</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-card"/></svg></div><div><b>Тарифы и доступы</b><span>База, клуб новинок, наставничество. Доступ открывается после оплаты и закрывается, если подписка закончилась</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg></div><div><b>Новый урок за минуту</b><span>Загружаете урок в админку с телефона, ученицы получают уведомление</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></div><div><b>Результаты учениц</b><span>Ученица отмечает, сколько заработала и за сколько окупила обучение. Это готовые истории для следующего запуска</span></div></div>
+  </div>
+
+  <div class="svc rv" data-svc="app" data-base="74700" data-name="Платформа уроков Merzhum">
+  <div class="svc-head"><div><small>Стоимость услуги</small><b class="svc-total">74 700 ₽</b></div><label class="sw"><input type="checkbox" class="svc-on" checked><span class="sw-ui" aria-hidden="true"></span><em>В расчёте</em></label></div>
+  <div class="svc-body">
+  <div class="svc-sub">Стандартная комплектация · 74 700 ₽</div>
+  <ul class="svc-std"><li>Приложение в Telegram в стиле Merzhum, без шаблонов</li><li>Разделы и уроки: видео, технология, граммовки, файлы</li><li>Вход по оплате, тарифы, доступ навсегда или на срок</li><li>Хранение видео в облаке с резервной копией</li><li>Уведомления ученицам о новых уроках</li><li>Вопросы под уроком прямо вам</li><li>Удобно с телефона, видео без рекламы и чужих ссылок</li></ul>
+  <div class="svc-sub">В подарок</div>
+  <ul class="svc-std gift"><li>Админка: уроки, разделы, ученицы, доступы (обычно 29 900 ₽)</li><li>Юридический пакет для онлайн-школы: оферта, политика, согласие</li><li>50 дней сопровождения после запуска</li></ul>
+  <div class="svc-sub">Дополнительно, отметьте нужное</div>
+  <label class="opt"><input type="checkbox" data-id="app_res" data-price="9800" data-name="Результаты учениц"><span class="box" aria-hidden="true"></span><div><b>Результаты учениц</b><span>Ученица отмечает заработок, окупаемость и фото работ. Вы видите сводку и берёте истории для запусков</span></div><em>+9 800 ₽</em></label>
+  <label class="opt"><input type="checkbox" data-id="app_club" data-price="12000" data-name="Клуб новинок по подписке"><span class="box" aria-hidden="true"></span><div><b>Клуб новинок по подписке</b><span>Ежемесячная оплата, доступ к новым урокам продлевается сам</span></div><em>+12 000 ₽</em></label>
+  <label class="opt"><input type="checkbox" data-id="app_cert" data-price="3900" data-name="Сертификат ученицы"><span class="box" aria-hidden="true"></span><div><b>Сертификат ученицы</b><span>Именной сертификат после раздела, в стиле Merzhum</span></div><em>+3 900 ₽</em></label>
+  <label class="opt"><input type="checkbox" data-id="app_shop" data-price="7000" data-name="Формы и упаковка"><span class="box" aria-hidden="true"></span><div><b>Формы и упаковка</b><span>Формы для мишек, коробки и другое, что вы уже продаёте ученицам. Заказ прямо в приложении</span></div><em>+7 000 ₽</em></label>
+  <div class="opt qty" data-id="app_fill" data-price="2900" data-max="10" data-name="Перенос уроков"><div><b>Перенос уроков</b><span>Загружаем ваши видео, описания и граммовки</span><i class="opt-p">2 900 ₽ за каждые 10 уроков</i></div><div class="step-ui"><button type="button" class="q-minus" aria-label="Меньше">−</button><output class="q-val">0</output><button type="button" class="q-plus" aria-label="Больше">+</button></div></div>
+  <p class="svc-note">Сопровождение после 50 бесплатных дней: 12 000 ₽ в месяц вместе с ботом. Внутри сервер, хранение и показ видео, резервные копии, обновления и правки до 3 часов в месяц. Эти расходы оплачиваем мы.</p>
+  <div class="acc"><details><summary>Почему такая цена<span class="pm"></span></summary><div class="ab"><p>Это отдельное приложение под вашу школу: дизайн, разделы, плеер, доступы по оплате, хранение видео с копией, уведомления и админка. 3–4 недели работы дизайнера и разработчика. Админка, юридический пакет и 50 дней сопровождения уже внутри цены.</p></div></details>
+  <details><summary>Чьё это будет<span class="pm"></span></summary><div class="ab"><p>Ваше. Бот и приложение оформляются на ваш Telegram, видео и список учениц хранятся у вас. Даже если что-то случится с телефоном, уроки и доступы учениц останутся.</p></div></details></div>
+  </div></div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>09 / 17</span></div>
+</section>
+
+<!-- ladder -->
+<section class="pg light" id="ladder">
+  <div class="eyebrow rv">Продукт</div>
+  <h2 class="rv">Как продавать Базу дальше</h2>
+  <p class="lead rv">Сейчас обучение продаётся одной ценой и обещает всё навсегда. Предлагаем лестницу: каждый следующий шаг ученица выбирает сама, когда уже получила результат.</p>
+  <div class="flow rv">
+    <div class="step"><i>01</i><div><b>Бесплатный урок</b><span>Одна ваша технология по слову в рилсе. Вход в канал</span></div></div>
+    <div class="step"><i>02</i><div><b>Пробный рецепт</b><span>Один авторский рецепт за небольшие деньги. Человек пробует вашу подачу и окупает его первым же заказом</span></div></div>
+    <div class="step"><i>03</i><div><b>База</b><span>Все записанные уроки, доступ навсегда. Основной продукт</span></div></div>
+    <div class="step"><i>04</i><div><b>Клуб новинок</b><span>Новые авторские уроки раз в две недели по подписке. Первые месяцы входят в Базу</span></div></div>
+    <div class="step"><i>05</i><div><b>Наставничество</b><span>Личные разборы работ и продаж, офлайн-день в Грозном. Для тех, кто уже зарабатывает</span></div></div>
+  </div>
+  <div class="card ink rv" style="margin-top:24px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-refresh"/></svg></div><div><b>Почему «всё новое навсегда» за одну оплату не работает</b><span>Вы работаете на ученицу всегда, а оплату получаете один раз. Новенькой незачем спешить: всё, что выйдет, она и так получит. Клуб новинок решает обе задачи и даёт доход каждый месяц, а не только в запуск.</span></div></div>
+  <div class="label rv">Наши идеи для Merzhum</div>
+  <div class="cards rv">
+    <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg><b>Карта учениц</b><span>Страны и города учениц на странице обучения и в канале</span></div>
+    <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-wallet"/></svg><b>Счётчик окупаемости</b><span>За сколько дней ученицы окупили обучение. Лучший довод для новеньких</span></div>
+    <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-gift"/></svg><b>Рецепт за историю</b><span>Ученица рассказывает свой результат с цифрами и получает новый рецепт</span></div>
+    <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><b>Офлайн-день в Грозном</b><span>Практика в вашем цехе для учениц наставничества</span></div>
+    <div class="card wide"><svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg><b>Формы и упаковка</b><span>Формы для мишек и коробки, которые вы уже продаёте ученицам, можно заказывать прямо из урока</span></div>
+  </div>
+  <p class="note rv">Цены тарифов решаем вместе с вами на созвоне: по вашим цифрам продаж и тому, сколько времени вы готовы отдавать наставничеству.</p>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>10 / 17</span></div>
+</section>
+
+<!-- ai -->
+<section class="pg dark" id="ai">
+  <div class="eyebrow rv">Искусственный интеллект</div>
+  <h2 class="rv">ИИ-администратор Merzhum</h2>
+  <p class="lead rv">Отвечает за секунды, круглосуточно, в директе и WhatsApp. И ученицам про обучение, и покупателям про десерты: знает программу, тарифы и прайс кондитерской.</p>
+  <div class="list rv">
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg></div><div><b>Отвечает за секунды</b><span>И в три часа ночи, когда пишет ученица из Австралии</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-play"/></svg></div><div><b>Отвечает под рилсами</b><span>На «цена», «+», «хочу» и кодовое слово пишет «Ответили вам в директ» и продолжает там</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg></div><div><b>Знает программу и тарифы</b><span>Что в каждом разделе, сколько стоит, чем База отличается от наставничества</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></div><div><b>Снимает страхи</b><span>«Я новичок», «не окупится», «у меня нет конвектомата». Отвечает спокойно и по делу</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-card"/></svg></div><div><b>Ведёт к оплате</b><span>Присылает ссылку на оплату или в бота, где доступ откроется сам</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg></div><div><b>Принимает заказы десертов</b><span>Прайс, наличие, предзаказ, самовывоз и доставка</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg></div><div><b>Передаёт вам</b><span>Наставничество, жалобы, крупные заказы и всё необычное</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></div><div><b>Отчитывается</b><span>Каждый день: сколько спросили, сколько оплатили, о чём спрашивают чаще всего</span></div></div>
+  </div>
+  <div class="chat rv">
+    <div class="chat-cap">Под рилсом</div>
+    <div class="msg in">Цена?</div>
+    <div class="msg out"><small>merzhum</small>Ответили вам в директ 📩</div>
+    <div class="chat-cap" style="margin-top:8px">Директ, через несколько секунд</div>
+    <div class="msg out">Здравствуйте! База стоит 20 000 ₽: 40+ уроков по тартам, корпусным, Наполеонам и тортам, новые уроки каждые две недели. Вы уже печёте на заказ или только начинаете?</div>
+    <div class="msg in">Только начинаю, боюсь, что не получится</div>
+    <div class="msg out">Понимаю. Многие ученицы начинали с нуля: в каждом уроке пошаговое видео и граммовки, а на вопросы отвечаем, сколько бы времени ни прошло после вступления. Начать можно с бесплатного урока, вот он 👇</div>
+  </div>
+  <div class="chat rv">
+    <div class="chat-cap">Заказ в WhatsApp</div>
+    <div class="msg in">Здравствуйте, на завтра можно бокс корпусных?</div>
+    <div class="msg out">Здравствуйте! Подарочный бокс стоит 3 500 ₽. На завтра можно. Заберёте на Муслима Гайрбекова, 68к2, или нужна доставка?</div>
+  </div>
+  <p class="note rv">Цены и ответы в переписках здесь для примера. Настоящие ИИ берёт из ваших данных.</p>
+
+  <div class="svc rv" data-svc="ai" data-base="105000" data-name="ИИ-администратор Merzhum">
+  <div class="svc-head"><div><small>Стоимость услуги</small><b class="svc-total">105 000 ₽</b></div><label class="sw"><input type="checkbox" class="svc-on"><span class="sw-ui" aria-hidden="true"></span><em>В расчёте</em></label></div>
+  <div class="svc-body">
+  <div class="svc-sub">Стандартная комплектация · 105 000 ₽</div>
+  <ul class="svc-std"><li>Знания: программа, тарифы, частые вопросы учениц, прайс кондитерской</li><li>Каналы: Instagram* (директ и ответы на сторис) и WhatsApp</li><li>Характер и тон под Merzhum, ответы круглосуточно</li><li>Ведёт к оплате или в бота</li><li>Передача сложного вам, уведомления</li><li>Ежедневный отчёт и разбор раз в неделю</li><li>14 дней тестового режима</li></ul>
+  <div class="svc-sub">Дополнительно, отметьте нужное</div>
+  <label class="opt"><input type="checkbox" data-id="ai_ig" data-price="10000" data-name="Ответы под рилсами"><span class="box" aria-hidden="true"></span><div><b>Ответы под рилсами</b><span>Под комментарием «Ответили вам в директ», дальше разговор там. На все ролики, старые и новые</span></div><em>+10 000 ₽</em></label>
+  <label class="opt"><input type="checkbox" data-id="ai_pay" data-price="8000" data-name="Ссылки на оплату"><span class="box" aria-hidden="true"></span><div><b>Ссылки на оплату</b><span>Присылает ссылку на оплату Базы или заказа прямо в переписке</span></div><em>+8 000 ₽</em></label>
+  <label class="opt"><input type="checkbox" data-id="ai_warm" data-price="7000" data-name="Догрев"><span class="box" aria-hidden="true"></span><div><b>Догрев</b><span>Пишет тем, кто спросил цену и пропал</span></div><em>+7 000 ₽</em></label>
+  <label class="opt"><input type="checkbox" data-id="ai_shop" data-price="6900" data-name="Заказы десертов"><span class="box" aria-hidden="true"></span><div><b>Заказы десертов</b><span>Отдельный сценарий для покупателей кондитерской: прайс, предзаказ, самовывоз</span></div><em>+6 900 ₽</em></label>
+  <label class="opt"><input type="checkbox" data-id="ai_voice" data-price="2900" data-name="Голосовые сообщения"><span class="box" aria-hidden="true"></span><div><b>Голосовые сообщения</b><span>Слушает голосовые и отвечает текстом</span></div><em>+2 900 ₽</em></label>
+  <label class="opt"><input type="checkbox" data-id="ai_lang" data-price="3000" data-name="Языки СНГ"><span class="box" aria-hidden="true"></span><div><b>Языки СНГ</b><span>Отвечает ученицам из Казахстана, Туркменистана и других стран на их языке</span></div><em>+3 000 ₽</em></label>
+  <label class="opt"><input type="checkbox" data-id="ai_tg" data-price="5000" data-name="Telegram"><span class="box" aria-hidden="true"></span><div><b>Telegram</b><span>Ваш аккаунт или бот в Telegram</span></div><em>+5 000 ₽</em></label>
+  <p class="svc-note">Сопровождение после запуска: 44 700 ₽ в месяц. Внутри уже все расходы на ИИ: нейросеть, сервер и подключение директа и WhatsApp, их оплачиваем мы.</p>
+  <p class="svc-warn" data-warn-off="bot" hidden>Без бота ИИ присылает ссылку на оплату, а доступ к урокам после оплаты выдаёте вы.</p>
+  <div class="acc"><details><summary>Почему такая цена<span class="pm"></span></summary><div class="ab"><p>Это не бот из конструктора, а администратор, которого мы собираем и обучаем только под Merzhum: программа, тарифы, ответы на страхи учениц, прайс кондитерской, характер, подключение директа и WhatsApp и 14 дней тестового режима с ежедневным разбором диалогов. Это 2–3 недели работы разработчика и маркетолога.</p></div></details></div>
+  </div></div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>11 / 17</span></div>
+</section>
+
+<!-- auto -->
+<section class="pg light" id="auto">
+  <div class="eyebrow rv">Попроще</div>
+  <h2 class="rv">Или автоответы</h2>
+  <p class="lead rv">Если ИИ-администратор пока не нужен, начните с автоответов. Это не живой разговор, а кнопки: человек пишет под рилсом и сразу получает ссылку на бесплатный урок и программу.</p>
+  <p class="note rv" style="margin-top:12px">Сейчас под частью роликов уже стоит автоответ «Ответ отправлен, ищи в ЛС». Но он срабатывает только на кодовое слово, а «цена?», «+» и «хочу» остаются без ответа.</p>
+  <div class="chat rv">
+    <div class="chat-cap">Под рилсом</div>
+    <div class="msg in">Цена?</div>
+    <div class="msg out"><small>merzhum</small>Написала вам в директ 📩</div>
+    <div class="chat-cap" style="margin-top:8px">Директ</div>
+    <div class="msg out">Здравствуйте! Вот бесплатный урок по корпусному манго, а ниже программа и цена Базы 👇</div>
+    <div class="btns"><span>Бесплатный урок</span><span>Программа</span><span>Цена</span><span>Написать мне</span></div>
+  </div>
+  <div class="cmp rv">
+    <div class="hl"><small>ИИ-администратор</small><div class="big">Как человек</div><ul><li>Знает программу</li><li>Отвечает на любой вопрос</li><li>Снимает страхи</li></ul></div>
+    <div><small>Автоответы</small><div class="big">Кнопки</div><ul><li>Одинаковый ответ всем</li><li>Ведёт на урок и в бота</li><li>Дальше пишете вы</li></ul></div>
+  </div>
+
+  <div class="svc rv" data-svc="auto" data-base="24700" data-name="Автоответы">
+  <div class="svc-head"><div><small>Стоимость услуги</small><b class="svc-total">24 700 ₽</b></div><label class="sw"><input type="checkbox" class="svc-on" checked><span class="sw-ui" aria-hidden="true"></span><em>В расчёте</em></label></div>
+  <div class="svc-body">
+  <div class="svc-sub">Стандартная комплектация · 24 700 ₽</div>
+  <ul class="svc-std"><li>Ответ под комментариями во всех рилсах, в том числе на «цена», «+» и «хочу»</li><li>Сообщение в директ со ссылкой на бесплатный урок и бота</li><li>Кнопки: урок, программа, цена, написать вам</li><li>Несколько вариантов ответа, на смайлы и шутки не реагирует</li></ul>
+  <div class="svc-sub">Дополнительно, отметьте нужное</div>
+  <label class="opt"><input type="checkbox" data-id="auto_story" data-price="5000" data-name="Ответы на сторис"><span class="box" aria-hidden="true"></span><div><b>Ответы на сторис</b><span>По кодовому слову из сторис</span></div><em>+5 000 ₽</em></label>
+  <label class="opt"><input type="checkbox" data-id="auto_lead" data-price="4800" data-name="Заявка на наставничество"><span class="box" aria-hidden="true"></span><div><b>Заявка на наставничество</b><span>Спрашивает имя, город и телефон и отправляет вам</span></div><em>+4 800 ₽</em></label>
+  <p class="svc-note">С ИИ-администратором автоответы не нужны: он отвечает под рилсами сам. Подписку на сервис автоответов (около 1 600 ₽ в месяц) оплачиваем мы, если бот и платформа на нашем сопровождении.</p>
+  </div></div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>12 / 17</span></div>
+</section>
+
+<!-- insta -->
+<section class="pg dark" id="insta">
+  <div class="eyebrow rv">Профиль</div>
+  <h2 class="rv">Упаковка профиля под&nbsp;обучение</h2>
+  <p class="lead rv">Профиль, в котором новая ученица за минуту понимает, кто вы, чему учите, кто уже научился и как вступить. Кондитерская при этом остаётся на своём месте.</p>
+  <div class="list rv">
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg></div><div><b>Шапка</b><span>10 лет, Турция и Франция, ученицы в 7 странах. Две ссылки: бесплатный урок и заказ десертов</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-layers"/></svg></div><div><b>Актуальное</b><span>Обо мне · Ученицы · Программа · Как вступить · Вопросы · Прайс кондитерской</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-spark"/></svg></div><div><b>Обложки в стиле Merzhum</b><span>Единый вид разделов в цветах вашего логотипа</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg></div><div><b>Закреплённые посты</b><span>Ваш путь, история ученицы, как вступить</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-file"/></svg></div><div><b>Шаблоны ответов</b><span>На цену, программу, вступление и заказ десертов</span></div></div>
+  </div>
+  <div class="svc rv" data-svc="insta" data-base="9900" data-name="Упаковка профиля">
+  <div class="svc-head"><div><small>Стоимость услуги</small><b class="svc-total">9 900 ₽</b></div><label class="sw"><input type="checkbox" class="svc-on" checked><span class="sw-ui" aria-hidden="true"></span><em>В расчёте</em></label></div>
+  <div class="svc-body">
+  <div class="svc-sub">Стандартная комплектация · 9 900 ₽</div>
+  <ul class="svc-std"><li>Текст шапки и две рабочие ссылки</li><li>6 разделов актуального: тексты и сторис</li><li>Обложки разделов в стиле Merzhum</li><li>Три закреплённых поста: тексты и порядок</li><li>Шаблоны ответов на частые вопросы</li></ul>
+  <div class="svc-sub">Дополнительно, отметьте нужное</div>
+  <label class="opt"><input type="checkbox" data-id="insta_cases" data-price="4900" data-name="Истории учениц"><span class="box" aria-hidden="true"></span><div><b>Истории учениц</b><span>Собираем 5–10 историй с цифрами и странами и оформляем для актуального и канала</span></div><em>+4 900 ₽</em></label>
+  <label class="opt"><input type="checkbox" data-id="insta_page" data-price="19700" data-name="Страница обучения"><span class="box" aria-hidden="true"></span><div><b>Страница обучения</b><span>Одна страница на сайте: программа, тарифы, ученицы, оплата, оферта. Для рекламы и ссылки в профиле</span></div><em>+19 700 ₽</em></label>
+  </div></div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>13 / 17</span></div>
+</section>
+
+<!-- price -->
+<section class="pg light" id="price">
+  <div class="eyebrow rv">Стоимость</div>
+  <h2 class="rv">Сколько это стоит</h2>
+  <p class="lead rv">Здесь собирается итог по всем услугам, которые вы отметили выше. Можно выбрать готовый набор или вернуться к любой услуге и поменять комплектацию. Скрытых платежей нет.</p>
+  <div class="sumbox" id="sumbox">
+    <div class="presets rv"><span>Быстрый выбор</span><button type="button" class="pill" data-preset="rec">Рекомендуем</button><button type="button" class="pill" data-preset="start">Первый запуск</button><button type="button" class="pill" data-preset="max">Всё включено</button><button type="button" class="pill" data-preset="launch">Только запуск</button></div>
+    <div class="sum-list rv" id="sum-list"></div>
+    <div class="ptotal rv"><small>Итого разово</small><div class="big" id="sum-once">—</div></div>
+    <div class="rv" id="sum-deal"></div>
+    <div class="month rv" id="sum-month-box"><div class="row1"><b>Каждый месяц, всё включено</b><div class="big" id="sum-month">—</div></div><div id="sum-month-list"></div></div>
+    <div class="card ink rv" style="margin-top:14px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-wallet"/></svg></div><div><b>Одна оплата в месяц, и всё работает</b><span>В ежемесячную сумму уже входят все подписки: сервер, хранение видео, нейросеть и подключение директа и WhatsApp, если выбран ИИ. Их оформляем и оплачиваем мы. Вам не нужно ничего продлевать и следить за счетами.</span></div></div>
+    <div class="label rv">Эти расходы мы оплачиваем за вас</div>
+    <div class="rv" id="sum-svc"></div>
+    <p class="note rv">Отдельно только комиссия банка с онлайн-оплат, её банк удерживает сам, и бюджет рекламы в Telegram, если вы его выберете.</p>
+    <div class="form-btns rv">
+      <button class="btn ink" type="button" id="cfg-send"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Отправить выбор в WhatsApp</button>
+      <button class="btn line" type="button" id="cfg-copy"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg>Скопировать расчёт</button>
+    </div>
+    <script type="application/json" id="cfg-data">{"monthly": [{"label": "Сопровождение ИИ-администратора", "price": 44700, "if_any": ["ai"]}, {"label": "Сопровождение бота и платформы, после 50 бесплатных дней", "price": 12000, "if_any": ["bot", "app"]}], "services": [{"label": "Нейросеть", "price": 8000, "approx": true, "if_any": ["ai"], "note": "Оценка при вашем потоке: десятки переписок в день, больше в запуск"}, {"label": "Wazzup: директ и WhatsApp", "price": 6000, "approx": true, "if_any": ["ai"], "note": "WhatsApp 4 000 ₽ + директ с комментариями 2 000 ₽"}, {"label": "Сервер для ИИ в России", "price": 1500, "approx": true, "if_any": ["ai"]}, {"label": "Сервер для бота и платформы", "price": 1500, "approx": true, "if_any": ["bot", "app"]}, {"label": "Хранение и показ видео уроков", "price": 2500, "approx": true, "if_any": ["app"], "note": "Облако с резервной копией, при 40–60 уроках"}, {"label": "Сервис автоответов", "price": 1600, "approx": true, "if_any": ["auto"]}, {"label": "Хостинг и домен страницы обучения", "price": 400, "approx": true, "if_any": ["insta_page"]}], "fixed_gifts": [{"name": "Разбор и бесплатные шаги", "note": "Пост для старой базы, шапка, ответ на «цена?», сторис с датой", "value": 0}, {"name": "Админка платформы", "note": "Уроки, разделы, ученицы, доступы", "value": 29900, "if_any": ["app"]}, {"name": "Юридический пакет онлайн-школы", "note": "Оферта, политика, согласие", "value": 0, "if_any": ["app", "bot_pay", "insta_page"]}, {"name": "50 дней сопровождения бота и платформы", "value": 0, "if_any": ["bot", "app"]}], "deal": null, "presets": {"rec": {"label": "Рекомендуем", "on": ["launch", "bot", "app", "auto", "insta"], "opts": ["bot_pay", "bot_bg", "bot_push", "app_res", "app_club", "auto_story", "insta_cases"]}, "start": {"label": "Первый запуск", "on": ["launch", "bot", "auto", "insta"], "opts": ["bot_pay", "bot_push", "insta_cases"]}, "max": {"label": "Всё включено", "on": ["launch", "bot", "app", "ai", "insta"], "opts": "all"}, "launch": {"label": "Только запуск", "on": ["launch"], "opts": []}}, "title": "Merzhum", "def": "rec", "order": ["launch", "bot", "app", "ai", "auto", "insta"]}</script>
+  </div>
+  <a class="floatsum" id="floatsum" href="#price" aria-label="Перейти к итогу"><span>Итого</span><b id="float-once">—</b><em id="float-month"></em><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  <p class="note rv">Можно начать с первого запуска: канал, бот, автоответы и профиль. Платформу и ИИ-администратора добавить позже, всё сделанное на первом шаге пойдёт в дело и на втором.</p>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>14 / 17</span></div>
+</section>
+
+<!-- pay -->
+<section class="pg dark" id="pay">
+  <div class="eyebrow rv">Прозрачно</div>
+  <h2 class="rv">Как устроена оплата</h2>
+  <p class="lead rv">Оплата из двух частей: работа один раз и одна сумма в месяц. Каждую цифру вы знаете заранее, неожиданных счетов не будет.</p>
+  <div class="flow rv">
+    <div class="step"><i>01</i><div><b>Работа, один раз</b><span>Запуск, бот, платформа, автоответы или ИИ, профиль. Оплата 50/50: половина на старте, половина после сдачи</span></div></div>
+    <div class="step"><i>02</i><div><b>Сопровождение, каждый месяц</b><span>Одна фиксированная сумма, начинается только после запуска и 50 бесплатных дней</span></div></div>
+    <div class="step"><i>03</i><div><b>Все подписки уже внутри</b><span>Сервер, хранение видео, сервис автоответов, нейросеть оплачиваем мы из ежемесячной суммы</span></div></div>
+  </div>
+  <div class="label rv">Что входит в сопровождение</div>
+  <div class="list rv">
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-server"/></svg></div><div><b>Все подписки и сервисы</b><span>Сервер, хранение видео, сервисы ответов. Вам не нужно разбираться со счетами</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></div><div><b>Уроки под присмотром</b><span>Резервные копии видео и списка учениц, обновления, безопасность</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-edit"/></svg></div><div><b>Правки</b><span>Новые разделы, тарифы, тексты бота. До 3 часов работы в месяц</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-eye"/></svg></div><div><b>Если выбран ИИ</b><span>Каждый день смотрим диалоги, раз в неделю дообучаем, следим за подключением директа и WhatsApp</span></div></div>
+  </div>
+  <div class="acc rv">
+    <details><summary>Почему сопровождение стоит столько<span class="pm"></span></summary><div class="ab"><p>Бот и платформа работают на сервере, видео нужно где-то хранить и показывать, а Telegram и платёжные сервисы обновляются. Без присмотра что-то ломается в самый неудобный момент, обычно в день открытия продаж. Сопровождение ИИ-администратора дороже, потому что это ежедневная работа человека, который читает диалоги и дообучает ИИ, плюс расходы на нейросеть.</p></div></details>
+    <details><summary>Что будет, если остановить сопровождение<span class="pm"></span></summary><div class="ab"><p>Предупредите за месяц. Бот, платформа и уроки продолжат работать, подписки на сервер и хранение видео вы оплачиваете напрямую. Все уроки, список учениц и настройки остаются у вас. Вернуть сопровождение можно в любой момент.</p></div></details>
+  </div>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>15 / 17</span></div>
+</section>
+
+<!-- terms -->
+<section class="pg light" id="terms">
+  <div class="eyebrow rv">Условия</div>
+  <h2 class="rv">Гарантии и условия</h2>
+  <div class="list rv">
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg></div><div><b>Срок фиксируем до старта</b><span>В договоре, по каждой услуге. Считается с предоплаты и получения материалов</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-card"/></svg></div><div><b>Оплата 50/50</b><span>Половина в начале, половина после сдачи</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></div><div><b>Гарантия срока</b><span>Не успели по нашей вине: вторую половину не платите, а работу забираете полностью</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg></div><div><b>Всё остаётся у вас</b><span>Канал, бот, платформа, видео и список учениц оформлены на вас. Сопровождение можно остановить, предупредив за месяц</span></div></div>
+    <div class="row"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></div><div><b>Ваш голос и ваши правила</b><span>Все тексты вы видите до публикации. Ничего не выходит от вашего имени без вашего «да». Без музыки в роликах</span></div></div>
+  </div>
+  <div class="label rv">Бонусы</div>
+  <div class="cards one rv">
+    <div class="card" style="display:grid;grid-template-columns:52px 1fr;gap:16px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-gift"/></svg></div><div><b>Всё бесплатное уже ваше</b><span>Пост для старой базы, шапка, ответ на «цена?» и сторис с датой из раздела «Бесплатно», даже если работать не будем</span></div></div>
+    <div class="card" style="display:grid;grid-template-columns:52px 1fr;gap:16px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></div><div><b>Сравнение «до и после»</b><span>После запуска сравним с сентябрьским: сколько написали слово, сколько оставили бронь, сколько купили</span></div></div>
+    <div class="card" style="display:grid;grid-template-columns:52px 1fr;gap:16px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></div><div><b>Юридический пакет</b><span>Оферта, политика и согласие для онлайн-школы, чтобы принимать оплату спокойно</span></div></div>
+    <div class="card" style="display:grid;grid-template-columns:52px 1fr;gap:16px"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></div><div><b>Обучение</b><span>Встреча и видеоинструкции: как загрузить урок, открыть тариф и посмотреть оплаты</span></div></div>
+  </div>
+  <p class="note rv">Мы не обещаем конкретную выручку запуска: она зависит от многого. Обещаем план на каждый день, ответ на каждый «цена?» и уроки, которые больше нельзя потерять. Цифры каждого этапа вы увидите в отчёте.</p>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>16 / 17</span></div>
+</section>
+
+<!-- next -->
+<section class="pg dark" id="next">
+  <div class="eyebrow rv">Следующий шаг</div>
+  <h2 class="rv">Начнём</h2>
+  <p class="lead rv">Выберите набор или напишите, что поменять. Договор и счёт пришлю в течение часа. Удобно созвониться на 20 минут и пройти по разбору вместе. Для старта понадобится:</p>
+  <div class="label rv">Доступы</div>
+  <ul class="ul rv">
+    <li>Telegram-аккаунт, на который оформим канал, бота и платформу</li>
+    <li>Instagram* в профессиональном режиме</li>
+    <li>WhatsApp на номере кондитерской, если выбран ИИ-администратор</li>
+  </ul>
+  <div class="label rv">Материалы</div>
+  <ul class="ul rv">
+    <li>Видео уроков Базы, описания и граммовки</li>
+    <li>Программа, тарифы и цены, которые хотите</li>
+    <li>Истории учениц: скрины результатов, отзывов и оплат</li>
+    <li>Прайс кондитерской и частые вопросы покупателей</li>
+  </ul>
+  <div class="label rv">Время</div>
+  <ul class="ul rv">
+    <li>Съёмка рилсов и мастер-класса по плану, примерно час в день в неделю запуска</li>
+  </ul>
+  <div class="label rv">Связаться</div>
+  <a class="contact rv" href="https://wa.me/79289217878" target="_blank" rel="noopener"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg></div><div><small>WhatsApp</small><b>+7 928 921 78 78</b></div><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  <a class="contact rv" href="https://t.me/Labazan78" target="_blank" rel="noopener"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-tg"/></svg></div><div><small>Telegram</small><b>@Labazan78</b></div><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  <a class="contact rv" href="https://t.me/labazan78brend" target="_blank" rel="noopener"><div class="tile"><svg class="ico" aria-hidden="true"><use href="#i-mega"/></svg></div><div><small>Канал</small><b>t.me/labazan78brend</b></div><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  <svg class="endmark" viewBox="0 0 1708 720" role="img" aria-label="M78"><use href="#m78"/></svg>
+  <p class="fn rv">* Instagram принадлежит компании Meta Platforms Inc., которая признана экстремистской организацией, её деятельность запрещена на территории Российской Федерации.</p>
+  <div class="pgfoot"><svg viewBox="0 0 1708 720" aria-hidden="true"><use href="#m78"/></svg><span>17 / 17</span></div>
+</section>
+
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var d=document;
+  /* menu */
+  var menu=d.getElementById('menu');
+  function openMenu(){menu.classList.add('open');menu.setAttribute('aria-hidden','false');}
+  function closeMenu(){menu.classList.remove('open');menu.setAttribute('aria-hidden','true');}
+  d.querySelectorAll('[data-menu-open]').forEach(function(b){b.addEventListener('click',openMenu);});
+  d.querySelectorAll('[data-menu-close]').forEach(function(b){b.addEventListener('click',closeMenu);});
+  if(menu){
+    menu.addEventListener('click',function(e){if(e.target===menu)closeMenu();});
+    menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+  }
+  d.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+
+  /* reveal on scroll */
+  var rv=d.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.05});
+    rv.forEach(function(el){io.observe(el);});
+  } else { rv.forEach(function(el){el.classList.add('in');}); }
+
+  /* segmented switchers */
+  d.querySelectorAll('[data-seg]').forEach(function(seg){
+    var grp=seg.getAttribute('data-seg');
+    seg.querySelectorAll('button').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        seg.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b===btn);b.setAttribute('aria-pressed',b===btn);});
+        d.querySelectorAll('[data-pk="'+grp+'"]').forEach(function(p){p.classList.toggle('on',p.getAttribute('data-id')===btn.getAttribute('data-id'));});
+      });
+    });
+  });
+
+  /* toast */
+  var toast=d.getElementById('toast');
+  function say(t){if(!toast)return;toast.textContent=t;toast.classList.add('show');clearTimeout(say._t);say._t=setTimeout(function(){toast.classList.remove('show');},2600);}
+
+  /* questionnaire */
+  var form=d.getElementById('anketa');
+  if(form){
+    var KEY='m78-anketa-'+(form.getAttribute('data-key')||'x');
+    var store={get:function(){try{return JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){return {};}},
+               set:function(v){try{localStorage.setItem(KEY,JSON.stringify(v));}catch(e){}}};
+    var saved=store.get();
+    form.querySelectorAll('textarea').forEach(function(t){if(saved[t.name])t.value=saved[t.name];});
+    form.querySelectorAll('input[type=checkbox],input[type=radio]').forEach(function(i){var v=saved[i.name];if(v&&(''+v).split('|').indexOf(i.value)>-1)i.checked=true;});
+    function collect(){
+      var data={};
+      form.querySelectorAll('textarea').forEach(function(t){data[t.name]=t.value.trim();});
+      form.querySelectorAll('input[type=checkbox],input[type=radio]').forEach(function(i){if(i.checked){data[i.name]=data[i.name]?data[i.name]+'|'+i.value:i.value;}});
+      return data;
+    }
+    form.addEventListener('input',function(){store.set(collect());});
+    form.addEventListener('change',function(){store.set(collect());});
+    function text(){
+      var out=['Ответы на вопросы М78'];
+      form.querySelectorAll('.q').forEach(function(q,i){
+        var title=q.querySelector('label').childNodes[0].textContent.trim(),parts=[],ch=[];
+        q.querySelectorAll('input:checked').forEach(function(x){ch.push(x.value);});
+        if(ch.length)parts.push(ch.join(', '));
+        q.querySelectorAll('textarea').forEach(function(t){if(t.value.trim())parts.push(t.value.trim());});
+        if(parts.length)out.push('\n'+(i+1)+'. '+title+'\n'+parts.join('\n'));
+      });
+      return out.join('\n');
+    }
+    var wa=d.getElementById('send-wa'),cp=d.getElementById('copy-ans');
+    if(wa)wa.addEventListener('click',function(){
+      var t=text(); if(t.split('\n').length<3){say('Заполните хотя бы один ответ');return;}
+      window.open('https://wa.me/79289217878?text='+encodeURIComponent(t),'_blank');
+    });
+    if(cp)cp.addEventListener('click',function(){
+      var t=text();
+      function ok(){say('Ответы скопированы');}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fallback(t);ok();});}
+      else{fallback(t);ok();}
+    });
+    function fallback(t){var a=d.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';d.body.appendChild(a);a.select();try{d.execCommand('copy');}catch(e){}d.body.removeChild(a);}
+  }
+})();
+
+(function(){
+  var d=document, dataEl=d.getElementById('cfg-data');
+  if(!dataEl) return;
+  var CFG=JSON.parse(dataEl.textContent);
+  var svcs=[].slice.call(d.querySelectorAll('.svc'));
+  var byId={}; svcs.forEach(function(s){byId[s.getAttribute('data-svc')]=s;});
+  var KEY='m78-cfg-'+CFG.title;
+  function rub(n){return n.toLocaleString('ru-RU').replace(/ /g,' ')+' ₽';}
+  function isOn(id){var s=byId[id];return !!(s&&s.querySelector('.svc-on').checked);}
+  function optOn(id){var i=d.querySelector('.svc input[data-id="'+id+'"]');if(!i)return false;return i.checked&&isOn(i.closest('.svc').getAttribute('data-svc'));}
+  function anyOn(ids){return (ids||[]).some(function(id){return byId[id]?isOn(id):optOn(id);});}
+
+  function calcSvc(s){
+    var base=+s.getAttribute('data-base'),add=0,mult=1,qty=0,lines=[];
+    s.querySelectorAll('.opt input[type=checkbox]').forEach(function(i){
+      if(!i.checked)return;
+      if(i.hasAttribute('data-mult')){mult*=+i.getAttribute('data-mult');lines.push(i.getAttribute('data-name')+': −50%');}
+      else{add+=+i.getAttribute('data-price');lines.push(i.getAttribute('data-name')+' +'+rub(+i.getAttribute('data-price')));}
+    });
+    s.querySelectorAll('.opt.qty').forEach(function(q){
+      var n=+q.querySelector('.q-val').value||0; if(n>0){var p=n*(+q.getAttribute('data-price'));qty+=p;lines.push(q.getAttribute('data-name')+' × '+n+' +'+rub(p));}
+    });
+    var full=Math.round((base+add)*mult)+qty;
+    var giftIf=s.getAttribute('data-gift-if');
+    var gift=s.hasAttribute('data-bonus')||!!(giftIf&&giftIf.split(',').every(isOn));
+    return {on:s.querySelector('.svc-on').checked,full:full,price:gift?0:full,gift:gift,lines:lines,base:Math.round(base*mult)};
+  }
+
+  var prevTotals={};
+  function render(save){
+    var once=0,saved=0,list=[];
+    svcs.forEach(function(s){
+      var id=s.getAttribute('data-svc'),r=calcSvc(s),t=s.querySelector('.svc-total');
+      s.classList.toggle('off',!r.on);
+      var txt=r.gift?'<s>'+rub(r.full)+'</s>'+(s.hasAttribute('data-bonus')?'Бонус':'Подарок'):rub(r.full);
+      if(t.innerHTML!==txt){t.innerHTML=txt;if(prevTotals[id]!==undefined){t.classList.remove('bump');void t.offsetWidth;t.classList.add('bump');}}
+      prevTotals[id]=txt;
+      var w=s.querySelector('.svc-warn');
+      if(w)w.hidden=!(r.on&&!isOn(w.getAttribute('data-warn-off')));
+      if(r.on){once+=r.price;if(r.gift)saved+=r.full;}
+      list.push({id:id,name:s.getAttribute('data-name'),r:r});
+    });
+    /* summary list */
+    var gifts=(CFG.fixed_gifts||[]).filter(function(g){return !g.if_any||anyOn(g.if_any);});
+    var giftVal=gifts.reduce(function(a,g){return a+(g.value||0);},0);
+    var sl=d.getElementById('sum-list');
+    if(sl){
+      sl.innerHTML=list.map(function(x){
+        var p=!x.r.on?'<span class="p">Не выбрано</span>':x.r.gift?'<span class="p"><s>'+rub(x.r.full)+'</s>Подарок</span>':'<span class="p">'+rub(x.r.price)+'</span>';
+        return '<a class="prow'+(x.r.on?'':' off')+(x.r.gift?' gift':'')+'" href="#'+(byId[x.id].closest('section').id)+'"><div><b>'+x.name+'</b><span>'+(x.r.on?(x.r.lines.length?'Стандарт и '+x.r.lines.length+' доп.':'Стандартная комплектация'):'Включите в разделе услуги')+'</span></div>'+p+'</a>';
+      }).join('')+gifts.map(function(g){return g.plain?'<div class="prow"><div><b>'+g.name+'</b>'+(g.note?'<span>'+g.note+'</span>':'')+'</div><div class="p">'+rub(g.value)+'</div></div>':'<div class="prow gift"><div><b>'+g.name+'</b>'+(g.note?'<span>'+g.note+'</span>':'')+'</div><div class="p">'+(g.value?'<s>'+rub(g.value)+'</s>':'')+(g.label||'Подарок')+'</div></div>';}).join('');
+    }
+    var mo=0,ml=[];
+    function allOn(ids){return !ids||ids.every(function(id){return byId[id]?isOn(id):optOn(id);});}
+    (CFG.monthly||[]).forEach(function(m){if(anyOn(m.if_any)&&!anyOn(m.unless_any)&&allOn(m.if_all)){mo+=m.price;ml.push(m);}});
+    var sv=0,svl=[],from=false;
+    (CFG.services||[]).forEach(function(m){if(anyOn(m.if_any)){svl.push(m);if(m.price){sv+=m.price;}if(m.from||m.approx)from=true;}});
+    function setTxt(id,v){var e=d.getElementById(id);if(e)e.innerHTML=v;}
+    var plainVal=gifts.reduce(function(a,g){return a+(g.plain?(g.value||0):0);},0),shown=once+plainVal;
+    setTxt('sum-once',rub(shown));
+    var mb=d.getElementById('sum-month-box');
+    if(mb){mb.style.display=(CFG.monthly||[]).length?'':'none';}
+    setTxt('sum-month',mo?rub(mo)+'<small style="font-size:14px"> / мес</small>':'0 ₽');
+    setTxt('sum-month-list',ml.map(function(m){return '<div class="mrow"><span>'+m.label+'</span><b>'+rub(m.price)+'</b></div>';}).join('')+(mo&&sv?'<div class="mrow split first"><span>Из них расходы на сервисы, их оплачиваем мы</span><b>≈ '+rub(sv)+'</b></div><div class="mrow split"><span>За нашу работу остаётся</span><b>≈ '+rub(Math.max(0,mo-sv))+'</b></div>':'')+(mo?'<div class="mrow"><span>Начинается после запуска</span></div>':''));
+    setTxt('sum-svc',svl.length?svl.map(function(m){
+      var p=m.text?m.text:m.price===0?'0 ₽':((m.from?'от ':m.approx?'≈ ':'')+rub(m.price));
+      return '<div class="prow"><div><b>'+m.label+'</b>'+(m.note?'<span>'+m.note+'</span>':'')+'</div><div class="p">'+p+'</div></div>';
+    }).join('')+(sv?'<div class="prow"><div><b>'+(mo?'Всего, уже внутри ежемесячной оплаты':'Всего, оплачиваете напрямую')+'</b><span>Оценка по ценам поставщиков на ноябрь 2026</span></div><div class="p">'+(from?'≈ ':'')+rub(sv)+'</div></div>':''):'<p class="note">Сервисы появятся, когда выберете услуги.</p>');
+    /* floating */
+    setTxt('float-once',rub(shown));
+    setTxt('float-month',mo?'+ '+rub(mo)+'/мес':'');
+    /* preset highlight */
+    var cur=JSON.stringify(state());
+    d.querySelectorAll('[data-preset]').forEach(function(b){b.classList.toggle('on',JSON.stringify(presetState(b.getAttribute('data-preset')))===cur);});
+    if(save!==false){try{localStorage.setItem(KEY,cur);}catch(e){}}
+    var dl=d.getElementById('sum-deal'),full=once+giftVal,plus=0;
+    if(dl&&CFG.deal){plus=full-CFG.deal.discount;
+      dl.innerHTML='<div class="prow"><div><b>'+CFG.deal.label+'</b><span>'+CFG.deal.note+'</span></div><div class="p">'+rub(CFG.deal.discount)+'</div></div>'+
+        (plus>0?'<div class="deal-plus"><small>Ваш плюс</small><div class="big">+ '+rub(plus)+'</div><p>'+CFG.deal.plus_text+'</p></div>':'');}
+    render.last={shown:shown,once:once,mo:mo,sv:sv,from:from,list:list,ml:ml,svl:svl,saved:saved,gifts:gifts,giftVal:giftVal,full:full,plus:plus};
+  }
+
+  function state(){
+    var st={on:{},o:{},q:{}};
+    svcs.forEach(function(s){st.on[s.getAttribute('data-svc')]=s.querySelector('.svc-on').checked;});
+    d.querySelectorAll('.svc .opt input[type=checkbox]').forEach(function(i){st.o[i.closest('.svc').getAttribute('data-svc')+':'+i.getAttribute('data-id')]=i.checked;});
+    d.querySelectorAll('.svc .opt.qty').forEach(function(q){st.q[q.closest('.svc').getAttribute('data-svc')+':'+q.getAttribute('data-id')]=+q.querySelector('.q-val').value||0;});
+    return st;
+  }
+  function apply(st){
+    svcs.forEach(function(s){var id=s.getAttribute('data-svc');if(id in st.on)s.querySelector('.svc-on').checked=st.on[id];});
+    d.querySelectorAll('.svc .opt input[type=checkbox]').forEach(function(i){var k=i.closest('.svc').getAttribute('data-svc')+':'+i.getAttribute('data-id');if(k in st.o)i.checked=st.o[k];});
+    d.querySelectorAll('.svc .opt.qty').forEach(function(q){var k=q.closest('.svc').getAttribute('data-svc')+':'+q.getAttribute('data-id');if(k in st.q)q.querySelector('.q-val').value=st.q[k];});
+  }
+  function presetState(name){
+    var p=CFG.presets[name],st={on:{},o:{},q:{}};
+    svcs.forEach(function(s){st.on[s.getAttribute('data-svc')]=p.on.indexOf(s.getAttribute('data-svc'))>-1;});
+    d.querySelectorAll('.svc .opt input[type=checkbox]').forEach(function(i){
+      var sid=i.closest('.svc').getAttribute('data-svc'),id=i.getAttribute('data-id');
+      st.o[sid+':'+id]=p.opts==='all'?!i.hasAttribute('data-mult'):(p.opts.indexOf(id)>-1&&p.on.indexOf(sid)>-1);
+    });
+    d.querySelectorAll('.svc .opt.qty').forEach(function(q){st.q[q.closest('.svc').getAttribute('data-svc')+':'+q.getAttribute('data-id')]=0;});
+    return st;
+  }
+
+  /* events */
+  d.querySelectorAll('.svc input').forEach(function(i){i.addEventListener('change',function(){render();});});
+  d.querySelectorAll('.svc .opt.qty').forEach(function(q){
+    var v=q.querySelector('.q-val'),max=+q.getAttribute('data-max')||6;
+    q.querySelector('.q-minus').addEventListener('click',function(){v.value=Math.max(0,(+v.value||0)-1);render();});
+    q.querySelector('.q-plus').addEventListener('click',function(){v.value=Math.min(max,(+v.value||0)+1);render();});
+  });
+  d.querySelectorAll('[data-preset]').forEach(function(b){b.addEventListener('click',function(){apply(presetState(b.getAttribute('data-preset')));render();});});
+
+  /* initial */
+  var init=null; try{init=JSON.parse(localStorage.getItem(KEY)||'null');}catch(e){}
+  apply(init||presetState(CFG.def||Object.keys(CFG.presets)[0]));
+  render(false);
+
+  /* floating total */
+  var fl=d.getElementById('floatsum'),priceSec=d.getElementById('price'),cover=d.querySelector('.cover');
+  if(fl&&'IntersectionObserver' in window){
+    var vis={price:false,cover:true};
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){vis[e.target===priceSec?'price':'cover']=e.isIntersecting;});fl.classList.toggle('show',!vis.price&&!vis.cover);},{threshold:0});
+    if(priceSec)io.observe(priceSec); if(cover)io.observe(cover);
+  }
+
+  /* send / copy */
+  function text(){
+    var L=render.last,out=['Расчёт М78 для '+CFG.title,''];
+    L.list.forEach(function(x){
+      if(!x.r.on)return;
+      out.push(x.name+': '+(x.r.gift?'подарок':rub(x.r.price)));
+      out.push('  стандарт '+rub(x.r.base));
+      x.r.lines.forEach(function(l){out.push('  '+l);});
+    });
+    L.gifts.forEach(function(g){if(g.value)out.push(g.name+': '+rub(g.value)+(g.plain?'':', бесплатно'));});
+    out.push('','Итого: '+rub(L.shown));
+    if(CFG.deal){out.push(CFG.deal.label+': скидка '+rub(CFG.deal.discount));if(L.plus>0)out.push('Плюс: '+rub(L.plus));}
+    if(L.mo)out.push('Каждый месяц, всё включено: '+rub(L.mo));
+    if(L.sv&&L.mo)out.push('Из них расходы на сервисы (оплачиваем мы): ≈ '+rub(L.sv)+', за нашу работу ≈ '+rub(Math.max(0,L.mo-L.sv)));else if(L.sv)out.push('Сервисам напрямую: ≈ '+rub(L.sv)+' в месяц');
+    return out.join('\n');
+  }
+  function toast(t){var e=d.getElementById('toast');if(!e)return;e.textContent=t;e.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(function(){e.classList.remove('show');},2600);}
+  var bs=d.getElementById('cfg-send'),bc=d.getElementById('cfg-copy');
+  if(bs)bs.addEventListener('click',function(){window.open('https://wa.me/79289217878?text='+encodeURIComponent(text()),'_blank');});
+  if(bc)bc.addEventListener('click',function(){
+    var t=text();
+    function fb(){var a=d.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';d.body.appendChild(a);a.select();try{d.execCommand('copy');}catch(e){}d.body.removeChild(a);toast('Расчёт скопирован');}
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(function(){toast('Расчёт скопирован');},fb);else fb();
+  });
+})();
+
+(function(){
+  var d=document;
+  function toast(t){var e=d.getElementById('toast');if(!e)return;e.textContent=t;e.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(function(){e.classList.remove('show');},2400);}
+  function copy(t,ok){
+    function fb(){var a=d.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';d.body.appendChild(a);a.select();try{d.execCommand('copy');}catch(e){}d.body.removeChild(a);ok();}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb);}else fb();
+  }
+  /* copy buttons */
+  d.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var el=d.getElementById(b.getAttribute('data-copy'));if(!el)return;
+      copy(el.textContent.replace(/ /g,' ').trim(),function(){
+        var old=b.getAttribute('data-label')||b.textContent;b.classList.add('done');
+        toast('Скопировано');
+        clearTimeout(b._t);b._t=setTimeout(function(){b.classList.remove('done');},1800);
+      });
+    });
+  });
+  /* launch revenue calculator */
+  var box=d.getElementById('lossbox');
+  if(box){
+    var st={n:600,p:5,c:20000};
+    function rub(x){return x.toLocaleString('ru-RU').replace(/ /g,' ')+' ₽';}
+    function set(id,v){var e=box.querySelector('#'+id);if(e){if('value' in e&&e.tagName==='OUTPUT')e.value=v;else e.textContent=v;}}
+    function render(){
+      var k=Math.round(st.n*st.p/100);
+      set('loss-n',st.n.toLocaleString('ru-RU').replace(/ /g,' '));
+      set('loss-p',st.p+'%');
+      set('loss-c',rub(st.c));
+      set('loss-out',rub(k*st.c));
+      set('loss-k',k);
+      set('loss-pp',rub(Math.round(st.n*st.c/100)));
+    }
+    box.querySelectorAll('[data-loss]').forEach(function(b){
+      b.addEventListener('click',function(){
+        var k=b.getAttribute('data-loss');
+        if(k==='n-')st.n=Math.max(50,st.n-50);
+        if(k==='n+')st.n=Math.min(5000,st.n+50);
+        if(k==='p-')st.p=Math.max(1,st.p-1);
+        if(k==='p+')st.p=Math.min(30,st.p+1);
+        if(k==='c-')st.c=Math.max(5000,st.c-1000);
+        if(k==='c+')st.c=Math.min(100000,st.c+1000);
+        render();
+      });
+    });
+    render();
+  }
+})();
+
+</script>
+</body>
+</html>
